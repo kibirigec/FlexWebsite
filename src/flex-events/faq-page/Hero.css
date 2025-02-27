@@ -1,0 +1,36 @@
+/* src/Hero.css */
+.hero {
+    position: relative;
+    background: url('/path/to/your/background-image.jpg') center center/cover no-repeat;
+    height: 400px; /* adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
