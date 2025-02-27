@@ -4,7 +4,7 @@ import { Header50 } from "./components/Header50";
 import { Contact16 } from "./components/Contact16";
 import { Contact5 } from "./components/Contact5";
 import { Contact16_1 } from "./components/Contact16_1";
-import { BookingForm } from "../../globalComps/bookingForm";
+import { BookingForm } from "../../globalComps/BookingForm";
 
 import { Footer3 } from "../../globalComps/Footer3";
 
