@@ -100,7 +100,7 @@ export default function Dashboard() {
   if (hours >= 17) greeting = "Good evening";
 
   return (
-    <div className=" py-20 flex h-screen bg-gray-50">
+    <div className=" py-30 flex h-screen bg-gray-50">
        
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
