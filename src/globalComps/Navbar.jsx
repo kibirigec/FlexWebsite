@@ -108,7 +108,7 @@ export default function NavBar() {
                 </svg>
               </button>
               
-              <div className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-300 ${rentalsDropdownOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+              <div className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-00 ${rentalsDropdownOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="py-2">
                   {rentalItems.map((rental, index) => (
                     <Link
