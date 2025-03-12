@@ -17,14 +17,20 @@ export default function NavBar() {
   // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (rentalsDropdownRef.current && !rentalsDropdownRef.current.contains(event.target)) {
+      if (
+        rentalsDropdownRef.current &&
+        !rentalsDropdownRef.current.contains(event.target)
+      ) {
         setRentalsDropdownOpen(false);
       }
-      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target)) {
+      if (
+        servicesDropdownRef.current &&
+        !servicesDropdownRef.current.contains(event.target)
+      ) {
         setServicesDropdownOpen(false);
       }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -41,7 +47,7 @@ export default function NavBar() {
     "DLP Projectors & Screens",
     "DJ Equipment",
     "Wedding & Corporate Decor Rentals",
-    "Power / Generators"
+    "Power / Generators",
   ];
 
   const serviceItems = [
@@ -50,7 +56,7 @@ export default function NavBar() {
     "Pro-Audio & Visual/Lighting",
     "Home Audio",
     "Sound & Visual Installations",
-    "Flex Brand Manufacturing"
+    "Flex Brand Manufacturing",
   ];
 
   return (
@@ -58,7 +64,10 @@ export default function NavBar() {
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-2">
         {/* Logo */}
         <div className="flex items-center ml-4 md:ml-0">
-          <Link to="/" className="flex items-center space-x-1 rtl:space-x-reverse">
+          <Link
+            to="/"
+            className="flex items-center space-x-1 rtl:space-x-reverse"
+          >
             <img src="./Group 16.svg" alt="Flex Logo" />
           </Link>
         </div>
@@ -67,23 +76,30 @@ export default function NavBar() {
         <div className="hidden md:flex items-center justify-center flex-1">
           <div className="flex items-center space-x-8">
             {["Home", "About", "FAQ", "Pricing"].map((item, index) => {
-              const path = `/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`;
+              const path = `/${
+                item.toLowerCase() === "home" ? "" : item.toLowerCase()
+              }`;
               return (
                 <div key={index}>
-                  <Link 
-                    to={path}
-                    className={`py-2 px-3 md:hover:text-[#9BAB3C] ${
-                      activePage === path
-                        ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                        : "text-white"
-                    }`}
-                  >
-                    {item}
-                  </Link>
+<Link
+  to={path}
+  className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
+    ${activePage === path ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0" : "text-white"}
+
+    /* Background highlight with bottom border */
+    before:content-[''] before:absolute before:inset-0 before:w-full 
+    before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
+    before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
+    hover:before:scale-x-100`}
+>
+  {item}
+</Link>
+
+
                 </div>
               );
             })}
-            
+
             {/* Rentals Dropdown */}
             <div ref={rentalsDropdownRef} className="relative">
               <button
@@ -92,34 +108,49 @@ export default function NavBar() {
                   setServicesDropdownOpen(false);
                 }}
                 className={`py-2 px-3 md:hover:text-[#9BAB3C] flex items-center ${
-                  activePage.startsWith('/rentals')
+                  activePage.startsWith("/rentals")
                     ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
                     : "text-white"
                 }`}
               >
                 Flex Rentals
-                <svg 
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${rentalsDropdownOpen ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
+                    rentalsDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              
-              <div className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-00 ${rentalsDropdownOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+
+              <div
+                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-00 ${
+                  rentalsDropdownOpen
+                    ? "max-h-[500px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <div className="py-2">
                   {rentalItems.map((rental, index) => (
                     <Link
                       key={index}
                       to={`/rentals/${index + 1}`}
                       onClick={() => setRentalsDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#9BAB3C] transition-all duration-300"
-                      style={{ 
+                      className="block px-4 py-2 text-sm text-white hover:bg-[#9BAB3C] hover:text-white transition-all duration-300"
+                      style={{
                         opacity: rentalsDropdownOpen ? 1 : 0,
-                        transform: rentalsDropdownOpen ? 'translateY(0)' : 'translateY(-10px)',
-                        transitionDelay: `${index * 50}ms` 
+                        transform: rentalsDropdownOpen
+                          ? "translateY(0)"
+                          : "translateY(-10px)",
+                        transitionDelay: `${index * 50}ms`,
                       }}
                     >
                       {rental}
@@ -128,7 +159,7 @@ export default function NavBar() {
                 </div>
               </div>
             </div>
-            
+
             {/* Services Dropdown */}
             <div ref={servicesDropdownRef} className="relative">
               <button
@@ -137,23 +168,36 @@ export default function NavBar() {
                   setRentalsDropdownOpen(false);
                 }}
                 className={`py-2 px-3 md:hover:text-[#9BAB3C] flex items-center ${
-                  activePage.startsWith('/services')
+                  activePage.startsWith("/services")
                     ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
                     : "text-white"
                 }`}
               >
                 Services
-                <svg 
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
+                    servicesDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              
-              <div className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-500 ${servicesDropdownOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+
+              <div
+                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-500 ${
+                  servicesDropdownOpen
+                    ? "max-h-[500px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <div className="py-2">
                   {serviceItems.map((service, index) => (
                     <Link
@@ -161,10 +205,12 @@ export default function NavBar() {
                       to={`/services/${index + 1}`}
                       onClick={() => setServicesDropdownOpen(false)}
                       className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#9BAB3C] transition-all duration-300"
-                      style={{ 
+                      style={{
                         opacity: servicesDropdownOpen ? 1 : 0,
-                        transform: servicesDropdownOpen ? 'translateY(0)' : 'translateY(-10px)',
-                        transitionDelay: `${index * 50}ms` 
+                        transform: servicesDropdownOpen
+                          ? "translateY(0)"
+                          : "translateY(-10px)",
+                        transitionDelay: `${index * 50}ms`,
                       }}
                     >
                       {service}
@@ -183,7 +229,7 @@ export default function NavBar() {
               Contact
             </button>
           </Link>
-          
+
           {/* Mobile Menu Button */}
           <button
             type="button"
@@ -219,10 +265,12 @@ export default function NavBar() {
         >
           <ul className="flex flex-col p-4">
             {["Home", "About", "FAQ", "DashBoard"].map((item, index) => {
-              const path = `/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`;
+              const path = `/${
+                item.toLowerCase() === "home" ? "" : item.toLowerCase()
+              }`;
               return (
                 <li key={index} className="mb-2">
-                  <Link 
+                  <Link
                     to={path}
                     onClick={() => setIsOpen(false)}
                     className={`block py-2 px-3 ${
@@ -236,7 +284,7 @@ export default function NavBar() {
                 </li>
               );
             })}
-            
+
             {/* Rentals Dropdown for Mobile */}
             <li className="mb-2">
               <button
@@ -245,23 +293,36 @@ export default function NavBar() {
                   setServicesDropdownOpen(false);
                 }}
                 className={`flex items-center justify-between w-full py-2 px-3 ${
-                  activePage.startsWith('/rentals')
+                  activePage.startsWith("/rentals")
                     ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
                     : "text-white"
                 }`}
               >
                 Flex Rentals
-                <svg 
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${rentalsDropdownOpen ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
+                    rentalsDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              
-              <div className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${rentalsDropdownOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+
+              <div
+                className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${
+                  rentalsDropdownOpen
+                    ? "max-h-[1000px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 {rentalItems.map((rental, index) => (
                   <Link
                     key={index}
@@ -271,11 +332,13 @@ export default function NavBar() {
                       setIsOpen(false);
                     }}
                     className="block py-2 text-sm text-white hover:text-[#9BAB3C]"
-                    style={{ 
+                    style={{
                       opacity: rentalsDropdownOpen ? 1 : 0,
-                      transform: rentalsDropdownOpen ? 'translateY(0)' : 'translateY(-10px)',
-                      transition: 'opacity 300ms, transform 300ms',
-                      transitionDelay: `${index * 50}ms` 
+                      transform: rentalsDropdownOpen
+                        ? "translateY(0)"
+                        : "translateY(-10px)",
+                      transition: "opacity 300ms, transform 300ms",
+                      transitionDelay: `${index * 50}ms`,
                     }}
                   >
                     {rental}
@@ -283,7 +346,7 @@ export default function NavBar() {
                 ))}
               </div>
             </li>
-            
+
             {/* Services Dropdown for Mobile */}
             <li className="mb-2">
               <button
@@ -292,23 +355,36 @@ export default function NavBar() {
                   setRentalsDropdownOpen(false);
                 }}
                 className={`flex items-center justify-between w-full py-2 px-3 ${
-                  activePage.startsWith('/services')
+                  activePage.startsWith("/services")
                     ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
                     : "text-white"
                 }`}
               >
                 Services
-                <svg 
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${servicesDropdownOpen ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
+                    servicesDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              
-              <div className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${servicesDropdownOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+
+              <div
+                className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${
+                  servicesDropdownOpen
+                    ? "max-h-[1000px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 {serviceItems.map((service, index) => (
                   <Link
                     key={index}
@@ -318,11 +394,13 @@ export default function NavBar() {
                       setIsOpen(false);
                     }}
                     className="block py-2 text-sm text-white hover:text-[#9BAB3C]"
-                    style={{ 
+                    style={{
                       opacity: servicesDropdownOpen ? 1 : 0,
-                      transform: servicesDropdownOpen ? 'translateY(0)' : 'translateY(-10px)',
-                      transition: 'opacity 300ms, transform 300ms',
-                      transitionDelay: `${index * 50}ms` 
+                      transform: servicesDropdownOpen
+                        ? "translateY(0)"
+                        : "translateY(-10px)",
+                      transition: "opacity 300ms, transform 300ms",
+                      transitionDelay: `${index * 50}ms`,
                     }}
                   >
                     {service}

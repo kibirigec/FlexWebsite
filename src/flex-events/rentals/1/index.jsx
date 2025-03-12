@@ -31,7 +31,7 @@ function App() {
       </nav> */}
 
       {/* Hero Section with CTA */}
-      <section className="relative bg-gray-900 text-white">
+      <section className="relative bg-gray-900 text-white ">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
