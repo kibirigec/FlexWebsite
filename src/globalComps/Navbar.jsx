@@ -66,7 +66,7 @@ export default function NavBar() {
         {/* Navigation Menu (Desktop) - Centered */}
         <div className="hidden md:flex items-center justify-center flex-1">
           <div className="flex items-center space-x-8">
-            {["Home", "About", "Portfolio", "FAQ"].map((item, index) => {
+            {["Home", "About", "FAQ", "Pricing"].map((item, index) => {
               const path = `/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`;
               return (
                 <div key={index}>
@@ -218,7 +218,7 @@ export default function NavBar() {
           } w-full md:hidden absolute top-full left-0 bg-black/95 mt-2 transition-all duration-300`}
         >
           <ul className="flex flex-col p-4">
-            {["Home", "About", "Portfolio", "FAQ", "DashBoard"].map((item, index) => {
+            {["Home", "About", "FAQ", "DashBoard"].map((item, index) => {
               const path = `/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`;
               return (
                 <li key={index} className="mb-2">
