@@ -75,89 +75,19 @@ export default function NavBar() {
         {/* Navigation Menu (Desktop) - Centered */}
         <div className="hidden md:flex items-center justify-center flex-1">
           <div className="flex items-center space-x-8">
-            {["Home", "About", "FAQ", "Pricing"].map((item, index) => {
-              const path = `/${
-                item.toLowerCase() === "home" ? "" : item.toLowerCase()
-              }`;
-              return (
-                <div key={index}>
-<Link
-  to={path}
-  className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
-    ${activePage === path ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0" : "text-white"}
-
-    /* Background highlight with bottom border */
-    before:content-[''] before:absolute before:inset-0 before:w-full 
-    before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
-    before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
-    hover:before:scale-x-100`}
->
-  {item}
-</Link>
-
-
-                </div>
-              );
-            })}
-
-            {/* Rentals Dropdown */}
-            <div ref={rentalsDropdownRef} className="relative">
-              <button
-                onClick={() => {
-                  setRentalsDropdownOpen(!rentalsDropdownOpen);
-                  setServicesDropdownOpen(false);
-                }}
-                className={`py-2 px-3 md:hover:text-[#9BAB3C] flex items-center ${
-                  activePage.startsWith("/rentals")
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
-                }`}
+            {/* Home Link */}
+            <div>
+              <Link
+                to="/"
+                className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
+                  ${activePage === "/" ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0" : "text-white"}
+                  before:content-[''] before:absolute before:inset-0 before:w-full 
+                  before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
+                  before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
+                  hover:before:scale-x-100`}
               >
-                Flex Rentals
-                <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                    rentalsDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-
-              <div
-                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-00 ${
-                  rentalsDropdownOpen
-                    ? "max-h-[500px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="py-2">
-                  {rentalItems.map((rental, index) => (
-                    <Link
-                      key={index}
-                      to={`/rentals/${index + 1}`}
-                      onClick={() => setRentalsDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-white hover:bg-[#9BAB3C] hover:text-white transition-all duration-300"
-                      style={{
-                        opacity: rentalsDropdownOpen ? 1 : 0,
-                        transform: rentalsDropdownOpen
-                          ? "translateY(0)"
-                          : "translateY(-10px)",
-                        transitionDelay: `${index * 50}ms`,
-                      }}
-                    >
-                      {rental}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+                Home
+              </Link>
             </div>
 
             {/* Services Dropdown */}
@@ -192,7 +122,7 @@ export default function NavBar() {
               </button>
 
               <div
-                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-gray-700 rounded-md shadow-xl z-30 overflow-hidden transition-all duration-500 ${
+                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-[#9BAB3C] rounded-md shadow-xl z-30 overflow-hidden transition-all duration-500 ${
                   servicesDropdownOpen
                     ? "max-h-[500px] opacity-100"
                     : "max-h-0 opacity-0"
@@ -204,7 +134,7 @@ export default function NavBar() {
                       key={index}
                       to={`/services/${index + 1}`}
                       onClick={() => setServicesDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-[#9BAB3C] transition-all duration-300"
+                      className="block px-4 py-2 text-sm text-white hover:bg-[#9BAB3C] hover:text-white transition-all duration-500"
                       style={{
                         opacity: servicesDropdownOpen ? 1 : 0,
                         transform: servicesDropdownOpen
@@ -219,11 +149,115 @@ export default function NavBar() {
                 </div>
               </div>
             </div>
+
+            {/* Rentals Dropdown */}
+            <div ref={rentalsDropdownRef} className="relative">
+              <button
+                onClick={() => {
+                  setRentalsDropdownOpen(!rentalsDropdownOpen);
+                  setServicesDropdownOpen(false);
+                }}
+                className={`py-2 px-3 md:hover:text-[#9BAB3C] flex items-center ${
+                  activePage.startsWith("/rentals")
+                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
+                    : "text-white"
+                }`}
+              >
+                Flex Rentals
+                <svg
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
+                    rentalsDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+
+              <div
+                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-[#9BAB3C] rounded-md shadow-xl z-30 overflow-hidden transition-all duration-00 ${
+                  rentalsDropdownOpen
+                    ? "max-h-[500px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="py-2">
+                  {rentalItems.map((rental, index) => (
+                    <Link
+                      key={index}
+                      to={`/rentals/${index + 1}`}
+                      onClick={() => setRentalsDropdownOpen(false)}
+                      className="block px-4 py-2 text-sm text-white hover:bg-[#9BAB3C] hover:text-white transition-all duration-300"
+                      style={{
+                        opacity: rentalsDropdownOpen ? 1 : 0,
+                        transform: rentalsDropdownOpen
+                          ? "translateY(0)"
+                          : "translateY(-10px)",
+                        transitionDelay: `${index * 50}ms`,
+                      }}
+                    >
+                      {rental}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ Link */}
+            <div>
+              <Link
+                to="/faq"
+                className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
+                  ${activePage === "/faq" ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0" : "text-white"}
+                  before:content-[''] before:absolute before:inset-0 before:w-full 
+                  before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
+                  before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
+                  hover:before:scale-x-100`}
+              >
+                FAQ
+              </Link>
+            </div>
+
+            {/* Pricing Link */}
+            <div>
+              <Link
+                to="/pricing"
+                className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
+                  ${activePage === "/pricing" ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0" : "text-white"}
+                  before:content-[''] before:absolute before:inset-0 before:w-full 
+                  before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
+                  before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
+                  hover:before:scale-x-100`}
+              >
+                Pricing
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Contact Button */}
-        <div className="flex items-center mr-4 md:mr-0">
+        {/* Right Side: About and Contact buttons */}
+        <div className="flex items-center mr-4 md:mr-0 space-x-4">
+          {/* About Link */}
+          <Link
+            to="/about"
+            className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300 hidden md:block
+              ${activePage === "/about" ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0" : "text-white"}
+              before:content-[''] before:absolute before:inset-0 before:w-full 
+              before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
+              before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
+              hover:before:scale-x-100`}
+          >
+            About
+          </Link>
+
+          {/* Contact Button */}
           <Link to="/contact">
             <button className="px-4 py-2 text-white border border-white rounded hover:bg-white hover:text-black transition-colors">
               Contact
@@ -264,26 +298,80 @@ export default function NavBar() {
           } w-full md:hidden absolute top-full left-0 bg-black/95 mt-2 transition-all duration-300`}
         >
           <ul className="flex flex-col p-4">
-            {["Home", "About", "FAQ", "DashBoard"].map((item, index) => {
-              const path = `/${
-                item.toLowerCase() === "home" ? "" : item.toLowerCase()
-              }`;
-              return (
-                <li key={index} className="mb-2">
+            {/* Home Link */}
+            <li className="mb-2">
+              <Link
+                to="/"
+                onClick={() => setIsOpen(false)}
+                className={`block py-2 px-3 ${
+                  activePage === "/" ? "text-[#9BAB3C] dark:text-[#9BAB3C]" : "text-white"
+                }`}
+              >
+                Home
+              </Link>
+            </li>
+
+            {/* Services Dropdown for Mobile */}
+            <li className="mb-2">
+              <button
+                onClick={() => {
+                  setServicesDropdownOpen(!servicesDropdownOpen);
+                  setRentalsDropdownOpen(false);
+                }}
+                className={`flex items-center justify-between w-full py-2 px-3 ${
+                  activePage.startsWith("/services")
+                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
+                    : "text-white"
+                }`}
+              >
+                Services
+                <svg
+                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
+                    servicesDropdownOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+
+              <div
+                className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${
+                  servicesDropdownOpen
+                    ? "max-h-[1000px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                {serviceItems.map((service, index) => (
                   <Link
-                    to={path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block py-2 px-3 ${
-                      activePage === path
-                        ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                        : "text-white"
-                    }`}
+                    key={index}
+                    to={`/services/${index + 1}`}
+                    onClick={() => {
+                      setServicesDropdownOpen(false);
+                      setIsOpen(false);
+                    }}
+                    className="block py-2 text-sm text-white hover:text-[#9BAB3C]"
+                    style={{
+                      opacity: servicesDropdownOpen ? 1 : 0,
+                      transform: servicesDropdownOpen
+                        ? "translateY(0)"
+                        : "translateY(-10px)",
+                      transition: "opacity 300ms, transform 300ms",
+                      transitionDelay: `${index * 50}ms`,
+                    }}
                   >
-                    {item}
+                    {service}
                   </Link>
-                </li>
-              );
-            })}
+                ))}
+              </div>
+            </li>
 
             {/* Rentals Dropdown for Mobile */}
             <li className="mb-2">
@@ -347,66 +435,43 @@ export default function NavBar() {
               </div>
             </li>
 
-            {/* Services Dropdown for Mobile */}
+            {/* FAQ Link */}
             <li className="mb-2">
-              <button
-                onClick={() => {
-                  setServicesDropdownOpen(!servicesDropdownOpen);
-                  setRentalsDropdownOpen(false);
-                }}
-                className={`flex items-center justify-between w-full py-2 px-3 ${
-                  activePage.startsWith("/services")
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
+              <Link
+                to="/faq"
+                onClick={() => setIsOpen(false)}
+                className={`block py-2 px-3 ${
+                  activePage === "/faq" ? "text-[#9BAB3C] dark:text-[#9BAB3C]" : "text-white"
                 }`}
               >
-                Services
-                <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                    servicesDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
+                FAQ
+              </Link>
+            </li>
 
-              <div
-                className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${
-                  servicesDropdownOpen
-                    ? "max-h-[1000px] opacity-100"
-                    : "max-h-0 opacity-0"
+            {/* Pricing Link */}
+            <li className="mb-2">
+              <Link
+                to="/pricing"
+                onClick={() => setIsOpen(false)}
+                className={`block py-2 px-3 ${
+                  activePage === "/pricing" ? "text-[#9BAB3C] dark:text-[#9BAB3C]" : "text-white"
                 }`}
               >
-                {serviceItems.map((service, index) => (
-                  <Link
-                    key={index}
-                    to={`/services/${index + 1}`}
-                    onClick={() => {
-                      setServicesDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                    className="block py-2 text-sm text-white hover:text-[#9BAB3C]"
-                    style={{
-                      opacity: servicesDropdownOpen ? 1 : 0,
-                      transform: servicesDropdownOpen
-                        ? "translateY(0)"
-                        : "translateY(-10px)",
-                      transition: "opacity 300ms, transform 300ms",
-                      transitionDelay: `${index * 50}ms`,
-                    }}
-                  >
-                    {service}
-                  </Link>
-                ))}
-              </div>
+                Pricing
+              </Link>
+            </li>
+
+            {/* About Link */}
+            <li className="mb-2">
+              <Link
+                to="/about"
+                onClick={() => setIsOpen(false)}
+                className={`block py-2 px-3 ${
+                  activePage === "/about" ? "text-[#9BAB3C] dark:text-[#9BAB3C]" : "text-white"
+                }`}
+              >
+                About
+              </Link>
             </li>
           </ul>
         </div>
