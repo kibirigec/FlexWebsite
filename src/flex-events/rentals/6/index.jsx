@@ -1,11 +1,12 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
+import { Link } from "react-router-dom";
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/images/hero-image.jpg";
-  const eventImage = "/images/event-image.jpg";
+  const heroImage = "/woman-performing-live-music-local-event.jpg";
+  const eventImage = "/woman-performing-live-music-local-event.jpg";
 
   return (
     <div className="min-h-screen bg-white">
@@ -47,9 +48,11 @@ function App() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Sing Your Heart Out with Karaoke Mics & KTV Machines{" "}
           </p>
-          <button className=" px-4 py-2 text-white border-white border-1 ">
-            Get Started
-          </button>
+          <Link to="/contact">
+            <button className=" px-4 py-2 text-white border-white border-1 ">
+              Get Started
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -96,28 +99,7 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    	Easy-to-use equipment for all skill levels.                    </h3>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 text-[#9BAB3C] mt-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-lg font-medium text-gray-800">
-                    	Affordable rental packages to suit every event size.
+                      Easy-to-use equipment for all skill levels.{" "}
                     </h3>
                   </div>
                 </li>
@@ -139,9 +121,31 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                	No more boring parties—let the fun begin!
-Book today and pay through your preferred method (Mobile Money, PayPal, etc.).
-
+                      Affordable rental packages to suit every event size.
+                    </h3>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-6 w-6 text-[#9BAB3C] mt-0.5">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="text-lg font-medium text-gray-800">
+                      No more boring parties—let the fun begin! Book today and
+                      pay through your preferred method (Mobile Money, PayPal,
+                      etc.).
                     </h3>
                   </div>
                 </li>

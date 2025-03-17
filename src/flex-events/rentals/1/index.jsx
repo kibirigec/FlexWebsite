@@ -1,11 +1,12 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
+import { Link } from "react-router-dom"
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/images/hero-image.jpg";
-  const eventImage = "/images/event-image.jpg";
+  const heroImage = "/linerary two speakers.jpeg";
+  const eventImage = "/linerary two speakers.jpeg";
 
   return (
     <div className="min-h-screen bg-white">
@@ -47,9 +48,11 @@ function App() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Bring the Party to Life with Our P.A. System & Mobile Disco
           </p>
+          <Link to = "/contact">
           <button className=" px-4 py-2 text-white border-white border-1 ">
-                  Get Started
-                </button>
+            Get Started
+          </button>
+          </Link>
         </div>
       </section>
 
@@ -144,8 +147,8 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                      We provide expert technicians for quick setup and
-                      perfect sound tuning.{" "}
+                      We provide expert technicians for quick setup and perfect
+                      sound tuning.{" "}
                     </h3>
                   </div>
                 </li>
@@ -213,7 +216,7 @@ function App() {
       </section>
 
       {/* Footer */}
-     <Footer3 />
+      <Footer3 />
     </div>
   );
 }

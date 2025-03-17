@@ -1,11 +1,12 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
+import { Link } from "react-router-dom";
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/images/hero-image.jpg";
-  const eventImage = "/images/event-image.jpg";
+  const heroImage = "/GEN2-C-01.jpg";
+  const eventImage = "/GEN2-C-01.jpg";
 
   return (
     <div className="min-h-screen bg-white">
@@ -45,12 +46,14 @@ function App() {
             Power & Generators
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-          Ensure Uninterrupted Power with<br /> Our Reliable Generators
-
-             </p>
-          <button className=" px-4 py-2 text-white border-white border-1 ">
-            Get Started
-          </button>
+            Ensure Uninterrupted Power with
+            <br /> Our Reliable Generators
+          </p>
+          <Link to="/contact">
+            <button className=" px-4 py-2 text-white border-white border-1 ">
+              Get Started
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -61,7 +64,8 @@ function App() {
             We Create Experiences That Last a Lifetime
           </h2>
           <p className="text-lg text-gray-600">
-          Don't let power outages ruin your event. Our Generators provide reliable, uninterrupted power for any type of gathering.{" "}
+            Don't let power outages ruin your event. Our Generators provide
+            reliable, uninterrupted power for any type of gathering.{" "}
           </p>
         </div>
       </section>
@@ -95,7 +99,7 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Affordable rates for peace of mind.{" "}
+                      Affordable rates for peace of mind.{" "}
                     </h3>
                   </div>
                 </li>
@@ -117,7 +121,8 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Available in various sizes to suit your event’s needs.                    </h3>
+                      Available in various sizes to suit your event’s needs.{" "}
+                    </h3>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -138,7 +143,8 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Fully maintained and ready to go for any event.                    </h3>
+                      Fully maintained and ready to go for any event.{" "}
+                    </h3>
                   </div>
                 </li>
               </ul>

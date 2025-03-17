@@ -1,11 +1,12 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
+import { Link } from "react-router-dom"
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/images/hero-image.jpg";
-  const eventImage = "/images/event-image.jpg";
+  const heroImage = "/linerymaim.jpeg";
+  const eventImage = "/linerymaim.jpeg";
 
   return (
     <div className="min-h-screen bg-white">
@@ -26,9 +27,11 @@ function App() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Need crystal-clear, yet powerful sound coverage for a large event?
           </p>
-          <button className=" px-4 py-2 text-white border-white border-1 ">
-                  Get Started
-                </button>
+        <Link to = "/contact">
+                  <button className=" px-4 py-2 text-white border-white border-1 ">
+                    Get Started
+                  </button>
+                  </Link>
         </div>
       </section>
 

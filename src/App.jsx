@@ -15,6 +15,7 @@ import Navbar from "./globalComps/Navbar";
 import EventsBooking from "./globalComps/BookingPage";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
 import RentalPage from "./flex-events/rentals/index"; // Import the dynamic rental loader
+import ServicePage from "./flex-events/our-services/index";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
         
         {/* Dynamic route for rentals */}
         <Route path="/rentals/:id" element={<RentalPage />} />
+        <Route path="/services/:id" element={<ServicePage />} />
+
 
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

@@ -1,11 +1,12 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
+import { Link } from "react-router-dom";
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/images/hero-image.jpg";
-  const eventImage = "/images/event-image.jpg";
+  const heroImage = "/carnival23.jpeg";
+  const eventImage = "/carnival23.jpeg";
 
   return (
     <div className="min-h-screen bg-white">
@@ -47,9 +48,11 @@ function App() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Transform Your Event with Stunning Pro-Lights & Effects
           </p>
-          <button className=" px-4 py-2 text-white border-white border-1 ">
-            Get Started
-          </button>
+          <Link to="/contact">
+            <button className=" px-4 py-2 text-white border-white border-1 ">
+              Get Started
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -146,8 +149,6 @@ function App() {
                     </h3>
                   </div>
                 </li>
-               
-             
               </ul>
 
               {/* <button className="bg-white border border-[#9BAB3C] text-[#9BAB3C] hover:bg-[#9BAB3C] hover:text-white px-6 py-3 rounded-full text-base font-medium transition">

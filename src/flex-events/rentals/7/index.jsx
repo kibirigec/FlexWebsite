@@ -1,11 +1,12 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
+import { Link } from "react-router-dom";
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/images/hero-image.jpg";
-  const eventImage = "/images/event-image.jpg";
+  const heroImage = "/alex-litvin-MAYsdoYpGuk-unsplash.jpg";
+  const eventImage = "/alex-litvin-MAYsdoYpGuk-unsplash.jpg";
 
   return (
     <div className="min-h-screen bg-white">
@@ -43,14 +44,15 @@ function App() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {/* Crafting Unforgettable<br />Moments Together */}
             DLP Projectors & Screens
-                      </h1>
+          </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-          Clear Presentations with DLP Projectors & Screens
-          {" "}
+            Clear Presentations with DLP Projectors & Screens{" "}
           </p>
-          <button className=" px-4 py-2 text-white border-white border-1 ">
-            Get Started
-          </button>
+          <Link to="/contact">
+            <button className=" px-4 py-2 text-white border-white border-1 ">
+              Get Started
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -61,7 +63,9 @@ function App() {
             We Create Experiences That Last a Lifetime
           </h2>
           <p className="text-lg text-gray-600">
-          Deliver flawless presentations with our DLP Projectors & Screens. Whether for a corporate seminar, wedding video, or educational session, we ensure your visuals are crystal clear.{" "}
+            Deliver flawless presentations with our DLP Projectors & Screens.
+            Whether for a corporate seminar, wedding video, or educational
+            session, we ensure your visuals are crystal clear.{" "}
           </p>
         </div>
       </section>
@@ -95,7 +99,7 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Sharp, vivid images with DLP technology.{" "}
+                      Sharp, vivid images with DLP technology.{" "}
                     </h3>
                   </div>
                 </li>
@@ -117,7 +121,7 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Available in multiple sizes to fit your venue.
+                      Available in multiple sizes to fit your venue.
                     </h3>
                   </div>
                 </li>
@@ -139,9 +143,9 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Quick setup and competitive pricing for all types of events.
-Book now using PayPal, Visa, or Mobile Money for seamless payment!
-
+                      Quick setup and competitive pricing for all types of
+                      events. Book now using PayPal, Visa, or Mobile Money for
+                      seamless payment!
                     </h3>
                   </div>
                 </li>
