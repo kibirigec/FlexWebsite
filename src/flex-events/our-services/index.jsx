@@ -7,15 +7,17 @@ import ServiceThree from "./3";
 import ServiceFour from "./4";
 import ServiceFive from "./5";
 import ServiceSix from "./6"
+import ServiceSeven from "./7"
 
 
 const ServiceComponents = {
-  "1": ServiceOne,
+  "7": ServiceOne,
   "2": ServiceTwo,
   "3": ServiceThree,
   "4": ServiceFour,
   "5": ServiceFive,
   "6": ServiceSix,
+  "1": ServiceSeven
 
 
   // Continue adding up to "10"

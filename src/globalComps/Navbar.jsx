@@ -57,6 +57,7 @@ export default function NavBar() {
     "Home Audio",
     "Sound & Visual Installations",
     "Flex Brand Manufacturing",
+    "Full Event Management and Planning"
   ];
 
   return (
