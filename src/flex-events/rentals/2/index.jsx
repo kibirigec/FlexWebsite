@@ -1,7 +1,7 @@
 // App.jsx
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function App() {
   // Using images from the public folder
@@ -20,6 +20,8 @@ function App() {
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
+        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {/* Crafting Unforgettable<br />Moments Together */}
             Line Array Sound System
@@ -27,11 +29,11 @@ function App() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
             Need crystal-clear, yet powerful sound coverage for a large event?
           </p>
-        <Link to = "/contact">
-                  <button className=" px-4 py-2 text-white border-white border-1 ">
-                    Get Started
-                  </button>
-                  </Link>
+          <Link to="/contact">
+            <button className=" px-4 py-2 text-white border-white border-1 ">
+              Get Started
+            </button>
+          </Link>
         </div>
       </section>
 
@@ -81,7 +83,8 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    	Advanced audio technology for consistent sound across the entire venue.
+                      Advanced audio technology for consistent sound across the
+                      entire venue.
                     </h3>
                   </div>
                 </li>
@@ -103,7 +106,8 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                    Ideal for large venues, offering powerful sound without any distortion.
+                      Ideal for large venues, offering powerful sound without
+                      any distortion.
                     </h3>
                   </div>
                 </li>
@@ -125,9 +129,10 @@ function App() {
                   </div>
                   <div className="ml-3">
                     <h3 className="text-lg font-medium text-gray-800">
-                      Affordable rates that fit your budget without compromising quality.
-When you choose Flex Line array systems, you get professional setup and support, ensuring your sound system works flawlessly from start to finish.
-.{" "}
+                      Affordable rates that fit your budget without compromising
+                      quality. When you choose Flex Line array systems, you get
+                      professional setup and support, ensuring your sound system
+                      works flawlessly from start to finish. .{" "}
                     </h3>
                   </div>
                 </li>

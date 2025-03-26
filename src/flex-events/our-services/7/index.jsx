@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css"; // Carousel styles
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-
 function App() {
   // Using images from the public folder
   const heroImage = "/weddingmain.jpeg";
@@ -21,31 +20,31 @@ function App() {
 
   // Custom Left Arrow
   const CustomPrevArrow = (props) => {
-      const { onClick } = props;
-      return (
-        <div
-          className="absolute left-0 z-10 p-3 bg-gray-800 text-white rounded-full cursor-pointer hover:bg-gray-600"
-          style={{ top: "50%", transform: "translateY(-50%)", left: "10px" }}
-          onClick={onClick}
-        >
-          <FaChevronLeft size={24} />
-        </div>
-      );
-    };
-    
-    // Custom Right Arrow
-    const CustomNextArrow = (props) => {
-      const { onClick } = props;
-      return (
-        <div
-          className="absolute right-0 z-10 p-3 bg-gray-800 text-white rounded-full cursor-pointer hover:bg-gray-600"
-          style={{ top: "50%", transform: "translateY(-50%)", right: "10px" }}
-          onClick={onClick}
-        >
-          <FaChevronRight size={24} />
-        </div>
-      );
-    };
+    const { onClick } = props;
+    return (
+      <div
+        className="absolute left-0 z-10 p-3 bg-gray-800 text-white rounded-full cursor-pointer hover:bg-gray-600"
+        style={{ top: "50%", transform: "translateY(-50%)", left: "10px" }}
+        onClick={onClick}
+      >
+        <FaChevronLeft size={24} />
+      </div>
+    );
+  };
+
+  // Custom Right Arrow
+  const CustomNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div
+        className="absolute right-0 z-10 p-3 bg-gray-800 text-white rounded-full cursor-pointer hover:bg-gray-600"
+        style={{ top: "50%", transform: "translateY(-50%)", right: "10px" }}
+        onClick={onClick}
+      >
+        <FaChevronRight size={24} />
+      </div>
+    );
+  };
   // Slider settings
   const settings = {
     dots: true,
@@ -59,9 +58,6 @@ function App() {
     nextArrow: <CustomNextArrow />,
   };
 
-
-
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -73,15 +69,17 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48  ">
+          <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight z-[100000px]">
             Wedding & Corporate Decor
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-6 max-w-2xl ">
             Transform Your Vision into Stunning Reality
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border-white border-1">
+            <button className="px-4 py-2 text-white border-white border-1 z-50">
               Get Started
             </button>
           </Link>
@@ -95,7 +93,13 @@ function App() {
             Let’s create a space that tells your unique story.
           </h2>
           <p className="text-lg text-gray-600">
-            From intimate weddings to large corporate events, Flex Events brings your decor dreams to life. Our team specializes in creating beautiful, custom-designed decorations that fit your theme, style, and budget. Whether it’s elegant floral arrangements, trendy backdrops, or sophisticated table settings, we provide the perfect touches that elevate your event and leave a lasting impression on your guests.
+            From intimate weddings to large corporate events, Flex Events brings
+            your decor dreams to life. Our team specializes in creating
+            beautiful, custom-designed decorations that fit your theme, style,
+            and budget. Whether it’s elegant floral arrangements, trendy
+            backdrops, or sophisticated table settings, we provide the perfect
+            touches that elevate your event and leave a lasting impression on
+            your guests.
           </p>
         </div>
       </section>
@@ -133,7 +137,9 @@ function App() {
                       </svg>
                     </div>
                     <div className="ml-3">
-                      <h3 className="text-lg font-medium text-gray-800">{text}</h3>
+                      <h3 className="text-lg font-medium text-gray-800">
+                        {text}
+                      </h3>
                     </div>
                   </li>
                 ))}

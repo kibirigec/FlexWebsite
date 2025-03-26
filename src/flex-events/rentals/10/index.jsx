@@ -10,27 +10,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      {/* <nav className="px-6 py-4 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="text-2xl font-semibold text-[#9BAB3C]">Eventique</div>
-          <div className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-600 hover:text-[#9BAB3C] transition">Home</a>
-            <a href="#" className="text-gray-600 hover:text-[#9BAB3C] transition">Services</a>
-            <a href="#" className="text-gray-600 hover:text-[#9BAB3C] transition">Gallery</a>
-            <a href="#" className="text-gray-600 hover:text-[#9BAB3C] transition">About</a>
-            <a href="#" className="text-gray-600 hover:text-[#9BAB3C] transition">Contact</a>
-          </div>
-          <div className="md:hidden">
-            <button className="text-gray-600">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav> */}
-
+     
       {/* Hero Section with CTA */}
       <section className="relative bg-gray-900 text-white">
         <div className="absolute inset-0 z-0">
@@ -41,6 +21,8 @@ function App() {
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
+        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {/* Crafting Unforgettable<br />Moments Together */}
             Power & Generators

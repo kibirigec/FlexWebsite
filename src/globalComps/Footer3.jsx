@@ -15,19 +15,23 @@ export function Footer3() {
       <div className="container">
         <div className="lg:mt-[-48px] grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
           <div>
-            <div className="mb-6 md:mb-8">
+            <div className="mb-6 md:mb-8 lg:mt-[-38px] ">
               <a href="#">
                 <img
                   src="/FooterLogo.svg"
                   alt="Logo image"
                   className="inline-block"
+                  width={150}
+                  height={150}
                 />
               </a>
             </div>
             <div className="mb-6 md:mb-8">
               <p className="mb-1 text-sm font-semibold">Address:</p>
-              <p className="mb-5 text-sm md:mb-6">
-                Level 1, 12 Samplee St, Kampala, Uganda
+              <p className="mb-5 text-sm md:mb-6 flex">
+                Plot 2973, Kisaasi-Kyanja Road
+                <br />
+                Kyanja, Kampala, Uganda
               </p>
               <p className="mb-1 text-sm font-semibold">Contact:</p>
               <a
@@ -61,39 +65,66 @@ export function Footer3() {
               </a>
             </div>
           </div>
-          <div className="lg:mt-46 grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
+          <div className="lg:mt-36 grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
             <ul>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/management">Event Planning</a>
+              <li className="py-2 text-sm font-semibold text-[#C4C4C4]">
+                Services:
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/hire">Equipment Hire</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/1">Weddings & Decor</a>
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/decor">Decor Services</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/2">Invitation Cards</a>
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/sound">Sound Systems</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/3">Pro Audio Systems</a>
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/consultancy">Event Consultancy</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/4">Home Audio</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/5">Sound & Visual Installations</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/6">Flex Brand Manufacturing</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/services/7">Event Management and Planning</a>
               </li>
             </ul>
             <ul>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/portfolio">Corporate Events</a>
+              <li className="py-2 text-sm font-semibold text-[#C4C4C4]">
+                Rentals:
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/portfolio">Weddings Expos</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/1">Mobile Disco/P.A System</a>
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/portfolio">Concerts Product</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/2">Line Array Sound System</a>
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/portfolio">Launches Events</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/3">Pro Lights & Effects</a>
               </li>
-              <li className="py-2 text-sm font-semibold">
-                <a href="/contact">Contact Us</a>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/4">Aluminiun Truss & Stages</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/5">LED Screens</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/6">Karaoke Machines</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/7">DLP Projectors & Screens</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/8">DJ Equipment</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C] ">
+                <a href="/rentals/9">Wedding & Corporate Decor</a>
+              </li>
+              <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
+                <a href="/rentals/10">Power/Generators</a>
               </li>
             </ul>
           </div>

@@ -62,11 +62,14 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48 text-center">
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48 ">
+        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Full Event Planning & Management
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl ">
             From concept to completion – Your vision, our expertise.
           </p>
           <Link to="/contact">
@@ -95,7 +98,7 @@ function App() {
       {/* Accordion Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
             How We Bring Your Event to Life
           </h2>
 
@@ -104,7 +107,7 @@ function App() {
             {eventServices.map((service, index) => (
               <div
                 key={index}
-                className="border border-gray-300 rounded-lg w-[50vw] mx-auto"
+                className="border border-gray-300 rounded-lg w-[80vw] mx-auto md:w-[50vw] "
               >
                 <button
                   onClick={() => toggleAccordion(index)}

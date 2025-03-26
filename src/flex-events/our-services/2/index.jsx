@@ -18,7 +18,11 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
+                  <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
+        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Invitation Cards
           </h1>

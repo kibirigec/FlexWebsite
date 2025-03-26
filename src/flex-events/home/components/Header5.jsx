@@ -1,51 +1,201 @@
 "use client";
 
 import { Button } from "@relume_io/relume-ui";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useFadeIn } from "../../../hooks/useFadeIn";
 
 export function Header5() {
   useFadeIn();
 
-  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("Weddings");
+  const [animating, setAnimating] = useState(false);
+  const images = [
+    "/weddingmain.jpeg",
+    "/night-lights.jpeg",
+    "/wedding-decor.jpeg",
+    "/jameson-pov.jpeg",
+  ];
+  const texts = ["Weddings", "Visuals", "Decor", "Sounds"];
+  const intervalRef = useRef(null);
+  const animationDuration = 3000; // 3 seconds per image
 
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        setCurrentText((prev) => {
+          const currentIndex = texts.indexOf(prev);
+          return texts[(currentIndex + 1) % texts.length];
+        });
+        setAnimating(false);
+      }, 500); // Half a second for the text to animate out
+    }, animationDuration);
+
+    return () => clearInterval(intervalRef.current);
+  }, []);
 
   return (
-    <section id="relume" className="relative px-[5%]">
-      <div className="container">
-        <div className="flex max-h-[60rem] min-h-svh items-center py-16 md:py-24 lg:py-28">
-          <div className="max-w-lg">
-            <h1 className=" fade-in text-white lg:mt-24 text-4xl mb-4 font-bold text-text-alternative md:mb-6 md:text-9xl lg:text-6xl">
-              Beautiful Events, Unforgettable Experiences
-            </h1>
-            <p className="fade-in2 text-text-alternative md:text-md text-white lg:leading-[1.38] lg:tracking:[.011em]">
-            Welcome to Flex Events Management – Your Partner in Seamless Event Planning Across East Africa
-            </p>
-            <div className="fade-in3 mt-6 flex flex-wrap gap-4 md:mt-8">
-              <Link to="/booking"> 
-              {/* goes to form */}
-                <button className=" px-4 py-2 text-white border-white border-1 ">
-                  Get Started
-                </button>
-                {/* goes to calendar */}
-                <button className="px-4 py-2 text-white border-white border-1 ml-2 lg:ml-4">
-                  Book your event 
-                </button>
-              </Link>
-              
-            </div>
+    <div className="relative h-screen w-full overflow-hidden">
+      {/* Image carousel */}
+      <div className="absolute inset-0 z-0">
+        {images.map((src, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={src}
+              alt={`Slide ${index + 1}`}
+              className="h-full w-full object-cover"
+            />
+            {/* Dark overlay for better contrast */}
+            <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
+        ))}
+      </div>
+
+      {/* Content overlay */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 md:px-12 text-white">
+        <div className="mb-10 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Creating Memorable
+            <div className="h-20 overflow-hidden">
+              <div
+                className={`${
+                  animating ? "text-animate-out" : "text-animate-in"
+                }`}
+              >
+                <span className="inline-block">{currentText}</span>
+              </div>
+            </div>
+          </h1>
+        </div>
+
+        <p className="mb-10 max-w-lg text-center text-lg md:text-xl">
+          Let's make unforgettable experiences for your special occasion.
+        </p>
+
+        <div className="flex gap-6">
+          <Link 
+          to='/contact'>
+          <Button
+            as={Link}
+            to="/contact"
+            variant="primary"
+            className="px-6 py-3 text-lg"
+          >
+            Get a Quote{" "}
+          </Button>
+          </Link>
+          <Button
+            as={Link}
+            to="/contact"
+            variant="outline"
+            className="px-6 py-3 text-lg"
+          >
+            Contact Us
+          </Button>
         </div>
       </div>
-      <div className="absolute inset-0 -z-10">
-        <img
-          src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          className="size-full object-cover"
-          alt="Relume placeholder image"
-        />
-        <div className="absolute inset-0 bg-black/50" />
+
+      {/* Segmented progress bar like in the image */}
+      <div className="absolute bottom-12 left-0 right-0 z-20 flex justify-center px-8 md:px-12">
+        <div className="flex w-full max-w-5xl justify-between items-center">
+          <button className="text-white opacity-70 hover:opacity-100 transition-opacity px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M19 12H5M5 12L12 19M5 12L12 5" />
+            </svg>
+          </button>
+
+          {images.map((_, index) => (
+            <div
+              key={index}
+              className="relative h-[3px] flex-1 bg-[#9BAB3C]/30 mx-2"
+            >
+              {index < currentImageIndex && (
+                <div className="absolute inset-0 bg-[#9BAB3C]" />
+              )}
+              {index === currentImageIndex && (
+                <div
+                  className="absolute inset-0 bg-[#9BAB3C] origin-left"
+                  style={{
+                    animation: `progress ${animationDuration}ms linear forwards`,
+                  }}
+                />
+              )}
+            </div>
+          ))}
+
+          <button className="text-white opacity-70 hover:opacity-100 transition-opacity px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M5 12h14M14 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </section>
+
+      {/* Custom CSS for text animation */}
+      <style jsx>{`
+        .text-animate-in {
+          animation: slideUp 0.5s ease-out forwards;
+        }
+
+        .text-animate-out {
+          animation: slideOut 0.5s ease-in forwards;
+        }
+
+        @keyframes slideUp {
+          0% {
+            transform: translateY(100%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideOut {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+        }
+
+        @keyframes progress {
+          0% {
+            transform: scaleX(0);
+          }
+          100% {
+            transform: scaleX(1);
+          }
+        }
+      `}</style>
+    </div>
   );
 }
