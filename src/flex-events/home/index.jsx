@@ -8,6 +8,7 @@ import { Testimonial5 } from "./components/Testimonial5";
 import { Gallery1 } from "./components/Gallery1";
 import { Cta1 } from "./components/Cta1";
 import { Cta14 } from "./components/Cta14";
+// import WeddingDecorBookingForm  from "./components/WeddingDecorBookingForm";
 // import { Footer3 } from "./components/Footer3";
 import { Footer3 } from "../../globalComps/Footer3";
 
@@ -21,6 +22,7 @@ export default function Page() {
       <Testimonial5 />
       <Gallery1 />
       <Cta1 />
+      {/* <WeddingDecorBookingForm /> */}
       {/* <Cta14 /> */}
       <Footer3 />
     </div>

@@ -4,6 +4,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import AudioVisualLightingForm from "./components/AudioVisualLightingForm";
 
 function App() {
   // Using images from the public folder
@@ -145,7 +146,7 @@ function App() {
           </div>
         </div>
       </section>
-
+      <AudioVisualLightingForm />
       {/* Footer */}
       <Footer3 />
     </div>

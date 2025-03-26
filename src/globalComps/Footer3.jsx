@@ -41,7 +41,7 @@ export function Footer3() {
                 +256 772 406 122
               </a>
               <a
-                href="mailto:info@relume.io"
+                href="mailto:info@flexevents.ug"
                 className="block text-sm underline decoration-black underline-offset-1"
               >
                 info@flexevents.ug

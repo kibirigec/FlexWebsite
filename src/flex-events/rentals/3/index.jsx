@@ -2,7 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
-
+import ProLightsAndEffectsForm from "./components/ProLightsAndEffectsForm";
 function App() {
   // Using images from the public folder
   const heroImage = "/carnival23.jpeg";
@@ -167,7 +167,7 @@ function App() {
           </div>
         </div>
       </section>
-
+      <ProLightsAndEffectsForm />
       {/* Footer */}
       <Footer3 />
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import FullEventPlanningForm from "./components/FullEventPlanningForm";
 
 function App() {
   const heroImage = "/images/event-planning-hero.jpg";
@@ -190,6 +191,7 @@ function App() {
       </section>
 
       {/* Footer */}
+      <FullEventPlanningForm/>
       <Footer3 />
     </div>
   );

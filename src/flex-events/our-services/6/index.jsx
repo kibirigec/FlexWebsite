@@ -2,6 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import BrandManufacturingForm from "./components/BrandManufacturingForm";
 
 function App() {
   // Using images from the public folder
@@ -167,6 +168,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <BrandManufacturingForm />
 
       {/* Footer */}
       <Footer3 />

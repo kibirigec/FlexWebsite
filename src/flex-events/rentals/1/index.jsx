@@ -2,6 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom"
+import PASystemAndDiscoForm from "./PASystemAndDiscoForm";
 
 function App() {
   // Using images from the public folder
@@ -216,6 +217,7 @@ function App() {
           </div>
         </div>
       </section>
+      <PASystemAndDiscoForm />
 
       {/* Footer */}
       <Footer3 />

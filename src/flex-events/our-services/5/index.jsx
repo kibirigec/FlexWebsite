@@ -2,6 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import SoundVisualForm from "./components/SoundVisualForm";
 function App() {
   // Using images from the public folder
   const heroImage = "/lineraynight.jpeg";
@@ -166,6 +167,7 @@ function App() {
         </div>
       </section>
 
+      <SoundVisualForm />
       {/* Footer */}
       <Footer3 />
     </div>

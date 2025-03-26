@@ -2,6 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import InvitationCardDesignForm from "./components/InvitationCardDesignForm";
 function App() {
   // Using images from the public folder
   const heroImage = "/7984652.jpg";
@@ -149,6 +150,7 @@ function App() {
           </div>
         </div>
       </section>
+      <InvitationCardDesignForm />
 
       {/* Footer */}
       <Footer3 />

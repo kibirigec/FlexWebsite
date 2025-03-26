@@ -2,6 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import LEDScreensAndVideoWallsForm from "./components/LEDScreensAndVideoWallsForm";
 
 function App() {
   // Using images from the public folder
@@ -169,6 +170,7 @@ function App() {
         </div>
       </section>
 
+      <LEDScreensAndVideoWallsForm />
       {/* Footer */}
       <Footer3 />
     </div>

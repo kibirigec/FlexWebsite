@@ -5,6 +5,7 @@ import Slider from "react-slick"; // Importing the slider
 import "slick-carousel/slick/slick.css"; // Carousel styles
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import WeddingDecorBookingForm from "./components/WeddingDecorBookingForm";
 
 function App() {
   // Using images from the public folder
@@ -172,7 +173,7 @@ function App() {
           </Slider>
         </div>
       </section>
-
+      <WeddingDecorBookingForm />  
       {/* Footer */}
       <Footer3 />
     </div>

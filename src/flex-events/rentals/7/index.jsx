@@ -2,7 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
-
+import DLPProjectorsAndScreensForm from "./components/DLPProjectorsAndScreensForm";
 function App() {
   // Using images from the public folder
   const heroImage = "/alex-litvin-MAYsdoYpGuk-unsplash.jpg";
@@ -167,7 +167,7 @@ function App() {
           </div>
         </div>
       </section>
-
+      <DLPProjectorsAndScreensForm />
       {/* Footer */}
       <Footer3 />
     </div>

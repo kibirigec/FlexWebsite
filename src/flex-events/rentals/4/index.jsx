@@ -2,6 +2,7 @@
 import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
+import AluminiumTrussAndStagesForm from "./components/AluminiumTrussAndStagesForm";
 
 function App() {
   // Using images from the public folder
@@ -192,6 +193,7 @@ function App() {
         </div>
       </section>
 
+      <AluminiumTrussAndStagesForm />
       {/* Footer */}
       <Footer3 />
     </div>
