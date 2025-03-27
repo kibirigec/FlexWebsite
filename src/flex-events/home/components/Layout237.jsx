@@ -72,12 +72,12 @@ export function Layout237() {
             </div>
           </div> */}
 
-          <div className="w-full h-[40vh] bg-black justify-center">
+          {/* <div className="w-full h-[40vh] bg-black justify-center">
             <p className="text-white justify-center items-center">
                 Space for the carousel
             </p>
 
-          </div>
+          </div> */}
           {/*Goes to services */}
           <div className="mt-10 flex items-center gap-4 md:mt-14 lg:mt-16">
             <Link to="/about">
