@@ -162,14 +162,14 @@ const FullEventPlanningForm = () => {
               <option value="Other">Other</option>
             </select>
 
-            <input
+            {/* <input
               type="date"
               name="eventDate"
               value={formData.eventDate}
               onChange={handleChange}
               required
               className="w-full px-3 py-2 border rounded-md"
-            />
+            /> */}
 
             <input
               type="text"
@@ -181,7 +181,7 @@ const FullEventPlanningForm = () => {
             />
 
             <input
-              type="number"
+              type="text"
               name="guestCount"
               value={formData.guestCount}
               onChange={handleChange}

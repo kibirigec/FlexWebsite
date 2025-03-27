@@ -218,14 +218,19 @@ const AudioVisualLightingForm = () => {
                 <option value="Seminar">Seminar</option>
                 <option value="Other">Other</option>
               </select>
-              <input
-                type="date"
-                name="eventDate"
-                value={formData.eventDate}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
+              <div className="relative">
+                <input
+                  type="date"
+                  name="targetEventDate"
+                  value={formData.targetEventDate}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
+                />
+                <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
+                  Select event date
+                </label>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
@@ -279,7 +284,7 @@ const AudioVisualLightingForm = () => {
             </div>
 
             <div className="grid md:grid-cols-1 gap-4">
-              <textarea
+              {/* <textarea
                 name="audioRequirements"
                 value={formData.audioRequirements}
                 onChange={handleChange}
@@ -297,22 +302,22 @@ const AudioVisualLightingForm = () => {
                 placeholder="Visual Display Requirements"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 rows="3"
-              ></textarea>
-              <textarea
+              ></textarea> */}
+              {/* <textarea
                 name="lightingRequirements"
                 value={formData.lightingRequirements}
                 onChange={handleChange}
                 placeholder="Lighting Setup Requirements"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 rows="3"
-              ></textarea>
+              ></textarea> */}
             </div>
 
             <textarea
               name="additionalDetails"
               value={formData.additionalDetails}
               onChange={handleChange}
-              placeholder="Additional Details or Special Requirements"
+              placeholder="Additional Details or Special Requirements(Lighting, Visual and other requirements)"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows="4"
             ></textarea>

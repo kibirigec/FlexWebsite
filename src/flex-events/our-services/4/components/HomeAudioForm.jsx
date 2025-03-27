@@ -286,7 +286,7 @@ const HomeAudioForm = () => {
               </select>
             </div>
 
-            <input
+            {/* <input
               type="text"
               name="musicPreferences"
               value={formData.musicPreferences}
@@ -302,13 +302,14 @@ const HomeAudioForm = () => {
               placeholder="Any Specific Acoustic Concerns or Room Challenges"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows="3"
-            ></textarea>
+            ></textarea> */}
 
             <textarea
               name="additionalDetails"
               value={formData.additionalDetails}
               onChange={handleChange}
-              placeholder="Additional Details or Special Requirements"
+              placeholder="Additional Details or Special Requirements
+(Room challenges, etc)"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows="4"
             ></textarea>

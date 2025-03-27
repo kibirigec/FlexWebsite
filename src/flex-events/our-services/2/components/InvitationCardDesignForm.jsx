@@ -205,14 +205,19 @@ const InvitationCardDesignForm = () => {
                 <option value="Graduation">Graduation</option>
                 <option value="Other">Other</option>
               </select>
-              <input
-                type="date"
-                name="eventDate"
-                value={formData.eventDate}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
+              <div className="relative">
+                <input
+                  type="date"
+                  name="targetEventDate"
+                  value={formData.targetEventDate}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
+                />
+                <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
+                  Select event date
+                </label>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
