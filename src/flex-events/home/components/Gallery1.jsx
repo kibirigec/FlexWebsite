@@ -13,7 +13,7 @@ export function Gallery1() {
   });
 
   // Scale effect: Prevents excessive zooming beyond screen width
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.195]);
 
   return (
     <section id="relume" className="mx-auto px-[5%] py-16 md:py-24 lg:py-28">

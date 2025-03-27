@@ -78,7 +78,10 @@ const AluminiumTrussAndStagesForm = () => {
           </h1>
           <div className="space-y-4 text-gray-600">
             <div className="flex items-center space-x-3">
-              📍 <span>Plot 2973, Kisaasi-Kyanja Road, Kyanja, Kampala, Uganda</span>
+              📍{" "}
+              <span>
+                Plot 2973, Kisaasi-Kyanja Road, Kyanja, Kampala, Uganda
+              </span>
             </div>
             <div className="flex items-center space-x-3">
               📞{" "}
@@ -163,22 +166,26 @@ const AluminiumTrussAndStagesForm = () => {
               <option value="Other">Other</option>
             </select>
 
-            <input
-              type="date"
-              name="eventDate"
-              value={formData.eventDate}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md"
-            />
+            <div className="relative">
+              <input
+                type="date"
+                name="targetEventDate"
+                value={formData.eventDate}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
+              />
+              <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
+                Select event date
+              </label>
+            </div>
 
             <input
               type="text"
               name="venue"
               value={formData.venue}
               onChange={handleChange}
-              placeholder="Event Venue *"
-              required
+              placeholder="Event Venue "
               className="w-full px-3 py-2 border rounded-md"
             />
 
@@ -190,9 +197,17 @@ const AluminiumTrussAndStagesForm = () => {
               className="w-full px-3 py-2 border rounded-md"
             >
               <option value="">Select Stage Size *</option>
-              <option value="Small">Small (6m x 4m)</option>
-              <option value="Medium">Medium (8m x 6m)</option>
-              <option value="Large">Large (12m x 10m)</option>
+              <option value="Small">
+                Small (4m x 4m x 4m/ Goal Posts/ Below)
+              </option>
+              <option value="Medium">
+                Medium (6m x 4m x 4m/+ Goal Posts/ Below)
+              </option>
+              <option value="Standard">Large (8m x 8m/(or 6m) x 8m)</option>
+              <option value="Large">
+                Large (8m x 10m(or 12m) x 10m/ Bigger)
+              </option>
+              <option value="Other">Other</option>
             </select>
 
             <select
@@ -204,26 +219,32 @@ const AluminiumTrussAndStagesForm = () => {
             >
               <option value="">Select Truss Type *</option>
               <option value="Goal Post">Goal Post Truss</option>
-              <option value="Box Truss">Box Truss</option>
+              <option value="Goal Post">Goal Post Truss & Stage</option>
+
+              <option value="Box Truss">Box Truss & Stage</option>
               <option value="Custom Design">Custom Design</option>
             </select>
 
             <div className="space-y-2">
               <label className="block font-semibold">Additional Features</label>
               <div className="flex flex-col space-y-2">
-                {["roofCover", "ledScreenSupport", "bannerHolders"].map((feature) => (
-                  <div key={feature} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={feature}
-                      name={feature}
-                      checked={formData[feature]}
-                      onChange={handleChange}
-                      className="mr-2"
-                    />
-                    <label htmlFor={feature}>{feature.replace(/([A-Z])/g, " $1")}</label>
-                  </div>
-                ))}
+                {["RoofCover", "LEDScreenSupport", "bannerHolders"].map(
+                  (feature) => (
+                    <div key={feature} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={feature}
+                        name={feature}
+                        checked={formData[feature]}
+                        onChange={handleChange}
+                        className="mr-2"
+                      />
+                      <label htmlFor={feature}>
+                        {feature.replace(/([A-Z])/g, " $1")}
+                      </label>
+                    </div>
+                  )
+                )}
               </div>
             </div>
 
@@ -236,7 +257,10 @@ const AluminiumTrussAndStagesForm = () => {
               rows="4"
             ></textarea>
 
-            <button type="submit" className="w-full bg-black text-white py-3 rounded-md">
+            <button
+              type="submit"
+              className="w-full bg-black text-white py-3 rounded-md"
+            >
               Submit Booking Request
             </button>
           </form>

@@ -33,7 +33,7 @@ export function Portfolio5() {
     <section
       ref={sectionRef}
       id="portfolio"
-      className="px-[5%] py-40 md:py-24 lg:py-28"
+      className="px-[5%] py-56 md:py-24 lg:py-28"
     >
       <div className="container">
         {/* Title Section */}
@@ -47,7 +47,7 @@ export function Portfolio5() {
         </div>
 
         {/* Navbar Section */}
-        <div className="static lg:sticky lg:top-20 bg-[#EBEBEB]  md:w-[70vw] lg:w-[50vw] mx-auto rounded-4xl lg:rounded-4xl overflow-x-auto">
+        <div className="static lg:sticky lg:top-26 bg-[#EBEBEB]  md:w-[70vw] lg:w-[50vw] mx-auto rounded-4xl lg:rounded-4xl overflow-x-auto">
           <nav className="flex flex-nowrap justify-center gap-x-2 px-2 py-2 md:gap-x-2 lg:py-4">
             {["Weddings", "Corporate Events", "Carnivals", "Concerts", "Product Launches"].map((item) => (
               <button

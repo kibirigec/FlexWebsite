@@ -16,12 +16,52 @@ export function Header5() {
     "/night-lights.jpeg",
     "/wedding-decor.jpeg",
     "/jameson-pov.jpeg",
+    "/stages3.jpg",
+    "/experential.jpg",
   ];
-  const texts = ["Weddings", "Visuals", "Decor", "Sounds"];
+  const texts = [
+    "Weddings",
+    "Visuals",
+    "Decor",
+    "Sounds",
+    "Stage Setups",
+    "Experientials",
+  ];
   const intervalRef = useRef(null);
   const animationDuration = 3000; // 3 seconds per image
 
-  useEffect(() => {
+  // Function to change slide
+  const changeSlide = (direction) => {
+    // Stop the current interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    setAnimating(true);
+    setTimeout(() => {
+      // Calculate new index based on direction
+      const newIndex = 
+        direction === 'next' 
+          ? (currentImageIndex + 1) % images.length
+          : (currentImageIndex - 1 + images.length) % images.length;
+
+      setCurrentImageIndex(newIndex);
+      setCurrentText(texts[newIndex]);
+      setAnimating(false);
+
+      // Restart the interval
+      startAutoSlide();
+    }, 500);
+  };
+
+  // Function to start auto-sliding
+  const startAutoSlide = () => {
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // Start a new interval
     intervalRef.current = setInterval(() => {
       setAnimating(true);
       setTimeout(() => {
@@ -31,10 +71,18 @@ export function Header5() {
           return texts[(currentIndex + 1) % texts.length];
         });
         setAnimating(false);
-      }, 500); // Half a second for the text to animate out
+      }, 500);
     }, animationDuration);
+  };
 
-    return () => clearInterval(intervalRef.current);
+  useEffect(() => {
+    startAutoSlide();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -81,16 +129,15 @@ export function Header5() {
         </p>
 
         <div className="flex gap-6">
-          <Link 
-          to='/contact'>
-          <Button
-            as={Link}
-            to="/contact"
-            variant="primary"
-            className="px-6 py-3 text-lg"
-          >
-            Get a Quote{" "}
-          </Button>
+          <Link to="/contact">
+            <Button
+              as={Link}
+              to="/contact"
+              variant="primary"
+              className="px-6 py-3 text-lg"
+            >
+              Get a Quote{" "}
+            </Button>
           </Link>
           <Button
             as={Link}
@@ -104,9 +151,12 @@ export function Header5() {
       </div>
 
       {/* Segmented progress bar like in the image */}
-      <div className="absolute bottom-12 left-0 right-0 z-20 flex justify-center px-8 md:px-12">
+      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center px-8 md:px-12">
         <div className="flex w-full max-w-5xl justify-between items-center">
-          <button className="text-white opacity-70 hover:opacity-100 transition-opacity px-4">
+          <button 
+            onClick={() => changeSlide('prev')} 
+            className="text-white opacity-70 hover:opacity-100 transition-opacity px-4"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -139,7 +189,10 @@ export function Header5() {
             </div>
           ))}
 
-          <button className="text-white opacity-70 hover:opacity-100 transition-opacity px-4">
+          <button 
+            onClick={() => changeSlide('next')} 
+            className="text-white opacity-70 hover:opacity-100 transition-opacity px-4"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

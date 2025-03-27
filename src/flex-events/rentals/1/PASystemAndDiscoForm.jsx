@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import {db} from "../../../utils/firebaseConfig"
+import { db } from "../../../utils/firebaseConfig";
 
 const PASystemAndDiscoForm = () => {
   const [formData, setFormData] = useState({
@@ -80,7 +80,10 @@ const PASystemAndDiscoForm = () => {
           </h1>
           <div className="space-y-4 text-gray-600">
             <div className="flex items-center space-x-3">
-              📍 <span>Plot 2973, Kisaasi-Kyanja Road, Kyanja, Kampala, Uganda</span>
+              📍{" "}
+              <span>
+                Plot 2973, Kisaasi-Kyanja Road, Kyanja, Kampala, Uganda
+              </span>
             </div>
             <div className="flex items-center space-x-3">
               📞{" "}
@@ -106,7 +109,9 @@ const PASystemAndDiscoForm = () => {
         {/* Right Side - Form */}
         <div>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-2xl font-bold mb-4">P.A System & Music Booking</h2>
+            <h2 className="text-2xl font-bold mb-4">
+              P.A System & Music Booking
+            </h2>
 
             <div className="grid md:grid-cols-2 gap-4">
               <input
@@ -165,26 +170,25 @@ const PASystemAndDiscoForm = () => {
               <option value="Other">Other</option>
             </select>
             <div className="relative">
-                <input
-                  type="date"
-                  name="targetEventDate"
-                  value={formData.targetEventDate}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
-                />
-                <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
-                  Select event date
-                </label>
-              </div>
+              <input
+                type="date"
+                name="targetEventDate"
+                value={formData.targetEventDate}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
+              />
+              <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
+                Select event date
+              </label>
+            </div>
 
             <input
               type="text"
               name="venue"
               value={formData.venue}
               onChange={handleChange}
-              placeholder="Event Venue(If Known)*"
-              
+              placeholder="Event Venue(If Known)"
               className="w-full px-3 py-2 border rounded-md"
             />
 
@@ -194,7 +198,6 @@ const PASystemAndDiscoForm = () => {
               value={formData.attendeeCount}
               onChange={handleChange}
               placeholder="Expected Number of Guests "
-              
               className="w-full px-3 py-2 border rounded-md"
             />
 
@@ -210,7 +213,6 @@ const PASystemAndDiscoForm = () => {
               <option value="Medium">Medium (1000-3000 people)</option>
               <option value="Large">Large (3000-10,000 people)</option>
               <option value="Large">Very Large (10,000+ people)</option>
-
             </select>
 
             <select
@@ -228,7 +230,12 @@ const PASystemAndDiscoForm = () => {
             <div className="space-y-2">
               <label className="block font-semibold">Additional Features</label>
               <div className="flex flex-col space-y-2">
-                {["lighting", "smokeMachine", "specialEffects"].map((feature) => (
+                {[
+                  "Lighting",
+                  "Special Effects",
+                  "Backline Services",
+                  "LED Screens",
+                ].map((feature) => (
                   <div key={feature} className="flex items-center">
                     <input
                       type="checkbox"
@@ -238,7 +245,11 @@ const PASystemAndDiscoForm = () => {
                       onChange={handleChange}
                       className="mr-2"
                     />
-                    <label htmlFor={feature}>{feature.replace(/([A-Z])/g, " $1")}</label>
+                    <label htmlFor={feature}>
+                      {feature === "LED Screens"
+                        ? feature
+                        : feature.replace(/([A-Z])/g, " $1")}
+                    </label>
                   </div>
                 ))}
               </div>
@@ -253,7 +264,10 @@ const PASystemAndDiscoForm = () => {
               rows="4"
             ></textarea>
 
-            <button type="submit" className="w-full bg-black text-white py-3 rounded-md">
+            <button
+              type="submit"
+              className="w-full bg-black text-white py-3 rounded-md"
+            >
               Submit Booking Request
             </button>
           </form>

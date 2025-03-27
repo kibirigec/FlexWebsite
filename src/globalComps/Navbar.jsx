@@ -33,8 +33,8 @@ export default function NavBar() {
     "Invitation Cards",
     "Pro-Audio & Visual/Lighting",
     "Home Audio",
-    "Sound & Visual Installations",
-    "Flex Brand Manufacturing",
+    "Systems Installations",
+    "Flex Audio Brand ",
     "Full Event Management and Planning"
   ];
 
@@ -78,7 +78,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 backdrop-filter backdrop-blur-lg bg-black/65">
+    <nav className="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600 backdrop-filter backdrop-blur-lg bg-black/65">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-2">
         {/* Logo */}
         <div className="flex items-center ml-4 md:ml-0">
