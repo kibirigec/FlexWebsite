@@ -15,18 +15,18 @@ const HomeAudioForm = () => {
     budgetRange: "",
     installationType: "",
     acousticConcerns: "",
-    additionalDetails: ""
+    additionalDetails: "",
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === "checkbox") {
       setFormData((prevState) => ({
         ...prevState,
-        audioInterests: checked 
+        audioInterests: checked
           ? [...prevState.audioInterests, value]
-          : prevState.audioInterests.filter(interest => interest !== value)
+          : prevState.audioInterests.filter((interest) => interest !== value),
       }));
     } else {
       setFormData((prevState) => ({
@@ -58,7 +58,7 @@ const HomeAudioForm = () => {
         budgetRange: "",
         installationType: "",
         acousticConcerns: "",
-        additionalDetails: ""
+        additionalDetails: "",
       });
 
       alert("Home Audio Consultation Request submitted successfully!");
@@ -69,18 +69,18 @@ const HomeAudioForm = () => {
   };
 
   return (
-    <div className="border border-gray-400 max-w-4xl mx-auto p-8 font-sans my-6">
+    <div className="border border-gray-400 max-w-4xl mx-auto p-8 font-sans my-6 z-50 bg-white ">
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side - Branding */}
         <div>
-          <h1 className="text-5xl font-bold mb-6 text-gray-900">
+          <h1 className="text-4xl font-bold mb-6 text-gray-900">
             Transform Your Home with Premium Audio
           </h1>
           <div className="space-y-4 text-gray-600">
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -107,7 +107,7 @@ const HomeAudioForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -129,7 +129,7 @@ const HomeAudioForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -164,7 +164,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="First Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
               <input
                 type="text"
@@ -173,7 +173,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="Last Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
             </div>
 
@@ -185,7 +185,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="Phone Number *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
               <input
                 type="email"
@@ -194,7 +194,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="Email Address *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
             </div>
 
@@ -204,7 +204,7 @@ const HomeAudioForm = () => {
                 value={formData.homeType}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Home Type *</option>
                 <option value="Apartment">Apartment</option>
@@ -218,13 +218,21 @@ const HomeAudioForm = () => {
                 value={formData.roomSize}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Room Size *</option>
-                <option value="Small (up to 150 sq ft)">Small (up to 150 sq ft)</option>
-                <option value="Medium (150-300 sq ft)">Medium (150-300 sq ft)</option>
-                <option value="Large (300-500 sq ft)">Large (300-500 sq ft)</option>
-                <option value="Extra Large (500+ sq ft)">Extra Large (500+ sq ft)</option>
+                <option value="Small (up to 150 sq ft)">
+                  Small (up to 150 sq ft)
+                </option>
+                <option value="Medium (150-300 sq ft)">
+                  Medium (150-300 sq ft)
+                </option>
+                <option value="Large (300-500 sq ft)">
+                  Large (300-500 sq ft)
+                </option>
+                <option value="Extra Large (500+ sq ft)">
+                  Extra Large (500+ sq ft)
+                </option>
               </select>
             </div>
 
@@ -239,7 +247,7 @@ const HomeAudioForm = () => {
                   "Home Theater",
                   "Multi-Room Audio",
                   "Smart Speakers",
-                  "Vinyl Setup"
+                  "Vinyl Setup",
                 ].map((interest) => (
                   <div key={interest} className="flex items-center">
                     <input
@@ -263,7 +271,7 @@ const HomeAudioForm = () => {
                 value={formData.budgetRange}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Budget Range *</option>
                 <option value="500-1000">UGX 500,000 - 1,000,000</option>
@@ -276,7 +284,7 @@ const HomeAudioForm = () => {
                 value={formData.installationType}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Installation Type *</option>
                 <option value="Wireless">Wireless</option>
@@ -292,7 +300,7 @@ const HomeAudioForm = () => {
               value={formData.musicPreferences}
               onChange={handleChange}
               placeholder="Your Music Preferences (Genres, Artists)"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
             />
 
             <textarea
@@ -300,7 +308,7 @@ const HomeAudioForm = () => {
               value={formData.acousticConcerns}
               onChange={handleChange}
               placeholder="Any Specific Acoustic Concerns or Room Challenges"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               rows="3"
             ></textarea> */}
 
@@ -310,7 +318,7 @@ const HomeAudioForm = () => {
               onChange={handleChange}
               placeholder="Additional Details or Special Requirements
 (Room challenges, etc)"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               rows="4"
             ></textarea>
 

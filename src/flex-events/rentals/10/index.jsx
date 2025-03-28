@@ -11,7 +11,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-     
       {/* Hero Section with CTA */}
       <section className="relative bg-gray-900 text-white">
         <div className="absolute inset-0 z-0">
@@ -21,11 +20,11 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
 
+        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            {/* Crafting Unforgettable<br />Moments Together */}
             Power & Generators
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
@@ -33,7 +32,7 @@ function App() {
             <br /> Our Reliable Generators
           </p>
           <Link to="/contact">
-            <button className=" px-4 py-2 text-white border-white border-1 ">
+            <button className="px-4 py-2 text-white border-white border-1">
               Get Started
             </button>
           </Link>

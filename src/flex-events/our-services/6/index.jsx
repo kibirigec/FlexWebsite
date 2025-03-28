@@ -3,6 +3,7 @@ import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import BrandManufacturingForm from "./components/BrandManufacturingForm";
+import HoverLink from "../../../globalComps/HoverLink";
 
 function App() {
   const heroImage = "/audio1.jpg";
@@ -19,15 +20,17 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Experience Unmatched Audio Excellence
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-            High-performance, customized loudspeakers designed for exceptional sound clarity and durability.
+            High-performance, customized loudspeakers designed for exceptional
+            sound clarity and durability.
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border-white border-1 ">
+            <button className="px-4 py-2 text-white border-white border-1">
               Get Started
             </button>
           </Link>
@@ -41,7 +44,10 @@ function App() {
             Professional Audio Solutions Tailored for You
           </h2>
           <p className="text-lg text-gray-600">
-            At <strong>Flex Audio</strong>, we engineer custom loudspeakers and audio systems trusted by professionals worldwide. Whether for a nightclub, lounge, event, or place of worship, our premium-quality sound systems ensure superior clarity and durability.
+            At <strong>Flex Audio</strong>, we engineer custom loudspeakers and
+            audio systems trusted by professionals worldwide. Whether for a
+            nightclub, lounge, event, or place of worship, our premium-quality
+            sound systems ensure superior clarity and durability.
           </p>
         </div>
       </section>
@@ -58,25 +64,29 @@ function App() {
                 <li className="flex items-start">
                   <span className="text-[#9BAB3C] font-bold mr-2">✔</span>
                   <span className="text-lg font-medium text-gray-800">
-                    Industry-recognized sound systems used in concerts, festivals, and touring setups.
+                    Industry-recognized sound systems used in concerts,
+                    festivals, and touring setups.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#9BAB3C] font-bold mr-2">✔</span>
                   <span className="text-lg font-medium text-gray-800">
-                    Custom-built loudspeakers tailored to your unique audio needs.
+                    Custom-built loudspeakers tailored to your unique audio
+                    needs.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#9BAB3C] font-bold mr-2">✔</span>
                   <span className="text-lg font-medium text-gray-800">
-                    Designed for durability, ensuring long-lasting and high-quality performance.
+                    Designed for durability, ensuring long-lasting and
+                    high-quality performance.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#9BAB3C] font-bold mr-2">✔</span>
                   <span className="text-lg font-medium text-gray-800">
-                    Proven track record in venues ranging from nightclubs to worship spaces.
+                    Proven track record in venues ranging from nightclubs to
+                    worship spaces.
                   </span>
                 </li>
               </ul>
@@ -91,6 +101,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <HoverLink />
 
       <BrandManufacturingForm />
 

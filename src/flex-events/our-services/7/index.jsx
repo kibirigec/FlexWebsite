@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css"; // Carousel styles
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import WeddingDecorBookingForm from "./components/WeddingDecorBookingForm";
+import HoverLink from "../../../globalComps/HoverLink";
 
 function App() {
   // Using images from the public folder
@@ -63,6 +64,7 @@ function App() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -70,17 +72,20 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48  ">
-          <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight z-[100000px]">
+        {/* Green Gradient - Covers Entire Section */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Wedding & Corporate Decor
           </h1>
-          <p className="text-xl md:text-2xl mb-6 max-w-2xl ">
+          <p className="text-xl md:text-2xl mb-6 max-w-2xl">
             Transform Your Vision into Stunning Reality
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border-white border-1 z-50">
+            <button className="px-4 py-2 text-white border-white border-1">
               Get Started
             </button>
           </Link>
@@ -173,7 +178,9 @@ function App() {
           </Slider>
         </div>
       </section>
-      <WeddingDecorBookingForm />  
+
+      <HoverLink />
+      <WeddingDecorBookingForm />
       {/* Footer */}
       <Footer3 />
     </div>

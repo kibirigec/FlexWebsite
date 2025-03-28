@@ -92,7 +92,7 @@ export default function NavBar() {
 
         {/* Navigation Menu (Desktop) - Centered */}
         <div className="hidden md:flex items-center justify-center flex-1">
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-4">
             {/* Home Link */}
             <div>
               <Link
@@ -291,7 +291,7 @@ export default function NavBar() {
         </div>
 
         {/* Right Side: About and Contact buttons */}
-        <div className="flex items-center mr-4 md:mr-0 space-x-4">
+        <div className="flex items-center mr-4 md:mr-0 space-x-2">
           {/* About Link */}
           <Link
             to="/about"

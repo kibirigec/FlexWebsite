@@ -5,6 +5,7 @@ import React from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import AudioVisualLightingForm from "./components/AudioVisualLightingForm";
+import HoverLink from "../../../globalComps/HoverLink";
 
 function App() {
   // Using images from the public folder
@@ -15,6 +16,7 @@ function App() {
     <div className=" min-h-screen bg-white">
       {/* Hero Section with CTA */}
       <section className="py-12 relative bg-black text-white">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -22,9 +24,12 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
 
+        {/* Green Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Pro-Audio & Visual/Lighting
           </h1>
@@ -33,7 +38,7 @@ function App() {
             solutions.
           </p>
           <Link to="/contact">
-            <button className=" px-4 py-2 text-white border-white border-1 ">
+            <button className="px-4 py-2 text-white border-white border-1">
               Get Started
             </button>
           </Link>
@@ -146,6 +151,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <HoverLink />
       <AudioVisualLightingForm />
       {/* Footer */}
       <Footer3 />

@@ -11,6 +11,8 @@ export function Header5() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentText, setCurrentText] = useState("Weddings");
   const [animating, setAnimating] = useState(false);
+  const [isButtonGlowing, setIsButtonGlowing] = useState(false);
+
   const images = [
     "/weddingmain.jpeg",
     "/night-lights.jpeg",
@@ -27,6 +29,15 @@ export function Header5() {
     "Stage Setups",
     "Experientials",
   ];
+  const serviceLinks = {
+    Weddings: "/services/1",
+    Visuals: "/services/3",
+    Decor: "/services/1",
+    Sounds: "/services/3",
+    "Stage Setups": "/rentals/4",
+    Experientials: "/services/7",
+  };
+
   const intervalRef = useRef(null);
   const animationDuration = 3000; // 3 seconds per image
 
@@ -38,16 +49,23 @@ export function Header5() {
     }
 
     setAnimating(true);
+    setIsButtonGlowing(true);
+
     setTimeout(() => {
       // Calculate new index based on direction
-      const newIndex = 
-        direction === 'next' 
+      const newIndex =
+        direction === "next"
           ? (currentImageIndex + 1) % images.length
           : (currentImageIndex - 1 + images.length) % images.length;
 
       setCurrentImageIndex(newIndex);
       setCurrentText(texts[newIndex]);
       setAnimating(false);
+
+      // Remove glow after a short delay
+      setTimeout(() => {
+        setIsButtonGlowing(false);
+      }, 500);
 
       // Restart the interval
       startAutoSlide();
@@ -64,6 +82,8 @@ export function Header5() {
     // Start a new interval
     intervalRef.current = setInterval(() => {
       setAnimating(true);
+      setIsButtonGlowing(true);
+
       setTimeout(() => {
         setCurrentImageIndex((prev) => (prev + 1) % images.length);
         setCurrentText((prev) => {
@@ -71,6 +91,11 @@ export function Header5() {
           return texts[(currentIndex + 1) % texts.length];
         });
         setAnimating(false);
+
+        // Remove glow after a short delay
+        setTimeout(() => {
+          setIsButtonGlowing(false);
+        }, 500);
       }, 500);
     }, animationDuration);
   };
@@ -133,28 +158,34 @@ export function Header5() {
             <Button
               as={Link}
               to="/contact"
-              variant="primary"
-              className="px-6 py-3 text-lg"
+              variant="outline"
+              className="px-6 py-3 text-lg text-[#9bab3c]  hover:text-white transition-all duration-300"
             >
-              Get a Quote{" "}
+              Let's Talk
             </Button>
           </Link>
-          <Button
-            as={Link}
-            to="/contact"
-            variant="outline"
-            className="px-6 py-3 text-lg"
-          >
-            Contact Us
-          </Button>
+          <Link to={serviceLinks[currentText]}>
+            <Button
+              as={Link}
+              to={serviceLinks[currentText]}
+              variant="primary"
+              className={`px-6 py-3 text-lg transition-all duration-300 ${
+                isButtonGlowing
+                  ? "border-[#white] border-1 shadow-[0_0_10px_#9bab3c]"
+                  : ""
+              }`}
+            >
+              Learn More{" "}
+            </Button>
+          </Link>
         </div>
       </div>
 
       {/* Segmented progress bar like in the image */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center px-8 md:px-12">
         <div className="flex w-full max-w-5xl justify-between items-center">
-          <button 
-            onClick={() => changeSlide('prev')} 
+          <button
+            onClick={() => changeSlide("prev")}
             className="text-white opacity-70 hover:opacity-100 transition-opacity px-4"
           >
             <svg
@@ -182,15 +213,15 @@ export function Header5() {
                 <div
                   className="absolute inset-0 bg-[#9BAB3C] origin-left"
                   style={{
-                    animation: `progress ${animationDuration}ms linear forwards`,
+                    animation: `progress ${animationDuration}ms ease-in-out forwards`,
                   }}
                 />
               )}
             </div>
           ))}
 
-          <button 
-            onClick={() => changeSlide('next')} 
+          <button
+            onClick={() => changeSlide("next")}
             className="text-white opacity-70 hover:opacity-100 transition-opacity px-4"
           >
             <svg

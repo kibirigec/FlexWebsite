@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import FullEventPlanningForm from "./components/FullEventPlanningForm";
+import HoverLink from "../../../globalComps/HoverLink"
 
 function App() {
   const heroImage = "/images/event-planning-hero.jpg";
@@ -55,31 +56,34 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Event planning and management"
-            className="w-full h-full object-cover opacity-40"
-          />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48 ">
-        <div className="absolute bg-gradient-to-r from-[#9BAB3C]/40 to-[#9BAB3C]/0 h-[250px] w-full left-[-50px] lg:w-full lg:left-[-100px] -z-50 " />
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="relative bg-gray-900 text-white">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={heroImage}
+              alt="Event planning and management"
+              className="w-full h-full object-cover opacity-40"
+            />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
+          </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Full Event Planning & Management
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl ">
-            From concept to completion – Your vision, our expertise.
-          </p>
-          <Link to="/contact">
-            <button className=" px-4 py-2 text-white border-white border-1 ">
-              Get Started
-            </button>
-          </Link>
-        </div>
-      </section>
+          <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
+
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Full Event Planning & Management
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-2xl">
+              From concept to completion – Your vision, our expertise.
+            </p>
+            <Link to="/contact">
+              <button className="px-4 py-2 text-white border-white border-1">
+                Get Started
+              </button>
+            </Link>
+          </div>
+        </section>
+      </div>
 
       {/* Introduction Section */}
       <section className="py-20 bg-gray-50 text-center px-6">
@@ -190,8 +194,9 @@ function App() {
         </div>
       </section>
 
+      <HoverLink />
       {/* Footer */}
-      <FullEventPlanningForm/>
+      <FullEventPlanningForm />
       <Footer3 />
     </div>
   );
