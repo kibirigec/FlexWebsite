@@ -79,20 +79,20 @@ export default function NavBar() {
 
   return (
     <nav className="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600 backdrop-filter backdrop-blur-lg bg-black/65">
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto py-2">
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto py-2 px-8 ">
         {/* Logo */}
         <div className="flex items-center ml-4 md:ml-0">
           <Link
             to="/"
             className="flex items-center space-x-1 rtl:space-x-reverse"
           >
-            <img src="./Group 16.svg" alt="Flex Logo" />
+            <img src="/Group 16.svg" alt="Flex Logo" height={100} width={100} />
           </Link>
         </div>
 
         {/* Navigation Menu (Desktop) - Centered */}
         <div className="hidden md:flex items-center justify-center flex-1 mx-auto">
-          <div className="flex items-center space-x-2 md:ml-26 bg-red-900">
+          <div className="flex items-center space-x-2 md:ml-26 border border-[#9BAB3C]">
             {/* Home Link */}
             <div>
               <Link

@@ -24,8 +24,8 @@ export function Footer3() {
                   src="/FooterLogo.svg"
                   alt="Logo image"
                   className="inline-block"
-                  width={150}
-                  height={150}
+                  width={130}
+                  height={130}
                 />
               </a>
             </div>
