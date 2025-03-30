@@ -22,7 +22,7 @@ const HoverLink = () => {
       {/* Separating 'Other Services' text from the grid */}
       
       {/* Grid Container */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-7xl mx-auto">
         {services.map((service, index) => (
           <Link 
             to={`/services/${index + 1}`} 

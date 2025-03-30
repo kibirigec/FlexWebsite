@@ -40,9 +40,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      {/* Hero Section */}
       <section className="relative bg-gray-900 text-white">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -51,15 +49,13 @@ function App() {
           />
         </div>
 
-        {/* Green Gradient - Full Width & Covers Content */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full h-[50vh] z-0"></div>
 
-        {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-[28px] md:text-[32px] lg:text-[40px] font-bold mb-2 leading-tight">
             Small Spaces, Crystal-Clear Sound
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl">
+          <p className="text-[17px] mb-8 max-w-2xl">
             Elevate your home gatherings with Flex Home Audio—perfect for
             karaoke nights, small garden parties, and immersive home
             entertainment.
@@ -73,12 +69,12 @@ function App() {
       </section>
 
       {/* Centered Text Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+          <h2 className="text-[28px] md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
             Bring the Party Home with Flex Audio
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-[17px] text-[#86868b]">
             Whether you're hosting a backyard BBQ, singing along to your
             favorite tunes, or setting the mood for a cozy movie night, our
             advanced audio systems deliver premium sound quality for any
@@ -92,64 +88,52 @@ function App() {
       {serviceSections.map((section, index) => (
         <section
           key={index}
-          className={`py-20 ${index === 1 ? "bg-[#fafafa]" : ""}`}
+          className={`bg-[#333] text-white py-16 ${
+            index == 1 ? "bg-[#F2F2F2]" : ""
+          }`}
         >
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-8">
             <div
-              className={`flex flex-col md:flex-row items-start ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
+              className={`flex flex-col md:flex-row items-center gap-8 ${
+                index % 2 !== 0 ? "md:flex-row-reverse" : ""
               }`}
             >
-              <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-                  {section.title}
-                </h2>
-
-                <ul className="space-y-4 mb-6">
-                  {section.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 text-[#9BAB3C] mt-0.5">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </div>
-                      <div className="ml-3">
-                        <h3 className="text-lg font-medium text-gray-800">
-                          {feature}
-                        </h3>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="md:w-1/2 h-[400px]">
+              {/* Left Side - Image */}
+              <div className="md:w-1/2">
                 <img
                   src={section.image}
                   alt={`${section.title} setup`}
-                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                  className="w-full aspect-[16/9] object-cover rounded-lg shadow-lg"
                 />
+              </div>
+
+              {/* Right Side - Content */}
+              <div className={`md:w-1/2 space-y-6 `}>
+                <h2 className= {`text-[24px]/6 md:text-[30px]/8 font-bold ${ index == 1 ? "text-[#1D1D1F]" : ""} uppercase`}>
+                  {section.title}
+                </h2>
+
+                <div className="h-1 w-24 bg-[#9BAB3C]"></div>
+
+                <ul className={`space-y-1  text-[17px]/5 ${ index ==1 ? "text-[#86868b]" : "text-[#E0E0E0]"} `}>
+                  {section.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-[#9BAB3C]">•</span> {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
       ))}
-      <section className="bg-[#828282] py-6">
-        <HomeAudioForm />
 
+      <section className="bg-[#333] py-6 md:px-28 mx-auto ">
+        <div className="bg-[#9BAB3C] min-h-[2px] mx-auto w-full md:mb-20 hidden-sm" />
+        <HomeAudioForm />
       </section>
 
-        <HoverLink />
-      {/* Footer */}
+      <HoverLink />
       <Footer3 />
     </div>
   );

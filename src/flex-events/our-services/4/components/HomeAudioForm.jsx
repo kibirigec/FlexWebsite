@@ -69,7 +69,7 @@ const HomeAudioForm = () => {
   };
 
   return (
-    <div className="border border-gray-400 max-w-4xl mx-auto p-8 font-sans my-6 z-50 bg-white ">
+    <div className="border border-gray-400 max-w-7xl mx-auto p-8 font-sans my-6 z-50 bg-white ">
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side - Branding */}
         <div>
@@ -164,7 +164,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="First Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
               <input
                 type="text"
@@ -173,7 +173,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="Last Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
             </div>
 
@@ -185,7 +185,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="Phone Number *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
               <input
                 type="email"
@@ -194,7 +194,7 @@ const HomeAudioForm = () => {
                 onChange={handleChange}
                 placeholder="Email Address *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               />
             </div>
 
@@ -204,7 +204,7 @@ const HomeAudioForm = () => {
                 value={formData.homeType}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Home Type *</option>
                 <option value="Apartment">Apartment</option>
@@ -218,7 +218,7 @@ const HomeAudioForm = () => {
                 value={formData.roomSize}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Room Size *</option>
                 <option value="Small (up to 150 sq ft)">
@@ -271,7 +271,7 @@ const HomeAudioForm = () => {
                 value={formData.budgetRange}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Budget Range *</option>
                 <option value="500-1000">UGX 500,000 - 1,000,000</option>
@@ -284,7 +284,7 @@ const HomeAudioForm = () => {
                 value={formData.installationType}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               >
                 <option value="">Installation Type *</option>
                 <option value="Wireless">Wireless</option>
@@ -300,7 +300,7 @@ const HomeAudioForm = () => {
               value={formData.musicPreferences}
               onChange={handleChange}
               placeholder="Your Music Preferences (Genres, Artists)"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+              className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
             />
 
             <textarea
@@ -308,7 +308,7 @@ const HomeAudioForm = () => {
               value={formData.acousticConcerns}
               onChange={handleChange}
               placeholder="Any Specific Acoustic Concerns or Room Challenges"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+              className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               rows="3"
             ></textarea> */}
 
@@ -318,7 +318,7 @@ const HomeAudioForm = () => {
               onChange={handleChange}
               placeholder="Additional Details or Special Requirements
 (Room challenges, etc)"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
+              className="w-full px-3 py-2 border-2 border-[#9BAB3C]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#9BAB3C]"
               rows="4"
             ></textarea>
 

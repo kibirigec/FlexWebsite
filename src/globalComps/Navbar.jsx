@@ -91,8 +91,8 @@ export default function NavBar() {
         </div>
 
         {/* Navigation Menu (Desktop) - Centered */}
-        <div className="hidden md:flex items-center justify-center flex-1">
-          <div className="flex items-center space-x-4">
+        <div className="hidden md:flex items-center justify-center flex-1 mx-auto">
+          <div className="flex items-center space-x-2 md:ml-26 bg-red-900">
             {/* Home Link */}
             <div>
               <Link

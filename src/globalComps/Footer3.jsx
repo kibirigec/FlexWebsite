@@ -15,7 +15,7 @@ export function Footer3() {
       id="relume"
       className="bg-[#333] text-white lg:h-[90vh] py-12 md:py-18 lg:py-20 w-full mb-0 overflow-hidden"
     >
-      <div className="container mx-auto px-[5%]">
+      <div className="container mx-auto px-[2%]">
         <div className="lg:mt-[-48px] grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
           <div>
             <div className="mb-6 md:mb-8 lg:mt-[-38px]">
