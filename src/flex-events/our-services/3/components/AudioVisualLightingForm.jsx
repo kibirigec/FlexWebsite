@@ -73,7 +73,7 @@ const AudioVisualLightingForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 font-sans my-6 border border-gray-400">
+    <div className="max-w-7xl mx-auto p-8 font-sans my-6 border border-gray-400 bg-white">
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side - Branding */}
         <div>
@@ -84,7 +84,7 @@ const AudioVisualLightingForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -111,7 +111,7 @@ const AudioVisualLightingForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -133,7 +133,7 @@ const AudioVisualLightingForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -168,7 +168,7 @@ const AudioVisualLightingForm = () => {
                 onChange={handleChange}
                 placeholder="First Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               />
               <input
                 type="text"
@@ -177,7 +177,7 @@ const AudioVisualLightingForm = () => {
                 onChange={handleChange}
                 placeholder="Last Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               />
             </div>
 
@@ -189,7 +189,7 @@ const AudioVisualLightingForm = () => {
                 onChange={handleChange}
                 placeholder="Phone Number *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               />
               <input
                 type="email"
@@ -198,7 +198,7 @@ const AudioVisualLightingForm = () => {
                 onChange={handleChange}
                 placeholder="Email Address *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               />
             </div>
 
@@ -208,7 +208,7 @@ const AudioVisualLightingForm = () => {
                 value={formData.eventType}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               >
                 <option value="">Select Event Type *</option>
                 <option value="Wedding">Wedding</option>
@@ -225,7 +225,7 @@ const AudioVisualLightingForm = () => {
                   value={formData.targetEventDate}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
+                  className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md  peer"
                 />
                 <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
                   Select event date
@@ -241,7 +241,7 @@ const AudioVisualLightingForm = () => {
                 onChange={handleChange}
                 placeholder="Event Venue *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               />
               <input
                 type="number"
@@ -250,7 +250,7 @@ const AudioVisualLightingForm = () => {
                 onChange={handleChange}
                 placeholder="Expected Guests *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md "
               />
             </div>
 
@@ -289,7 +289,7 @@ const AudioVisualLightingForm = () => {
                 value={formData.audioRequirements}
                 onChange={handleChange}
                 placeholder="Audio System Requirements"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 rows="3"
               ></textarea>
             </div>
@@ -300,7 +300,7 @@ const AudioVisualLightingForm = () => {
                 value={formData.visualRequirements}
                 onChange={handleChange}
                 placeholder="Visual Display Requirements"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 rows="3"
               ></textarea> */}
               {/* <textarea
@@ -308,7 +308,7 @@ const AudioVisualLightingForm = () => {
                 value={formData.lightingRequirements}
                 onChange={handleChange}
                 placeholder="Lighting Setup Requirements"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 rows="3"
               ></textarea> */}
             </div>
@@ -318,7 +318,7 @@ const AudioVisualLightingForm = () => {
               value={formData.additionalDetails}
               onChange={handleChange}
               placeholder="Additional Details or Special Requirements(Lighting, Visual and other requirements)"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border border-[#9BAB3C] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows="4"
             ></textarea>
 

@@ -9,8 +9,8 @@ import { Link } from "react-router-dom"
 
 export function Layout1() {
   return (
-    <section id="relume" className="bg-[#F5F5F7] px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
+    <section id="relume" className="bg-[#F5F5F7] md:px-27 py-16 md:py-24 lg:py-28 mx-auto">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
           <div>
             <p className=" fade-in3 mb-3 font-semibold md:mb-4 text-[#86868B]">Elegance</p>

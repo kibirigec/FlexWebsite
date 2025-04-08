@@ -73,7 +73,7 @@ const HomeAudioForm = () => {
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side - Branding */}
         <div>
-          <h1 className="text-4xl font-bold mb-6 text-gray-900">
+          <h1 className="text-[30px]/7 font-bold mb-6 text-[#1D1D1F]">
             Transform Your Home with Premium Audio
           </h1>
           <div className="space-y-4 text-gray-600">

@@ -72,20 +72,24 @@ function App() {
             className="w-full h-full object-cover opacity-40"
           />
         </div>
+        <div
+          className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
+                   md:h-[218px] lg:h-[300px] 
+                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
+                  my-auto
+                  "
+        ></div>
 
         {/* Green Gradient - Covers Entire Section */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
-
-        {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
             Wedding & Corporate Decor
           </h1>
-          <p className="text-xl md:text-2xl mb-6 max-w-2xl">
+          <p className="text-[17px]/6 mb-8 max-w-2xl">
             Transform Your Vision into Stunning Reality
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border-white border-1">
+            <button className="px-4 py-2 text-white border border-white">
               Get Started
             </button>
           </Link>
@@ -93,12 +97,12 @@ function App() {
       </section>
 
       {/* Intro Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-            Let’s create a space that tells your unique story.
+          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
+            Let’s create a space that tells your <br /> unique story.{" "}
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-[17px]/6 text-[#86868b] ">
             From intimate weddings to large corporate events, Flex Events brings
             your decor dreams to life. Our team specializes in creating
             beautiful, custom-designed decorations that fit your theme, style,
@@ -111,52 +115,44 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-                Our Decor Services
-              </h2>
-
-              <ul className="space-y-4 mb-6">
-                {[
-                  "Elegant floral arrangements that enhance your venue’s beauty.",
-                  "Custom backdrops and stage decor tailored to your event theme.",
-                  "Luxurious table settings, centerpieces, and fine linens.",
-                  "Ambient lighting to create the perfect atmosphere.",
-                  "Unique corporate branding elements for business events.",
-                ].map((text, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="flex-shrink-0 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-[#9BA3BC]"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div className="ml-3">
-                      <h3 className="text-lg font-medium text-gray-800">
-                        {text}
-                      </h3>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <section className="bg-[#333] text-white py-16">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+            {/* Left Side - Image */}
             <div className="md:w-1/2">
               <img
                 src="/wedding-decor.jpeg"
-                alt="Wedding & Corporate Decor"
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
+                alt="Service feature"
+                className="w-full aspect-[16/9] object-cover rounded-lg shadow-lg"
               />
+            </div>
+
+            {/* Right Side - Content */}
+            <div className="md:w-1/2 space-y-6">
+              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase">
+                Our Decor Services
+              </h2>
+
+              <div className="h-1 w-24 bg-[#9BAB3C]"></div>
+
+              <ul className="space-y-1 text-[17px]/5 text-[#E0E0E0]">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Elegant floral
+                  arrangements that enhance your venue’s beauty. .
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Custom backdrops and
+                  stage decor tailored to your event theme.
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Ambient lighting to
+                  create the perfect atmosphere.
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Unique corporate
+                  branding elements for business events.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -178,9 +174,12 @@ function App() {
           </Slider>
         </div>
       </section>
+      <section className="bg-[#333] py-6 md:px-28 mx-auto ">
+        {/* <div className="bg-[#9BAB3C] min-h-[2px] mx-auto w-full md:mb-20 hidden-sm" /> */}
 
+        <WeddingDecorBookingForm />
+      </section>
       <HoverLink />
-      <WeddingDecorBookingForm />
       {/* Footer */}
       <Footer3 />
     </div>

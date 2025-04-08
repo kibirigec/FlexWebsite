@@ -159,7 +159,7 @@ export function Header5() {
               as={Link}
               to="/contact"
               variant="outline"
-              className="px-6 py-3 text-lg text-[#9bab3c]  hover:text-white transition-all duration-300"
+              className="px-6 py-3 text-lg text-[#f5f5f5] hover:text-white transition-all duration-300 cursor-pointer"
             >
               Let's Talk
             </Button>
@@ -169,7 +169,7 @@ export function Header5() {
               as={Link}
               to={serviceLinks[currentText]}
               variant="primary"
-              className={`px-6 py-3 text-lg transition-all duration-300 ${
+              className={`px-6 py-3 text-lg transition-all duration-300 cursor-pointer ${
                 isButtonGlowing
                   ? "border-[#white] border-1 shadow-[0_0_10px_#9bab3c]"
                   : ""

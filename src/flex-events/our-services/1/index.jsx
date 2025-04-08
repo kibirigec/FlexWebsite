@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import FullEventPlanningForm from "./components/FullEventPlanningForm";
-import HoverLink from "../../../globalComps/HoverLink"
+import HoverLink from "../../../globalComps/HoverLink";
 
 function App() {
   const heroImage = "/images/event-planning-hero.jpg";
@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="min-h-screen bg-white">
+      <div className=" bg-black">
         {/* Hero Section */}
         <section className="relative bg-gray-900 text-white">
           <div className="absolute inset-0 z-0">
@@ -65,19 +65,25 @@ function App() {
               alt="Event planning and management"
               className="w-full h-full object-cover opacity-40"
             />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
           </div>
+          <div
+            className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
+                   md:h-[218px] lg:h-[300px] 
+                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
+                  my-auto
+                  "
+          ></div>
 
+          {/* Content */}
           <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
               Full Event Planning & Management
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-2xl">
+            <p className="text-[17px]/6 mb-8 max-w-2xl">
               From concept to completion – Your vision, our expertise.
             </p>
             <Link to="/contact">
-              <button className="px-4 py-2 text-white border-white border-1">
+              <button className="px-4 py-2 text-white border border-white">
                 Get Started
               </button>
             </Link>
@@ -102,27 +108,27 @@ function App() {
 
       {/* Accordion Section */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 ">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
             How We Bring Your Event to Life
           </h2>
 
           {/* Accordion */}
-          <div className="space-y-4 ">
+          <div className="space-y-4">
             {eventServices.map((service, index) => (
               <div
                 key={index}
-                className="border border-gray-300 rounded-lg w-[80vw] mx-auto md:w-[50vw] "
+                className="border border-[#9bab3c] rounded-2xl  mx-auto  shadow-md overflow-hidden"
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full text-left px-6 py-4 flex justify-between items-center bg-white hover:bg-gray-100 transition"
+                  className="w-full text-left px-6 py-4 flex justify-between items-center bg-[#9bab3c] text-white hover:bg-[#869433] transition"
                 >
-                  <span className="text-lg font-medium text-gray-800">
+                  <span className="text-lg font-medium">
                     {index + 1}. {service.title}
                   </span>
                   <svg
-                    className={`h-6 w-6 text-gray-600 transform ${
+                    className={`h-6 w-6 transform ${
                       openIndex === index ? "rotate-180" : ""
                     } transition-transform`}
                     xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +146,7 @@ function App() {
                 </button>
 
                 {openIndex === index && (
-                  <div className="px-6 py-4 bg-gray-50 text-gray-700">
+                  <div className="px-6 py-4 bg-white text-gray-800 border-t border-[#9bab3c]">
                     {service.description}
                   </div>
                 )}
@@ -156,14 +162,14 @@ function App() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
             Why Choose Flex Events?
           </h2>
-          <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">
+          <p className="text-lg/6 text-gray-600 text-center max-w-3xl mx-auto mb-8">
             At Flex Events, we provide a stress-free event planning experience,
             ensuring every detail is handled to perfection. With our expertise
             in event design, vendor sourcing, branding, and seamless execution,
             we bring your vision to life.
           </p>
 
-          <ul className="max-w-3xl mx-auto space-y-4 text-gray-700 text-lg">
+          <ul className="flex flex-col max-w-3xl mx-auto space-y-0.5 text-gray-700 text-lg items-start ">
             {[
               "Tailored Planning – Every event is customized to your vision.",
               "Trusted Vendor Network – Quality service providers at competitive rates.",
@@ -171,7 +177,7 @@ function App() {
               "Creative Event Design – Unique themes and branding.",
               "VIP Experience – High-profile and guest-focused planning.",
             ].map((text, index) => (
-              <li key={index} className="flex items-center space-x-3">
+              <li key={index} className="flex items-center space-x-3 text-left">
                 {/* Custom SVG Tick Icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -187,16 +193,19 @@ function App() {
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>{text}</span>
+                <span className=''>{text}</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
+      <section className="bg-[#333] py-6 md:px-28 mx-auto ">
+        <FullEventPlanningForm />
+      </section>
       <HoverLink />
+
       {/* Footer */}
-      <FullEventPlanningForm />
       <Footer3 />
     </div>
   );

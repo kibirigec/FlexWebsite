@@ -59,7 +59,7 @@ const InvitationCardDesignForm = () => {
   };
 
   return (
-    <div className="border border-gray-400 max-w-4xl mx-auto p-8 font-sans my-6">
+    <div className="border border-gray-400 max-w-7xl mx-auto p-8 font-sans my-6 bg-white">
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side - Branding */}
         <div>
@@ -70,7 +70,7 @@ const InvitationCardDesignForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -97,7 +97,7 @@ const InvitationCardDesignForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -119,7 +119,7 @@ const InvitationCardDesignForm = () => {
             <div className="flex items-center space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-purple-500"
+                className="h-6 w-6 text-[#9BAB3C]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -156,7 +156,7 @@ const InvitationCardDesignForm = () => {
                 onChange={handleChange}
                 placeholder="First Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               />
               <input
                 type="text"
@@ -165,7 +165,7 @@ const InvitationCardDesignForm = () => {
                 onChange={handleChange}
                 placeholder="Last Name *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               />
             </div>
 
@@ -177,7 +177,7 @@ const InvitationCardDesignForm = () => {
                 onChange={handleChange}
                 placeholder="Phone Number *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               />
               <input
                 type="email"
@@ -186,7 +186,7 @@ const InvitationCardDesignForm = () => {
                 onChange={handleChange}
                 placeholder="Email Address *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               />
             </div>
 
@@ -196,7 +196,7 @@ const InvitationCardDesignForm = () => {
                 value={formData.eventType}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               >
                 <option value="">Select Event Type *</option>
                 <option value="Wedding">Wedding</option>
@@ -212,7 +212,7 @@ const InvitationCardDesignForm = () => {
                   value={formData.targetEventDate}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
+                  className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none  peer"
                 />
                 <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
                   Select event date
@@ -228,14 +228,14 @@ const InvitationCardDesignForm = () => {
                 onChange={handleChange}
                 placeholder="Number of Invitations *"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               />
               <select
                 name="cardStyle"
                 value={formData.cardStyle}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               >
                 <option value="">Select Card Style *</option>
                 <option value="Classic">Classic</option>
@@ -253,13 +253,13 @@ const InvitationCardDesignForm = () => {
                 value={formData.colorTheme}
                 onChange={handleChange}
                 placeholder="Color Theme Preference"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               />
               <select
                 name="paperType"
                 value={formData.paperType}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               >
                 <option value="">Select Paper Type</option>
                 <option value="Matte">Matte</option>
@@ -273,7 +273,7 @@ const InvitationCardDesignForm = () => {
               name="printingOption"
               value={formData.printingOption}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
             >
               <option value="">Select Printing Option</option>
               <option value="Digital">Digital Printing</option>
@@ -287,7 +287,7 @@ const InvitationCardDesignForm = () => {
               value={formData.additionalDetails}
               onChange={handleChange}
               placeholder="Additional Details or Special Requirements"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-3 py-2 border-2 border-[#9BAB3C] rounded-md focus:outline-none "
               rows="4"
             ></textarea>
 

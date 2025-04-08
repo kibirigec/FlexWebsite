@@ -15,7 +15,7 @@ export function Footer3() {
       id="relume"
       className="bg-[#333] text-white lg:h-[90vh] py-12 md:py-18 lg:py-20 w-full mb-0 overflow-hidden"
     >
-      <div className="container mx-auto px-[2%]">
+      <div className="max-w-screen-xl container mx-auto px-8 md:px-0 lg:px-8">
         <div className="lg:mt-[-48px] grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
           <div>
             <div className="mb-6 md:mb-8 lg:mt-[-38px]">
@@ -23,9 +23,7 @@ export function Footer3() {
                 <img
                   src="/FooterLogo.svg"
                   alt="Logo image"
-                  className="inline-block"
-                  width={130}
-                  height={130}
+                  className="inline-block min-w-[80px] w-[100px] h-auto"
                 />
               </a>
             </div>
@@ -68,31 +66,31 @@ export function Footer3() {
               </a>
             </div>
           </div>
-          <div className="lg:mt-36 grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
+          <div className="lg:mt-4 grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
             <ul>
               <li className="py-2 text-sm font-semibold text-[#C4C4C4]">
                 Services:
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/services/1">Weddings & Decor</a>
+                <a href="/services/1">Weddings</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
                 <a href="/services/2">Invitation Cards</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/services/3">Pro Audio Systems</a>
+                <a href="/services/3">Audio Systems</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
                 <a href="/services/4">Home Audio</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/services/5">Sound & Visual Installations</a>
+                <a href="/services/5">Audio-Visual Installations</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/services/6">Flex Brand Manufacturing</a>
+                <a href="/services/6">Custom Manufacturing</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/services/7">Event Management and Planning</a>
+                <a href="/services/7">Event Management</a>
               </li>
             </ul>
             <ul>
@@ -100,7 +98,7 @@ export function Footer3() {
                 Rentals:
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/rentals/1">Mobile Disco/P.A System</a>
+                <a href="/rentals/1">P.A System</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
                 <a href="/rentals/2">Line Array Sound System</a>
@@ -109,7 +107,7 @@ export function Footer3() {
                 <a href="/rentals/3">Pro Lights & Effects</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/rentals/4">Aluminiun Truss & Stages</a>
+                <a href="/rentals/4">Aluminium Stages</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
                 <a href="/rentals/5">LED Screens</a>
@@ -118,13 +116,13 @@ export function Footer3() {
                 <a href="/rentals/6">Karaoke Machines</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
-                <a href="/rentals/7">DLP Projectors & Screens</a>
+                <a href="/rentals/7">Projectors & Screens</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
                 <a href="/rentals/8">DJ Equipment</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C] ">
-                <a href="/rentals/9">Wedding & Corporate Decor</a>
+                <a href="/rentals/9">Wedding Decor</a>
               </li>
               <li className="py-2 text-sm font-semibold hover:text-[#9BAB3C]">
                 <a href="/rentals/10">Power/Generators</a>

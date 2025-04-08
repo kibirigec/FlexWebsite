@@ -38,9 +38,10 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white ">
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -49,19 +50,27 @@ function App() {
           />
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full h-[50vh] z-0"></div>
+        {/* Gradient (Fixed Height) */}
+        <div
+          className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
+                   md:h-[218px] lg:h-[300px] 
+                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
+                  my-auto
+                  "
+        ></div>
 
+        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-[28px] md:text-[32px] lg:text-[40px] font-bold mb-2 leading-tight">
+          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
             Small Spaces, Crystal-Clear Sound
           </h1>
-          <p className="text-[17px] mb-8 max-w-2xl">
+          <p className="text-[17px]/6 mb-8 max-w-2xl">
             Elevate your home gatherings with Flex Home Audio—perfect for
             karaoke nights, small garden parties, and immersive home
             entertainment.
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border-white border-1">
+            <button className="px-4 py-2 text-white border border-white">
               Get Started
             </button>
           </Link>
@@ -71,10 +80,10 @@ function App() {
       {/* Centered Text Section */}
       <section className="py-12 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-[28px] md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
+          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
             Bring the Party Home with Flex Audio
           </h2>
-          <p className="text-[17px] text-[#86868b]">
+          <p className="text-[17px]/6 text-[#86868b] text-start">
             Whether you're hosting a backyard BBQ, singing along to your
             favorite tunes, or setting the mood for a cozy movie night, our
             advanced audio systems deliver premium sound quality for any
@@ -109,13 +118,21 @@ function App() {
 
               {/* Right Side - Content */}
               <div className={`md:w-1/2 space-y-6 `}>
-                <h2 className= {`text-[24px]/6 md:text-[30px]/8 font-bold ${ index == 1 ? "text-[#1D1D1F]" : ""} uppercase`}>
+                <h2
+                  className={`text-[24px]/6 md:text-[30px]/8 font-bold ${
+                    index == 1 ? "text-[#1D1D1F]" : ""
+                  } uppercase`}
+                >
                   {section.title}
                 </h2>
 
                 <div className="h-1 w-24 bg-[#9BAB3C]"></div>
 
-                <ul className={`space-y-1  text-[17px]/5 ${ index ==1 ? "text-[#86868b]" : "text-[#E0E0E0]"} `}>
+                <ul
+                  className={`space-y-1  text-[17px]/5 ${
+                    index == 1 ? "text-[#86868b]" : "text-[#E0E0E0]"
+                  } `}
+                >
                   {section.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <span className="text-[#9BAB3C]">•</span> {feature}
@@ -125,11 +142,12 @@ function App() {
               </div>
             </div>
           </div>
+          <div className="bg-[#9BAB3C] min-h-[2px] mx-auto w-full md:mb-20 hidden-sm mt-16" />
+
         </section>
       ))}
 
       <section className="bg-[#333] py-6 md:px-28 mx-auto ">
-        <div className="bg-[#9BAB3C] min-h-[2px] mx-auto w-full md:mb-20 hidden-sm" />
         <HomeAudioForm />
       </section>
 
