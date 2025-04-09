@@ -31,7 +31,7 @@ function App() {
                   bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
                   my-auto
                   "
-        ></div>
+        ></div>       
         {/* Green Gradient Overlay */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
           <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">

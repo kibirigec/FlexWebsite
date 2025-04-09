@@ -14,7 +14,7 @@ export function Layout1() {
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
           <div>
             <p className=" fade-in3 mb-3 font-semibold md:mb-4 text-[#86868B]">Elegance</p>
-            <h1 className="fade-in3 rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-4xl lg:text-6xl">
+            <h1 className="fade-in3 rb-5 mb-5  font-bold text-[28px]/7 md:text-[32px] lg:text-[30px]">
               Why Choose <br /> FlexEvents for Your Next Event?
             </h1>
             <p className="fade-in2 md:text-md font-semibold text-[#86868B] lg:tracking-[.011em] lg:leading-[1.38]">

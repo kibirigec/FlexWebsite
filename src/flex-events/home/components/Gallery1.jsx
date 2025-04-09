@@ -20,7 +20,7 @@ export function Gallery1() {
       <div className="container">
         {/* Title Section */}
         <div className="mb-12 text-center md:mb-18 lg:mb-20">
-          <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+          <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-7xl">
             Event Showcase
           </h2>
           <p className="md:text-md text-[#86868B] font-semibold">

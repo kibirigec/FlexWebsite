@@ -137,21 +137,22 @@ function App() {
 
               <ul className="space-y-1 text-[17px]/5 text-[#E0E0E0]">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span> Elegant floral
-                  arrangements that enhance your venue’s beauty. .
+                  <span className="text-[#9BAB3C]">•</span>Vibrant and
+                  professional lighting for any occasion.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span> Custom backdrops and
-                  stage decor tailored to your event theme.
+                  <span className="text-[#9BAB3C]">•</span>Customizable effects
+                  to fit the theme of your event.
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span> Ambient lighting to
-                  create the perfect atmosphere.
+                  <span className="text-[#9BAB3C]">•</span> Affordable rates and
+                  easy payment options like Visa and Mobile Money. Let us
+                  brighten your event today with our pro lighting solutions!
                 </li>
-                <li className="flex items-start gap-2">
+                {/* <li className="flex items-start gap-2">
                   <span className="text-[#9BAB3C]">•</span> Unique corporate
                   branding elements for business events.
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

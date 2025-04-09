@@ -45,7 +45,6 @@ const PASystemAndDiscoForm = () => {
         submittedAt: new Date(),
       });
 
-      // Reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -71,22 +70,56 @@ const PASystemAndDiscoForm = () => {
   };
 
   return (
-    <div className="border border-gray-400 max-w-4xl mx-auto p-8 font-sans my-6">
+    <div className="border border-[#9BAB3C] bg-white max-w-5xl mx-auto p-6 md:p-10 font-sans my-8 shadow-lg">
       <div className="grid md:grid-cols-2 gap-12">
-        {/* Left Side - Info */}
-        <div>
-          <h1 className="text-5xl font-bold mb-6 text-gray-900">
-            Book a P.A System & DJ for Your Event
+        {/* Left Info */}
+         <div>
+          <h1 className="text-[30px]/7 font-bold mb-6 text-[#1D1D1F]">
+            Plan your perfect event <br /> with us{" "}
           </h1>
           <div className="space-y-4 text-gray-600">
             <div className="flex items-center space-x-3">
-              📍{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-[#9BAB3C]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
               <span>
-                Plot 2973, Kisaasi-Kyanja Road, Kyanja, Kampala, Uganda
+                Plot 2973, Kisaasi-Kyanja Road
+                <br />
+                Kyanja, Kampala, Uganda
               </span>
             </div>
             <div className="flex items-center space-x-3">
-              📞{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-[#9BAB3C]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
               <a
                 href="tel:+256772406122"
                 className="block text-sm underline decoration-black underline-offset-1"
@@ -95,7 +128,20 @@ const PASystemAndDiscoForm = () => {
               </a>
             </div>
             <div className="flex items-center space-x-3">
-              ✉️{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-[#9BAB3C]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
               <a
                 href="mailto:info@flexevents.ug"
                 className="block text-sm underline decoration-black underline-offset-1"
@@ -106,10 +152,10 @@ const PASystemAndDiscoForm = () => {
           </div>
         </div>
 
-        {/* Right Side - Form */}
+        {/* Right Form */}
         <div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-2xl font-bold mb-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <h2 className="text-2xl font-semibold text-[#9BAB3C]">
               P.A System & Music Booking
             </h2>
 
@@ -121,7 +167,7 @@ const PASystemAndDiscoForm = () => {
                 onChange={handleChange}
                 placeholder="First Name *"
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
               />
               <input
                 type="text"
@@ -130,7 +176,7 @@ const PASystemAndDiscoForm = () => {
                 onChange={handleChange}
                 placeholder="Last Name *"
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
               />
             </div>
 
@@ -142,7 +188,7 @@ const PASystemAndDiscoForm = () => {
                 onChange={handleChange}
                 placeholder="Phone Number *"
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
               />
               <input
                 type="email"
@@ -151,7 +197,7 @@ const PASystemAndDiscoForm = () => {
                 onChange={handleChange}
                 placeholder="Email Address *"
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
               />
             </div>
 
@@ -160,7 +206,7 @@ const PASystemAndDiscoForm = () => {
               value={formData.eventType}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
             >
               <option value="">Select Event Type *</option>
               <option value="Wedding">Wedding</option>
@@ -169,27 +215,23 @@ const PASystemAndDiscoForm = () => {
               <option value="Concert">Concert</option>
               <option value="Other">Other</option>
             </select>
-            <div className="relative">
-              <input
-                type="date"
-                name="targetEventDate"
-                value={formData.targetEventDate}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 peer"
-              />
-              <label className="absolute left-3 top-[-17px] text-gray-400 text-sm peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 transition-all">
-                Select event date
-              </label>
-            </div>
+
+            <input
+              type="date"
+              name="eventDate"
+              value={formData.eventDate}
+              onChange={handleChange}
+              required
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
+            />
 
             <input
               type="text"
               name="venue"
               value={formData.venue}
               onChange={handleChange}
-              placeholder="Event Venue(If Known)"
-              className="w-full px-3 py-2 border rounded-md"
+              placeholder="Event Venue (If Known)"
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
             />
 
             <input
@@ -197,8 +239,8 @@ const PASystemAndDiscoForm = () => {
               name="attendeeCount"
               value={formData.attendeeCount}
               onChange={handleChange}
-              placeholder="Expected Number of Guests "
-              className="w-full px-3 py-2 border rounded-md"
+              placeholder="Expected Number of Guests"
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
             />
 
             <select
@@ -206,13 +248,13 @@ const PASystemAndDiscoForm = () => {
               value={formData.soundSystemSize}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
             >
               <option value="">Select Sound System Size *</option>
-              <option value="Small">Small (50-1000 people)</option>
-              <option value="Medium">Medium (1000-3000 people)</option>
-              <option value="Large">Large (3000-10,000 people)</option>
-              <option value="Large">Very Large (10,000+ people)</option>
+              <option value="Small">Small (50–1000)</option>
+              <option value="Medium">Medium (1000–3000)</option>
+              <option value="Large">Large (3000–10,000)</option>
+              <option value="Very Large">Very Large (10,000+)</option>
             </select>
 
             <select
@@ -220,7 +262,7 @@ const PASystemAndDiscoForm = () => {
               value={formData.djService}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
             >
               <option value="">Do you need a DJ? *</option>
               <option value="Yes">Yes</option>
@@ -228,14 +270,9 @@ const PASystemAndDiscoForm = () => {
             </select>
 
             <div className="space-y-2">
-              <label className="block font-semibold">Additional Features</label>
-              <div className="flex flex-col space-y-2">
-                {[
-                  "Lighting",
-                  "Special Effects",
-                  "Backline Services",
-                  "LED Screens",
-                ].map((feature) => (
+              <label className="font-semibold">Additional Features</label>
+              <div className="flex flex-col gap-2 text-sm">
+                {["lighting", "smokeMachine", "specialEffects"].map((feature) => (
                   <div key={feature} className="flex items-center">
                     <input
                       type="checkbox"
@@ -243,12 +280,10 @@ const PASystemAndDiscoForm = () => {
                       name={feature}
                       checked={formData[feature]}
                       onChange={handleChange}
-                      className="mr-2"
+                      className="mr-2 accent-[#9BAB3C]"
                     />
-                    <label htmlFor={feature}>
-                      {feature === "LED Screens"
-                        ? feature
-                        : feature.replace(/([A-Z])/g, " $1")}
+                    <label htmlFor={feature} className="capitalize">
+                      {feature.replace(/([A-Z])/g, " $1")}
                     </label>
                   </div>
                 ))}
@@ -260,13 +295,13 @@ const PASystemAndDiscoForm = () => {
               value={formData.additionalDetails}
               onChange={handleChange}
               placeholder="Additional Details or Requests"
-              className="w-full px-3 py-2 border rounded-md"
               rows="4"
-            ></textarea>
+              className="w-full border border-[#9BAB3C] px-4 py-2 rounded-md"
+            />
 
             <button
               type="submit"
-              className="w-full bg-black text-white py-3 rounded-md"
+              className="w-full bg-[#9BAB3C] text-white font-semibold py-3 rounded-md hover:opacity-90 transition"
             >
               Submit Booking Request
             </button>

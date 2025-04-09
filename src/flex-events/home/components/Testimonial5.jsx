@@ -8,11 +8,11 @@ export function Testimonial5() {
     <section id="relume" className="bg-[#f5f5f7] px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="mb-12 w-full md:mb-18 lg:mb-20">
-          <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+          <h1 className="mb-5 font-bold md:mb-6 text-[28px]/7 md:text-[32px] lg:text-[30px]">
             Customer Testimonials
           </h1>
           <p className="md:text-md">
-            <span className="font-bold lg:ml-4">FlexEvents</span> made our wedding unforgettable and seamless!
+            <span className="font-bold ">FlexEvents</span> made our wedding unforgettable and seamless!
           </p>
         </div>
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-8 lg:gap-16">

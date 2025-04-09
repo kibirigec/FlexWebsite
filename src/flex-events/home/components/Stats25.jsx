@@ -11,8 +11,8 @@ export function Stats25() {
         <div className="mb-12 grid grid-cols-1 gap-y-5 md:mb-18 md:grid-cols-2 md:gap-x-12 lg:mb-20 lg:gap-x-20">
           <div>
             <p className="mb-3 font-semibold md:mb-4 text-[#86868B]">Perfection</p>
-            <h2 className="text-5xl font-bold md:text-4xl lg:text-6xl">
-              Celebrating Over 20 Years of Success
+            <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold ">
+              Celebrating Over <br /> 20 Years of Success
             </h2>
           </div>
           <div>

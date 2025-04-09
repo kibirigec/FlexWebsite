@@ -33,39 +33,43 @@ function App() {
 
       {/* Hero Section with CTA */}
       <section className="relative bg-gray-900 text-white">
-  <div className="absolute inset-0 z-0">
-    <img
-      src={heroImage}
-      alt="Event backdrop"
-      className="w-full h-full object-cover opacity-40"
-    />
-  </div>
-  
-  <div className="absolute inset-0 bg-gradient-to-r from-[#9BAB3C]/50 to-transparent w-full my-auto h-[50vh] z-0"></div>
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Event backdrop"
+            className="w-full h-full object-cover opacity-40"
+          />
+        </div>
 
-  <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-    <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-      Pro-Lights & Effects
-    </h1>
-    <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-      Transform Your Event with Stunning Pro-Lights & Effects
-    </p>
-    <Link to="/contact">
-      <button className="px-4 py-2 text-white border-white border-1">
-        Get Started
-      </button>
-    </Link>
-  </div>
-</section>
-
+        <div
+          className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
+                   md:h-[218px] lg:h-[300px] 
+                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
+                  my-auto
+                  "
+        ></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
+          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
+            Pro-Lights & Effects
+          </h1>
+          <p className="text-[17px]/6 mb-8 max-w-2xl">
+            Transform Your Event with Stunning Pro-Lights & Effects
+          </p>
+          <Link to="/contact">
+            <button className="px-4 py-2 text-white border border-white">
+              Get Started
+            </button>
+          </Link>
+        </div>
+      </section>
 
       {/* Centered Text Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
             We Create Experiences That Last a Lifetime
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-[17px]/6 text-[#86868b] ">
             Create an unforgettable atmosphere with our Pro-Lights & Effects.
             From stunning laser shows to mood lighting, we offer everything to
             turn your event into a visual masterpiece.
@@ -75,95 +79,44 @@ function App() {
 
       {/* Text and Image Section */}
       {/* Text and Image Section with List */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-                Our Lighting Solutions
-              </h2>
-
-              <ul className="space-y-4 mb-6">
-                <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 text-[#9BAB3C] mt-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Vibrant and professional lighting for any occasion.
-                    </h3>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 text-[#9BAB3C] mt-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Customizable effects to fit the theme of your event.
-                    </h3>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="flex-shrink-0 h-6 w-6 text-[#9BAB3C] mt-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <div className="ml-3">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Affordable rates and easy payment options like Visa and
-                      Mobile Money. Let us brighten your event today with our
-                      pro lighting solutions!{" "}
-                    </h3>
-                  </div>
-                </li>
-              </ul>
-
-              {/* <button className="bg-white border border-[#9BAB3C] text-[#9BAB3C] hover:bg-[#9BAB3C] hover:text-white px-6 py-3 rounded-full text-base font-medium transition">
-                View All Services
-              </button> */}
-            </div>
+      <section className="bg-[#333] text-white py-16">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+            {/* Left Side - Image */}
             <div className="md:w-1/2">
               <img
                 src={eventImage}
-                alt="Sound system setup"
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
+                alt="Service feature"
+                className="w-full aspect-[16/9] object-cover rounded-lg shadow-lg"
               />
+            </div>
+
+            {/* Right Side - Content */}
+            <div className="md:w-1/2 space-y-6">
+              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase">
+                Our Lighting Solutions{" "}
+              </h2>
+
+              <div className="h-1 w-24 bg-[#9BAB3C]"></div>
+
+              <ul className="space-y-1 text-[17px]/5 text-[#E0E0E0]">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Elegant floral
+                  arrangements that enhance your venue’s beauty. .
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Custom backdrops and
+                  stage decor tailored to your event theme.
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Ambient lighting to
+                  create the perfect atmosphere.
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#9BAB3C]">•</span> Unique corporate
+                  branding elements for business events.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
