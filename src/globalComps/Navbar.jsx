@@ -91,6 +91,12 @@ export default function NavBar() {
     };
   }, []);
 
+  const mainNavItems = [
+    { name: "Home", path: "/" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Pricing", path: "/pricing" },
+  ];
+
   return (
     <nav className="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600 backdrop-filter backdrop-blur-lg bg-black/65">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto py-2 px-8 md:px-8 lg:px-8">
