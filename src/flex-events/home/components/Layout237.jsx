@@ -17,10 +17,10 @@ export function Layout237() {
             <p className="fade-in3 mb-3 font-semibold md:mb-4 text-[#86868B]">
               About
             </p>
-            <h2 className="fade-in2 rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-5xl">
-              Your Vision, Our Creation
+            <h2 className="fade-in2 rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-5xl text-red-600">
+              My Vision, My Creation
             </h2>
-            <p className="fade-in md:text-md text-[#86868B] font-semibold">
+            <p className="fade-in text-sm leading-relaxed md:text-base lg:text-lg text-[#86868B] font-medium max-w-2xl mx-auto">
             At Flex Events Management, we offer personalized event planning and management solutions designed to bring your vision to life. From corporate conferences to stunning weddings, we specialize in transforming ideas into unforgettable events
             </p>
           </div>

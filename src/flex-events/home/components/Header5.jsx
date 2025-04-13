@@ -19,7 +19,7 @@ export function Header5() {
     "/wedding-decor.jpeg",
     "/jameson-pov.jpeg",
     "/stages3.jpg",
-    "/experential.jpg",
+    "/concertt.jpeg",
   ];
   const texts = [
     "Weddings",
