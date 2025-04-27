@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./flex-events/home/index";
 import About from "./flex-events/about-us/index";
 import Contact from "./flex-events/contact-us/index";
@@ -16,6 +17,9 @@ import EventsBooking from "./globalComps/BookingPage";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
 import RentalPage from "./flex-events/rentals/index"; // Import the dynamic rental loader
 import ServicePage from "./flex-events/our-services/index";
+
+
+
 
 function App() {
   return (

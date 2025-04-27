@@ -135,7 +135,7 @@ function App() {
 
               <div className="h-1 w-24 bg-[#9BAB3C]"></div>
 
-              <ul className="space-y-1 text-[17px]/5 text-[#E0E0E0]">
+              <ul className="space-y-1 text-[17px]/5 text-`[#E0E0E0]">
                 <li className="flex items-start gap-2">
                   <span className="text-[#9BAB3C]">•</span>Vibrant and
                   professional lighting for any occasion.
