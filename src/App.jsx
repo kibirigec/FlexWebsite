@@ -11,6 +11,7 @@ import Hire from "./flex-events/equipment-hire/index";
 import Portfolio from "./flex-events/portfolio/index";
 import Dashboard from "./flex-events/dashboard/index";
 import FAQ from "./flex-events/faq-page/index";
+import Pricing from "./pages/Pricing";
 import Navbar from "./globalComps/Navbar";
 import EventsBooking from "./globalComps/BookingPage";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
@@ -34,12 +35,12 @@ function App() {
         <Route path="/hire" element={<Hire />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/booking" element={<EventsBooking />} />
         
         {/* Dynamic route for rentals */}
         <Route path="/rentals/:id" element={<RentalPage />} />
         <Route path="/services/:id" element={<ServicePage />} />
-
 
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
