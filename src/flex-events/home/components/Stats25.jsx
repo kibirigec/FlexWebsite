@@ -10,8 +10,10 @@ export function Stats25() {
       <div className="container">
         <div className="mb-12 grid grid-cols-1 gap-y-5 md:mb-18 md:grid-cols-2 md:gap-x-12 lg:mb-20 lg:gap-x-20">
           <div>
-            <p className="mb-3 font-semibold md:mb-4 text-[#86868B]">Perfection</p>
-            <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold ">
+            {/* <p className="mb-3 font-semibold md:mb-4 text-[#86868B]">
+              Perfection
+            </p> */}
+            <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px]/8 font-bold ">
               Celebrating Over <br /> 20 Years of Success
             </h2>
           </div>
@@ -22,7 +24,6 @@ export function Stats25() {
               detail is meticulously executed. Join the ranks of our satisfied
               clients who trust us for their most important occasions.
             </p>
-         
           </div>
         </div>
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
@@ -44,7 +45,9 @@ export function Stats25() {
             <h3 className="text-md font-bold leading-[1.4] md:text-xl">
               Client Satisfaction Rate
             </h3>
-            <p className="mt-2 text-[#86868B]">We prioritize your vision and goals.</p>
+            <p className="mt-2 text-[#86868B]">
+              We prioritize your vision and goals.
+            </p>
           </div>
           <div className="border border-border-primary p-8">
             <p className="fade-in mb-8 text-6xl font-bold leading-[1.3] md:mb-10 md:text-[4rem] lg:mb-12 lg:text-[5rem] text-[#9BAB3C]">

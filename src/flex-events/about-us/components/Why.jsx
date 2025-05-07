@@ -10,7 +10,7 @@ export function Why() {
   useFadeIn();
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28 bg-[WHITE]">
+    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28 bg-[#F5F5F7]">
       <div className="container">
         <div className="flex flex-col items-center">
           <div className="rb-12 mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-20">

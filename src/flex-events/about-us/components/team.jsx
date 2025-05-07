@@ -2,7 +2,7 @@ import React from "react";
 
 const Team = () => {
   return (
-    <section className="pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px] bg-[#F5F5F7]">
+    <section className="pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px] bg-[#ffffff]">
       <div className="container mx-auto">
         <div className="mx-4 flex flex-wrap">
           <div className="w-full px-4">
