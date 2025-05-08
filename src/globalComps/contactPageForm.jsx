@@ -65,7 +65,7 @@ export function ContactPageForm() {
           {/* Page Title */}
           <div className="text-center mb-4 leading-2.5">
             <h1 className="text-4xl font-extrabold mb-2 text-[#213547] tracking-tight">Contact Us</h1>
-            <p className="text-lg text-[#9BAB3C] font-medium">We'd Love To Hear From You</p>
+            {/* <p className="text-lg text-[#9BAB3C] font-medium">We'd Love To Hear From You</p> */}
           </div>
 
           <div className="text-center mb-8 leading-2.5">
