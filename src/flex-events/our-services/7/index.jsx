@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import WeddingDecorBookingForm from "./components/WeddingDecorBookingForm";
 import HoverLink from "../../../globalComps/HoverLink";
+import { motion } from "framer-motion";
+
 
 function App() {
   // Using images from the public folder

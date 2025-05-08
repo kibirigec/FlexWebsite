@@ -11,6 +11,7 @@ import RentalSeven from "./7";
 import RentalEight from "./8";
 import RentalNine from "./9";
 import RentalTen from "./10";
+import RentalEleven from "./11";
 
 
 const rentalComponents = {
@@ -24,6 +25,7 @@ const rentalComponents = {
   "8": RentalEight,
   "9": RentalNine,
   "10": RentalTen,
+  "11": RentalEleven,
 
   // Continue adding up to "10"
 };

@@ -4,6 +4,8 @@ import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import BrandManufacturingForm from "./components/BrandManufacturingForm";
 import HoverLink from "../../../globalComps/HoverLink";
+import { motion } from "framer-motion";
+
 
 function App() {
   const heroImage = "/audio1.jpg";
@@ -103,8 +105,20 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="bg-[#9BAB3C] min-h-[2px] mx-auto w-full md:mb-20 hidden-sm mt-16" />
-      </section>
+        <div 
+          className="min-h-[2px] mx-auto md:mb-20 hidden-sm mt-16 relative"
+        >
+          <motion.div 
+            initial={{ backgroundPosition: "0% 50%" }}
+            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,#9BAB3C_50%,transparent_100%)] bg-[length:200%_100%]"
+          />
+        </div>      </section>
 
       <section className="bg-[#333] py-6 md:px-28 mx-auto ">
         <BrandManufacturingForm />

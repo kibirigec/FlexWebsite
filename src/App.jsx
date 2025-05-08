@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./flex-events/home/index";
 import About from "./flex-events/about-us/index";
@@ -26,6 +28,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Navbar />
+      <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

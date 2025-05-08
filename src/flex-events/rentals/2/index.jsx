@@ -29,10 +29,10 @@ function App() {
         ></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
           <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
-            Wedding & Corporate Decor
+            Line Array Sound System
           </h1>
           <p className="text-[17px]/6 mb-8 max-w-2xl">
-            Transform Your Vision into Stunning Reality
+            Professional Sound Solutions for Large Events
           </p>
           <Link to="/contact">
             <button className="px-4 py-2 text-white border border-white">
@@ -54,7 +54,7 @@ function App() {
             as concerts, festivals, crusades, carnivals, big corporate events,
             plus other outdoor gatherings. With unrivaled sound distribution,
             our Flex line array systems ensure that every guest hears every
-            word, beat, and note clearly, no matter where they’re seated.
+            word, beat, and note clearly, no matter where they're seated.
           </p>
         </div>
       </section>

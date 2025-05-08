@@ -4,6 +4,7 @@ import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import InvitationCardDesignForm from "./components/InvitationCardDesignForm";
 import HoverLink from "../../../globalComps/HoverLink";
+import { motion } from "framer-motion";
 
 function App() {
   // Using images from the public folder
@@ -51,17 +52,17 @@ function App() {
       <section className="py-12 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
           <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
-            Your special occasion deserves a special invite – and we’re here to
+            Your special occasion deserves a special invite – and we're here to
             make it happen.
           </h2>
           <p className="text-[17px]/6 text-[#86868b] ">
             Your invitation is the first impression guests will have of your
             event – let it reflect the elegance and excitement to come! At Flex
             Events, we specialize in creating personalized, high-quality
-            invitation cards for all types of events. Whether it’s for a
+            invitation cards for all types of events. Whether it's for a
             wedding, corporate event, or birthday celebration, we offer stylish
             designs, custom printing, and attention to detail that matches your
-            event’s theme. Choose from a wide variety of styles – from classic
+            event's theme. Choose from a wide variety of styles – from classic
             and elegant to modern and creative – and get an invitation that
             excites your guests before they even arrive.
           </p>
@@ -111,8 +112,20 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="bg-[#9BAB3C] min-h-[2px] mx-auto w-full md:mb-20 hidden-sm mt-16" />
-
+        <div 
+          className="min-h-[2px] mx-auto md:mb-20 hidden-sm mt-16 relative"
+        >
+          <motion.div 
+            initial={{ backgroundPosition: "0% 50%" }}
+            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,#9BAB3C_50%,transparent_100%)] bg-[length:200%_100%]"
+          />
+        </div>
       </section>
       <section className="bg-[#333] py-6 md:px-28 mx-auto ">
         <InvitationCardDesignForm />
