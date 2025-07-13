@@ -27,6 +27,7 @@ export default function NavBar() {
     "DJ Equipment",
     "Wedding & Corporate Decor Rentals",
     "Power / Generators",
+    "Backline Equipment",
   ];
 
   const serviceItems = [
@@ -272,7 +273,7 @@ export default function NavBar() {
                         transform: rentalsDropdownOpen
                           ? "translateY(0)"
                           : "translateY(-10px)",
-                        transitionDelay: `${index * 50}ms`,
+                        // transitionDelay: `${index * 50}ms`,
                       }}
                     >
                       {rental}

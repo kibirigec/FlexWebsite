@@ -139,9 +139,7 @@ export function Header5() {
             Creating Memorable
             <div className="h-20 overflow-hidden">
               <div
-                className={`${
-                  animating ? "text-animate-out" : "text-animate-in"
-                }`}
+                className={animating ? "text-animate-out" : "text-animate-in"}
               >
                 <span className="inline-block">{currentText}</span>
               </div>

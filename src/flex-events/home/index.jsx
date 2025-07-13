@@ -11,6 +11,7 @@ import { Cta14 } from "./components/Cta14";
 // import WeddingDecorBookingForm  from "./components/WeddingDecorBookingForm";
 // import { Footer3 } from "./components/Footer3";
 import { Footer3 } from "../../globalComps/Footer3";
+import { InteractiveBook } from "../../components/InteractiveBook";
 
 export default function Page() {
   return (
@@ -21,6 +22,7 @@ export default function Page() {
       <Stats25 />
       <Testimonial5 />
       <Gallery1 />
+      <InteractiveBook />
       <Cta1 />
       {/* <WeddingDecorBookingForm /> */}
       {/* <Cta14 /> */}
