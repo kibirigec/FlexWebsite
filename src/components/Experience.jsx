@@ -34,8 +34,18 @@ export const Experience = () => {
         enableDamping
         dampingFactor={0.05}
         enableZoom={false}
+        enablePan={false}
         minPolarAngle={Math.PI / 4}
         maxPolarAngle={Math.PI / 2}
+        touches={{
+          ONE: null, // Disable single touch for rotation (allow scroll)
+          TWO: 2 // Keep two-touch rotation for intentional interaction
+        }}
+        mouseButtons={{
+          LEFT: 0, // Keep left-click rotation on desktop
+          MIDDLE: null,
+          RIGHT: null
+        }}
       />
 
       {/* Studio environment lighting for realistic shadows and reflections */}

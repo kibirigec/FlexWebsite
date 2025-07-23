@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./Experience";
 import { UI } from "./UI";
@@ -7,6 +7,18 @@ import { Loader } from "@react-three/drei";
 
 export const InteractiveBook = () => {
   const [showCopied, setShowCopied] = useState(false);
+  const [isMdOrLg, setIsMdOrLg] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMdOrLg(window.innerWidth >= 768); // md breakpoint is 768px
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   const handleDownload = () => {
     // Create a link to the PDF file
@@ -77,17 +89,14 @@ export const InteractiveBook = () => {
           Container height controls the overall size of the book viewport
           Adjust h-[600px] to make the container taller or shorter
         */}
-        <div className="h-[600px] w-full relative">
+        <div className="h-[600px] w-full relative" style={{touchAction: 'pan-y'}}>
           <UI />
           <Canvas
             shadows
             camera={{
               // Camera position controls the view of the book
-              // x: left/right position (-0.5 is slightly left of center)
-              // y: up/down position (1 is slightly above center)
-              // z: distance from book (lower = closer, higher = further)
-              // Adjust these values to change the book's position and size
-              position: [-0.5, 1, 4.5], // Changed from 4 to 3 to make book appear larger
+              // Responsive positioning: much closer on md/lg screens for bigger book
+              position: isMdOrLg ? [-0.5, 1, 2.8] : [-0.5, 1, 5.5], // Smaller on mobile, much larger on desktop
               fov: 45, // Field of view - lower = more zoomed in, higher = more zoomed out
               near: 0.1, // Closest visible distance
               far: 1000 // Furthest visible distance
@@ -97,6 +106,7 @@ export const InteractiveBook = () => {
               alpha: true, // Allows transparency
               powerPreference: "high-performance" // Uses high-performance GPU mode
             }}
+            style={{touchAction: 'none'}} // Let container handle touch actions
           >
             <color attach="background" args={["#f3f4f6"]} />
             <fog attach="fog" args={["#f3f4f6", 5, 20]} />
