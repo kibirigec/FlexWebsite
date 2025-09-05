@@ -38,6 +38,7 @@ export default function NavBar() {
     "Systems Installations",
     "Flex Audio Brand ",
     "Full Event Management and Planning",
+    "Backline Equipment",
   ];
 
   // Check if the location is in the rentals or services sections
@@ -94,7 +95,7 @@ export default function NavBar() {
 
   return (
     <nav className="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600 backdrop-filter backdrop-blur-lg bg-black/65">
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto py-2 px-8 md:px-8 lg:px-8">
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4 px-8 md:px-8 lg:px-8">
         {/* Logo */}
         <div className="flex items-center ">
           <Link
@@ -102,7 +103,7 @@ export default function NavBar() {
             className="flex items-center space-x-1 rtl:space-x-reverse"
           >
             <img
-              src="/FooterLogo.svg"
+              src="/NewFlexLogo1.png"
               alt="Logo image"
               className="inline-block min-w-[80px] w-[90px] h-auto"
             />
@@ -110,8 +111,8 @@ export default function NavBar() {
         </div>
 
         {/* Navigation Menu (Desktop) - Centered */}
-        <div className="hidden lg:flex items-center justify-center flex-1 mx-auto">
-          <div className="flex items-center space-x-2 md:space-x-4 md:ml-26 border border-[#9BAB3C]">
+        <div className="hidden lg:flex items-center flex-1 mx-auto justify-center">
+          <div className="flex items-center space-x-2 md:space-x-4 border border-[#9BAB3C]">
             {/* Home Link */}
             <div>
               <Link

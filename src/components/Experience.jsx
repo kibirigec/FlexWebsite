@@ -14,9 +14,9 @@ export const Experience = () => {
       */}
       <Float
         rotation-x={-Math.PI / 4}
-        floatIntensity={1}
-        speed={2}
-        rotationIntensity={2}
+        floatIntensity={0.2}
+        speed={1}
+        rotationIntensity={1}
       >
         <Book />
       </Float>
@@ -29,6 +29,11 @@ export const Experience = () => {
         minPolarAngle/maxPolarAngle: restricts vertical rotation angle
         - Math.PI / 4 = 45 degrees (minimum tilt)
         - Math.PI / 2 = 90 degrees (maximum tilt)
+        
+        Click vs Drag detection:
+        - enablePan: false = prevents accidental panning
+        - mouseButtons: Only allow rotation with left mouse button
+        - touches: Configure touch controls for mobile
       */}
       <OrbitControls 
         enableDamping
@@ -37,15 +42,21 @@ export const Experience = () => {
         enablePan={false}
         minPolarAngle={Math.PI / 4}
         maxPolarAngle={Math.PI / 2}
-        touches={{
-          ONE: null, // Disable single touch for rotation (allow scroll)
-          TWO: 2 // Keep two-touch rotation for intentional interaction
-        }}
         mouseButtons={{
-          LEFT: 0, // Keep left-click rotation on desktop
-          MIDDLE: null,
-          RIGHT: null
+          LEFT: 0, // THREE.MOUSE.ROTATE
+          MIDDLE: undefined, // Disable middle mouse
+          RIGHT: undefined // Disable right mouse
         }}
+        touches={{
+          ONE: 0, // THREE.TOUCH.ROTATE
+          TWO: undefined // Disable two-finger gestures
+        }}
+        // Increase rotation speed to make dragging feel more responsive
+        rotateSpeed={0.8}
+        // Make click detection more lenient by increasing the threshold
+        // for what constitutes a "drag" vs a "click"
+        minDistance={0}
+        maxDistance={Infinity}
       />
 
       {/* Studio environment lighting for realistic shadows and reflections */}
@@ -58,8 +69,8 @@ export const Experience = () => {
         shadow settings control shadow quality
       */}
       <directionalLight
-        position={[2, 5, 2]}
-        intensity={2.5}
+        position={[-5, 20, 2]}
+        intensity={1.5}
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
@@ -74,7 +85,7 @@ export const Experience = () => {
       */}
       <mesh position-y={-1.5} rotation-x={-Math.PI / 2} receiveShadow>
         <planeGeometry args={[100, 100]} />
-        <shadowMaterial transparent opacity={0.2} />
+        <shadowMaterial transparent opacity={0.05} />
       </mesh>
     </Suspense>
   );

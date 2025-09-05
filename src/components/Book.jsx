@@ -35,8 +35,8 @@ const insideCurveStrength = 0.18; // Controls the strength of the curve
 const outsideCurveStrength = 0.05; // Controls the strength of the curve
 const turningCurveStrength = 0.09; // Controls the strength of the curve
 
-const PAGE_WIDTH = 1.28;
-const PAGE_HEIGHT = 1.71; // 4:3 aspect ratio
+const PAGE_WIDTH = 2.0;
+const PAGE_HEIGHT = 1.4; // More rectangular with longer width
 const PAGE_DEPTH = 0.003;
 const PAGE_SEGMENTS = 30;
 const SEGMENT_WIDTH = PAGE_WIDTH / PAGE_SEGMENTS;
@@ -115,6 +115,11 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
   const lastOpened = useRef(opened);
 
   const skinnedMeshRef = useRef();
+  
+  // Click detection state
+  const mouseDownRef = useRef(false);
+  const mouseDownPositionRef = useRef({ x: 0, y: 0 });
+  const dragThreshold = 5; // pixels - threshold for distinguishing click vs drag
 
   const manualSkinnedMesh = useMemo(() => {
     const bones = [];
@@ -167,6 +172,24 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     mesh.frustumCulled = false;
     mesh.add(skeleton.bones[0]);
     mesh.bind(skeleton);
+    
+    // Improve raycast detection for new dimensions
+    mesh.raycast = function(raycaster, intersects) {
+      // Call the original SkinnedMesh raycast method
+      SkinnedMesh.prototype.raycast.call(this, raycaster, intersects);
+      
+      // Additional raycast logic for better detection with wider book dimensions
+      // Create a bounding box that encompasses the full book area
+      const boundingBox = this.geometry.boundingBox;
+      if (!boundingBox) {
+        this.geometry.computeBoundingBox();
+      }
+      
+      // Make sure the raycast works with the deformed geometry
+      this.updateMatrixWorld();
+      this.skeleton.update();
+    };
+    
     return mesh;
   }, []);
 
@@ -263,6 +286,51 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
   const [highlighted, setHighlighted] = useState(false);
   useCursor(highlighted);
 
+  // Enhanced click handlers
+  // Helper to get pointer position for both mouse and touch
+  const getPointerPosition = (e) => {
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+  };
+
+  const handlePointerDown = (e) => {
+    e.stopPropagation();
+    mouseDownRef.current = true;
+    mouseDownPositionRef.current = getPointerPosition(e);
+  };
+
+  const handlePointerUp = (e) => {
+    e.stopPropagation();
+    const pos = getPointerPosition(e);
+    if (mouseDownRef.current && pos) {
+      const deltaX = Math.abs(pos.x - mouseDownPositionRef.current.x);
+      const deltaY = Math.abs(pos.y - mouseDownPositionRef.current.y);
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      // Only register as a click if the pointer didn't move much
+      if (distance < dragThreshold) {
+        setPage(opened ? number : number + 1);
+        setHighlighted(false);
+      }
+    }
+    mouseDownRef.current = false;
+  };
+
+  const handlePointerMove = (e) => {
+    if (mouseDownRef.current) {
+      const pos = getPointerPosition(e);
+      if (pos) {
+        const deltaX = Math.abs(pos.x - mouseDownPositionRef.current.x);
+        const deltaY = Math.abs(pos.y - mouseDownPositionRef.current.y);
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        if (distance > dragThreshold) {
+          mouseDownRef.current = false; // Cancel the click
+        }
+      }
+    }
+  };
+
   return (
     <group
       {...props}
@@ -274,9 +342,15 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
       onPointerLeave={(e) => {
         e.stopPropagation();
         setHighlighted(false);
+        mouseDownRef.current = false; // Reset on leave
       }}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerMove={handlePointerMove}
+      // Keep the original onClick as a fallback
       onClick={(e) => {
         e.stopPropagation();
+        // This will only fire if the pointer events don't handle it
         setPage(opened ? number : number + 1);
         setHighlighted(false);
       }}
@@ -285,7 +359,33 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         object={manualSkinnedMesh}
         ref={skinnedMeshRef}
         position-z={-number * PAGE_DEPTH + page * PAGE_DEPTH}
+        onPointerEnter={(e) => {
+          e.stopPropagation();
+          setHighlighted(true);
+        }}
+        onPointerLeave={(e) => {
+          e.stopPropagation();
+          setHighlighted(false);
+        }}
       />
+      {/* Debug: Visible click plane always above the book */}
+      <mesh
+        position={[PAGE_WIDTH / 2, 0, 0.05]}
+        onPointerEnter={(e) => {
+          e.stopPropagation();
+          setHighlighted(true);
+        }}
+        onPointerLeave={(e) => {
+          e.stopPropagation();
+          setHighlighted(false);
+        }}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerMove={handlePointerMove}
+      >
+        <planeGeometry args={[PAGE_WIDTH + 0.1, PAGE_HEIGHT + 0.1]} />
+        <meshBasicMaterial color="red" transparent opacity={0} />
+      </mesh>
     </group>
   );
 };

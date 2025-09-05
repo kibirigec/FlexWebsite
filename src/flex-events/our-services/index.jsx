@@ -8,19 +8,18 @@ import ServiceFour from "./4";
 import ServiceFive from "./5";
 import ServiceSix from "./6"
 import ServiceSeven from "./7"
+import ServiceEight from "./8"
 
 
 const ServiceComponents = {
-  "7": ServiceOne,
+  "1": ServiceOne,
   "2": ServiceTwo,
   "3": ServiceThree,
   "4": ServiceFour,
   "5": ServiceFive,
   "6": ServiceSix,
-  "1": ServiceSeven
-
-
-  // Continue adding up to "10"
+  "7": ServiceSeven,
+  "8": ServiceEight
 };
 
 const ServicePage = () => {

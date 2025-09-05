@@ -105,7 +105,7 @@ Our P.A Solutions             </h2>
       </section>
 
       {/* Booking Form */}
-      <section className="bg-[#333] py-6 md:px-28 mx-auto ">
+      <section className="bg-white py-6 md:px-28 mx-auto ">
         <PASystemAndDiscoForm />
       </section>
 

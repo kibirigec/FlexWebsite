@@ -9,7 +9,7 @@ import {
 } from "@relume_io/relume-ui";
 import React from "react";
 import { Link } from "react-router-dom"
-
+import { Footer3 as Footer } from "../../../globalComps/Footer3";
 export function Faq1() {
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
@@ -93,6 +93,7 @@ export function Faq1() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

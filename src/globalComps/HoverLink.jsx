@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 
 const HoverLink = () => {
   const services = [
+    { name: "Full Event Planning & Management", imageUrl: "/path/to/image1.jpg" },
     { name: "Invitation Cards", imageUrl: "/7984652.jpg" },
     { name: "Pro-Audio & Visual/Lighting", imageUrl: "/night-lights.jpeg" },
     { name: "Home Audio", imageUrl: "/home1.jpg" },
-    { name: "Systems Installations", imageUrl: "/lineraynight.jpeg" },
-    { name: "Flex Audio Brand", imageUrl: "/audio1.jpg" },
-    { name: "Full Event Management and Planning", imageUrl: "/path/to/image6.jpg" }
+    { name: "Professional AV Systems Installations", imageUrl: "/lineraynight.jpeg" },
+    { name: "Custom Audio Manufacturing (Flex Audio Brand)", imageUrl: "/audio1.jpg" },
+    { name: "Wedding & Corporate Decor", imageUrl: "/path/to/decor-image.jpg" }
   ];
 
   const scrollRef = React.useRef(null);

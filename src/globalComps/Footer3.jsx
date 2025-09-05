@@ -21,7 +21,7 @@ export function Footer3() {
             <div className="mb-6 md:mb-8 lg:mt-[-38px]">
               <a href="#">
                 <img
-                  src="/FooterLogo.svg"
+                  src="/NewFlexLogo1.png"
                   alt="Logo image"
                   className="inline-block min-w-[80px] w-[100px] h-auto"
                 />
@@ -42,7 +42,7 @@ export function Footer3() {
                 +256 772 406 122
               </a>
               <a
-                href="mailto:info@flexevents.ug"
+                href="mailto:info@flexeventsug.com"
                 className="block text-sm underline decoration-black underline-offset-1"
               >
                 info@flexevents.ug

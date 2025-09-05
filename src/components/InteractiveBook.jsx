@@ -4,10 +4,13 @@ import { Experience } from "./Experience";
 import { UI } from "./UI";
 import { Suspense } from "react";
 import { Loader } from "@react-three/drei";
+import { pageAtom, pages } from "./UI";
+import { useAtom } from "jotai";
+import { Link } from "react-router-dom";
 
 export const InteractiveBook = () => {
-  const [showCopied, setShowCopied] = useState(false);
   const [isMdOrLg, setIsMdOrLg] = useState(false);
+  const [page, setPage] = useAtom(pageAtom);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -20,38 +23,6 @@ export const InteractiveBook = () => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const handleDownload = () => {
-    // Create a link to the PDF file
-    const link = document.createElement('a');
-    link.href = '/portfolio-book.pdf'; // You'll need to add this PDF to your public folder
-    link.download = 'FLEX-Portfolio-Book.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const handleShare = async () => {
-    const url = window.location.href;
-    
-    try {
-      // Check if the Web Share API is available (mobile devices)
-      if (navigator.share) {
-        await navigator.share({
-          title: 'FLEX Interactive Portfolio Book',
-          text: 'Check out this interactive 3D portfolio book!',
-          url: url,
-        });
-      } else {
-        // Fallback for desktop: copy to clipboard
-        await navigator.clipboard.writeText(url);
-        setShowCopied(true);
-        setTimeout(() => setShowCopied(false), 2000);
-      }
-    } catch (error) {
-      console.error('Error sharing:', error);
-    }
-  };
-
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -63,25 +34,16 @@ export const InteractiveBook = () => {
             Explore our work in an immersive 3D flip book experience. Click and drag to interact, 
             or use the controls to navigate through our portfolio.
           </p>
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={handleDownload}
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+          <div className="flex justify-center">
+            <Link
+              to="/portfolio"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#9BAB3C] hover:bg-[#869433] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9BAB3C] transition-colors duration-200"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
-              Download PDF Version
-            </button>
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-              </svg>
-              {showCopied ? 'Copied!' : 'Share Book'}
-            </button>
+              View Full Portfolio
+            </Link>
           </div>
         </div>
         
@@ -95,8 +57,11 @@ export const InteractiveBook = () => {
             shadows
             camera={{
               // Camera position controls the view of the book
-              // Responsive positioning: much closer on md/lg screens for bigger book
-              position: isMdOrLg ? [-0.5, 1, 2.8] : [-0.5, 1, 5.5], // Smaller on mobile, much larger on desktop
+              // x: left/right position (-0.5 is slightly left of center)
+              // y: up/down position (1 is slightly above center)
+              // z: distance from book (lower = closer, higher = further)
+              // Responsive positioning: closer on md/lg screens for bigger book, further on mobile
+              position: isMdOrLg ? [-0.7, 1, 2.5] : [-0.7, 1, 6], // Wider book, closer on desktop, further on mobile
               fov: 45, // Field of view - lower = more zoomed in, higher = more zoomed out
               near: 0.1, // Closest visible distance
               far: 1000 // Furthest visible distance
@@ -115,6 +80,21 @@ export const InteractiveBook = () => {
             </Suspense>
           </Canvas>
           <Loader />
+        </div>
+        {/* TEMPORARY: Next/Back buttons for page navigation */}
+        <div className="flex justify-center mt-4 gap-4">
+          <button
+            onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Back
+          </button>
+          <button
+            onClick={() => setPage((prev) => Math.min(prev + 1, pages.length))}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Next
+          </button>
         </div>
       </div>
     </section>
