@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   BiLogoFacebookCircle,
   BiLogoInstagram,
@@ -72,25 +73,25 @@ export function Footer3() {
                 Services:
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/1"><span className="text-[17px] mr-2">•</span>Weddings</a>
+                <Link to="/services/1"><span className="text-[17px] mr-2">•</span>Weddings</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/2"><span className="text-[17px] mr-2">•</span>Invitation Cards</a>
+                <Link to="/services/2"><span className="text-[17px] mr-2">•</span>Invitation Cards</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/3"><span className="text-[17px] mr-2">•</span>Audio Systems</a>
+                <Link to="/services/3"><span className="text-[17px] mr-2">•</span>Audio Systems</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/4"><span className="text-[17px] mr-2">•</span>Home Audio</a>
+                <Link to="/services/4"><span className="text-[17px] mr-2">•</span>Home Audio</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/5"><span className="text-[17px] mr-2">•</span>AV Installations</a>
+                <Link to="/services/5"><span className="text-[17px] mr-2">•</span>AV Installations</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/6"><span className="text-[17px] mr-2">•</span>Custom Manufacturing</a>
+                <Link to="/services/6"><span className="text-[17px] mr-2">•</span>Custom Manufacturing</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/services/7"><span className="text-[17px] mr-2">•</span>Event Management</a>
+                <Link to="/services/7"><span className="text-[17px] mr-2">•</span>Event Management</Link>
               </li>
             </ul>
             <ul>
@@ -98,34 +99,34 @@ export function Footer3() {
                 Rentals:
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/1"> <span className="text-[17px] mr-2">•</span>P.A System</a>
+                <Link to="/rentals/1"> <span className="text-[17px] mr-2">•</span>P.A System</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/2"><span className="text-[17px] mr-2">•</span>Line Array Sound System</a>
+                <Link to="/rentals/2"><span className="text-[17px] mr-2">•</span>Line Array Sound System</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/3"><span className="text-[17px] mr-2">•</span>Pro Lights & Effects</a>
+                <Link to="/rentals/3"><span className="text-[17px] mr-2">•</span>Pro Lights & Effects</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/4"><span className="text-[17px] mr-2">•</span>Aluminium Stages</a>
+                <Link to="/rentals/4"><span className="text-[17px] mr-2">•</span>Aluminium Stages</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/5"><span className="text-[17px] mr-2">•</span>LED Screens</a>
+                <Link to="/rentals/5"><span className="text-[17px] mr-2">•</span>LED Screens</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/6"><span className="text-[17px] mr-2">•</span>Karaoke Machines</a>
+                <Link to="/rentals/6"><span className="text-[17px] mr-2">•</span>Karaoke Machines</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/7"><span className="text-[17px] mr-2">•</span>Projectors & Screens</a>
+                <Link to="/rentals/7"><span className="text-[17px] mr-2">•</span>Projectors & Screens</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/8"><span className="text-[17px] mr-2">•</span>DJ Equipment</a>
+                <Link to="/rentals/8"><span className="text-[17px] mr-2">•</span>DJ Equipment</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C] ">
-                <a href="/rentals/9"><span className="text-[17px] mr-2">•</span>Wedding Decor</a>
+                <Link to="/rentals/9"><span className="text-[17px] mr-2">•</span>Wedding Decor</Link>
               </li>
               <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <a href="/rentals/10"><span className="text-[17px] mr-2">•</span>Power/Generators</a>
+                <Link to="/rentals/10"><span className="text-[17px] mr-2">•</span>Power/Generators</Link>
               </li>
             </ul>
           </div>
