@@ -124,6 +124,7 @@ export function Header5() {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
+              loading={index === 0 ? "eager" : "lazy"}
               className="h-full w-full object-cover"
             />
             {/* Dark overlay for better contrast */}

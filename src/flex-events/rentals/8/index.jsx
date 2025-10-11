@@ -6,8 +6,8 @@ import DJEquipmentForm from "./components/DJEquipmentForm";
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/Screenshot 2025-03-17 at 16.42.01.png";
-  const eventImage = "/Screenshot 2025-03-17 at 16.42.01.png";
+  const heroImage = "/Screenshot 2025-03-17 at 16.42.01.jpg";
+  const eventImage = "/Screenshot 2025-03-17 at 16.42.01.jpg";
 
   return (
     <div className="min-h-screen bg-white">

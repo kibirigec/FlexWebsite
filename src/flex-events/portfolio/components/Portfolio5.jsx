@@ -47,16 +47,16 @@ export function Portfolio5() {
         </div>
 
         {/* Navbar Section */}
-        <div className="static lg:sticky lg:top-26 bg-[#EBEBEB]  md:w-[70vw] lg:w-[50vw] mx-auto rounded-4xl lg:rounded-4xl overflow-x-auto">
-          <nav className="flex flex-nowrap justify-center gap-x-2 px-2 py-2 md:gap-x-2 lg:py-4">
+        <div className="static lg:sticky lg:top-26 bg-[#EBEBEB] w-full md:w-[70vw] lg:w-[50vw] mx-auto rounded-2xl lg:rounded-4xl overflow-hidden">
+          <nav className="flex flex-nowrap justify-start md:justify-center gap-x-1 md:gap-x-2 px-2 py-2 md:py-3 lg:py-4 overflow-x-auto scrollbar-hide">
             {["Weddings", "Corporate Events", "Carnivals", "Concerts", "Product Launches"].map((item) => (
               <button
                 key={item}
                 onClick={() => setActiveSection(item.toLowerCase().replace(" ", ""))}
-                className={`font-semibold transition-all duration-300 rounded-3xl px-2 py-1 text-xs md:text-sm lg:text-base lg:px-4 lg:py-1 ${
+                className={`font-semibold transition-all duration-300 rounded-2xl md:rounded-3xl px-3 py-2 text-xs md:text-sm lg:text-base lg:px-4 lg:py-1 whitespace-nowrap flex-shrink-0 ${
                   activeSection === item.toLowerCase().replace(" ", "")
                     ? "text-white !bg-black"
-                    : "text-gray-700 hover:text-[#9BAB3C] "
+                    : "text-gray-700 hover:text-[#9BAB3C]"
                 }`}
               >
                 {item}

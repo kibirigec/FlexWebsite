@@ -6,8 +6,8 @@ import WeddingCorporateDecorForm from "./components/WeddingCorporateDecorForm";
 
 function App() {
   // Using images from the public folder
-  const heroImage = "/weddd.png";
-  const eventImage = "/weddd.png";
+  const heroImage = "/weddd.jpg";
+  const eventImage = "/weddd.jpg";
 
   return (
     <div className="min-h-screen bg-white">
