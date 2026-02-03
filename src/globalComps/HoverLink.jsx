@@ -5,7 +5,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 
 const ServicesSlider = () => {
   const services = [
-    { name: "Full Event Planning", desc: "Comprehensive management for flawless events.", imageUrl: "/images/event-planning-hero.jpg", link: "/services/7" },
+    { name: "Full Event Planning", desc: "Comprehensive management for flawless events.", imageUrl: "/weddingplan.jpeg", link: "/services/7" },
     { name: "Invitation Cards", desc: "Custom designs to set the perfect tone.", imageUrl: "/7984652.jpg", link: "/services/2" },
     { name: "Pro-Audio & Visual", desc: "Immersive sound and lighting experiences.", imageUrl: "/night-lights.jpeg", link: "/services/3" },
     { name: "Home Audio", desc: "Premium audio for your personal space.", imageUrl: "/home1.jpg", link: "/services/4" },

@@ -78,7 +78,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <div className="bg-black">
-        <section className="relative h-[100dvh] flex flex-col justify-end bg-gray-900 text-white">
+        <section className="relative h-screen md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
           <div className="absolute inset-0 z-0">
             <img
               src={heroImage}
@@ -88,22 +88,31 @@ function App() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           </div>
 
+          {/* Green Gradient Overlay */}
+          <div
+            className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full hidden md:block 
+                     md:h-[218px] lg:h-[300px] 
+                    bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
+                    my-auto
+                    "
+          ></div>
+
           {/* Content */}
           <motion.div 
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full"
+            className="relative z-10 max-w-7xl mx-auto px-6 pb-24 md:py-48 w-full"
           >
             <motion.h1 
               variants={fadeInUp}
-              className="text-4xl/10 md:text-6xl/10 font-bold mb-4 leading-tight !text-white"
+              className="text-3xl/7 md:text-6xl/10 font-bold mb-2 leading-tight !text-white"
             >
               Full Event Planning & Management
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl font-light"
+              className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl font-light"
             >
               From concept to completion – Your vision, our expertise.
             </motion.p>

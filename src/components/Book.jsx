@@ -16,7 +16,7 @@ import {
   Uint16BufferAttribute,
   Vector3,
 } from "three";
-import { degToRad } from "three/src/math/MathUtils.js";
+
 import { pageAtom, pages } from "./UI";
 
 // Sound effects
@@ -235,7 +235,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
 
     let targetRotation = opened ? -Math.PI / 2 : Math.PI / 2;
     if (!bookClosed) {
-      targetRotation += degToRad(number * 0.8);
+      targetRotation += MathUtils.degToRad(number * 0.8);
     }
 
     const bones = skinnedMeshRef.current.skeleton.bones;
@@ -250,7 +250,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         insideCurveStrength * insideCurveIntensity * targetRotation -
         outsideCurveStrength * outsideCurveIntensity * targetRotation +
         turningCurveStrength * turningIntensity * targetRotation;
-      let foldRotationAngle = degToRad(Math.sign(targetRotation) * 2);
+      let foldRotationAngle = MathUtils.degToRad(Math.sign(targetRotation) * 2);
       if (bookClosed) {
         if (i === 0) {
           rotationAngle = targetRotation;

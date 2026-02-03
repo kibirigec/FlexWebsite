@@ -11,7 +11,7 @@ const stats = [
 
 export function HomeStats() {
   return (
-    <section className="py-20 bg-surface-subtle border-y border-black/5">
+    <section className="py-20 bg-[#86868b]/5 border-y border-black/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 divide-y md:divide-y-0 md:divide-x divide-black/5">
           {stats.map((stat, index) => (

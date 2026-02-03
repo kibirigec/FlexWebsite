@@ -17,14 +17,14 @@ export function HomeAbout() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">Who We Are</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance text-content-prominent leading-tight">
+            <h2 className="!text-4xl/10 md:text-5xl/10 lg:text-6xl/10 font-bold tracking-tight mb-6 text-balance text-content-prominent leading-tight">
               Your Vision, Our Creation
             </h2>
-            <p className="text-lg text-content-subtle leading-relaxed mb-6">
+            <p className="!text-[17px]/6 text-content-subtle leading-relaxed mb-6">
               At Flex Events Management, we assume the responsibility of ensuring your event is a masterpiece. 
               From corporate conferences to stunning weddings, we specialize in transforming ideas into unforgettable realities.
             </p>
-            <p className="text-lg text-content-subtle leading-relaxed mb-8">
+            <p className="text-[17px]/6 text-content-subtle leading-relaxed mb-8">
               With over 20 years of experience, we bring specific expertise to every occasion, ensuring that your event is uniquely 
               tailored to your vision and needs.
             </p>

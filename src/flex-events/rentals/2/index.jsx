@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with CTA */}
-      <section className="relative h-[100dvh] md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
+      <section className="relative h-screen md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -29,10 +29,10 @@ function App() {
                   "
         ></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24 md:py-48 w-full">
-          <h1 className="text-3xl leading-tight md:text-[32px] lg:text-[40px] font-bold mb-2 text-white">
+          <h1 className="text-3xl/7 leading-tight md:text-[32px] lg:text-[40px] font-bold mb-2 text-white">
             Line Array Sound System
           </h1>
-          <p className="text-[17px]/6 mb-8 max-w-2xl text-white">
+          <p className="text-[17px]/6 mb-4 md:mb-8 max-w-2xl text-white">
             Professional Sound Solutions for Large Events
           </p>
           <Link to="/contact">

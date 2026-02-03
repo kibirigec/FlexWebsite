@@ -40,41 +40,5 @@ export const UI = () => {
     audio.play();
   };
 
-  return (
-    <main className="pointer-events-none select-none z-10 fixed inset-0 flex justify-between flex-col">
-      <div className="w-full overflow-auto pointer-events-auto flex justify-center">
-        <div className="overflow-auto flex items-center gap-4 max-w-full p-10">
-          {[...pages].map((_, index) => (
-            <button
-              key={index}
-              className={`border-transparent hover:border-[#9BAB3C] transition-all duration-300 px-4 py-3 rounded-full text-lg uppercase shrink-0 border ${
-                index === page
-                  ? "bg-[#9BAB3C] text-white"
-                  : "bg-black/30 text-white"
-              }`}
-              onClick={() => {
-                setPage(index);
-                playFlipSound();
-              }}
-            >
-              {index === 0 ? "Cover" : `Page ${index}`}
-            </button>
-          ))}
-          <button
-            className={`border-transparent hover:border-[#9BAB3C] transition-all duration-300 px-4 py-3 rounded-full text-lg uppercase shrink-0 border ${
-              page === pages.length
-                ? "bg-[#9BAB3C] text-white"
-                : "bg-black/30 text-white"
-            }`}
-            onClick={() => {
-              setPage(pages.length);
-              playFlipSound();
-            }}
-          >
-            Back Cover
-          </button>
-        </div>
-      </div>
-    </main>
-  );
+  return null;
 }; 

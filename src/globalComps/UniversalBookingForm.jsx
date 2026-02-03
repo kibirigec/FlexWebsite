@@ -78,10 +78,10 @@ export function UniversalBookingForm({
               <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-8 shadow-md">
                  <img src="/NewFlexLogo1.png" alt="Logo" className="w-6 brightness-0 invert" />
               </div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">
+              <h2 className="text-3xl/7 font-bold tracking-tight text-gray-900 mb-4">
                  Let's Plan Your <br/><span className="text-[#9BAB3C]">Perfect Event</span>
               </h2>
-              <p className="text-gray-500 leading-relaxed mb-8">
+              <p className="text-[#86868b] leading-tight mb-8">
                  Fill in the details and our team will get back to you with a tailored plan.
               </p>
            </div>

@@ -18,6 +18,7 @@ import Pricing from "./flex-events/pricing/index";
 import Navbar from "./globalComps/Navbar";
 import EventsBooking from "./globalComps/BookingPage";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
+import SmoothScroll from "./utils/SmoothScroll.jsx";
 import RentalPage from "./flex-events/rentals/index"; // Import the dynamic rental loader
 import ServicePage from "./flex-events/our-services/index";
 
@@ -27,6 +28,7 @@ import ServicePage from "./flex-events/our-services/index";
 function App() {
   return (
     <BrowserRouter>
+      <SmoothScroll />
       <ScrollToTop />
       <Navbar />
       <ToastContainer position="top-right" autoClose={3000} />

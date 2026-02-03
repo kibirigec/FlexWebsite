@@ -1,8 +1,27 @@
 import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { Book } from "./Book";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useThree } from "@react-three/fiber";
 
 export const Experience = () => {
+  const { gl } = useThree();
+
+  useEffect(() => {
+    // Force touch-action to pan-y to allow vertical scrolling on mobile
+    // OrbitControls sets this to 'none' by default, so we need to override it
+    gl.domElement.style.touchAction = 'pan-y';
+    
+    // Also enforce it in case it gets reset
+    const preventDefault = (e) => {
+      // Only prevent default if it's a horizontal interaction
+      // This is hard to detect perfectly here, but touch-action: pan-y should handle most
+    };
+
+    return () => {
+      gl.domElement.style.touchAction = '';
+    };
+  }, [gl]);
+
   return (
     <Suspense fallback={null}>
       {/* 
@@ -59,8 +78,7 @@ export const Experience = () => {
         maxDistance={Infinity}
       />
 
-      {/* Studio environment lighting for realistic shadows and reflections */}
-      <Environment preset="studio" />
+      <ambientLight intensity={1} />
 
       {/* 
         Main directional light for shadows

@@ -63,9 +63,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[100dvh] md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
+      <section className="relative h-screen md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -84,10 +84,10 @@ function App() {
 
         {/* Green Gradient - Covers Entire Section */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24 md:py-48 w-full">
-          <h1 className="text-3xl leading-tight text-white md:text-[32px] lg:text-[40px] font-bold mb-2">
-            Wedding & Corporate Decor
+          <h1 className="text-3xl/7 md:text-[32px] lg:text-[40px] leading-tight text-white md:text-[32px] lg:text-[40px] font-bold mb-2">
+            Wedding <br className="block md:hidden" /> & Corporate Decor
           </h1>
-          <p className="text-[17px]/6 text-white mb-8 max-w-2xl">
+          <p className="text-[17px]/6 text-white mb-4 md:mb-8 max-w-2xl">
             Transform Your Vision into Stunning Reality
           </p>
           <Link to="/contact">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -31,18 +31,54 @@ const serviceItems = [
 ];
 
 export default function NavBar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'rentals' | 'services' | null
+  const [isVisible, setIsVisible] = useState(true);
+  
+  // Refs for smart scroll logic
+  const lastScrollY = useRef(0);
+  const lastDir = useRef("up"); // 'up' | 'down'
+  const pivotY = useRef(0);
+  
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY.current;
+      const currentDir = delta > 0 ? "down" : "up";
+
+      // If direction changes, reset the pivot point
+      if (currentDir !== lastDir.current) {
+        lastDir.current = currentDir;
+        pivotY.current = currentScrollY;
+      }
+
+      // Always show if near the top
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+      } else {
+         // Calculate distance from pivot (how far have we scrolled in this direction?)
+         const diff = Math.abs(currentScrollY - pivotY.current);
+         
+         // Only toggle state if we've committed to this direction (>20px)
+         if (diff > 20) { 
+            if (currentDir === "down" && !mobileMenuOpen) {
+               setIsVisible(false);
+            } else if (currentDir === "up") {
+               setIsVisible(true);
+            }
+         }
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mobileMenuOpen]);
+
+  // ... (closeMenu, isRentalsPage logic unchanged) ...
 
   const closeMenu = () => {
     setMobileMenuOpen(false);
@@ -51,75 +87,92 @@ export default function NavBar() {
 
   const isRentalsPage = location.pathname.startsWith("/rentals");
   const isServicesPage = location.pathname.startsWith("/services");
-  
-  // Pages that should have black navbar text by default
-  const isDarkTextPage = ["/faq", "/pricing", "/portfolio", "/contact"].some(path => location.pathname.startsWith(path));
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || mobileMenuOpen ? "bg-white/90 backdrop-blur-xl border-b border-white/20 shadow-sm" : "bg-transparent"
-        }`}
+        initial={{ opacity: 0 }}
+        animate={{ 
+            opacity: isVisible ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        style={{
+            backgroundColor: "color-mix(in srgb, rgb(30, 25, 22) 56%, transparent)",
+            backdropFilter: "blur(12px)",
+            pointerEvents: isVisible ? "auto" : "none"
+        }}
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-auto md:max-w-7xl rounded-full z-[1000] transition-colors duration-300 border border-white/10 shadow-lg`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="relative z-50 flex items-center gap-2 group" onClick={closeMenu}>
+        <div className="px-6 h-16 md:h-18 flex items-center justify-between lg:justify-center">
+          
+          {/* Mobile Logo (Left) */}
+          <Link to="/" className="lg:hidden relative z-50 flex items-center gap-2 group" onClick={closeMenu}>
              <img
               src="/NewFlexLogo1.png"
               alt="Flex Events"
-              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-8 w-auto transition-transform duration-300 group-hover:scale-105 mb-2 "
             />
           </Link>
 
-            {/* Desktop Navigation */}
+          {/* Desktop Navigation - Centered Layout */}
           <div className="hidden lg:flex items-center gap-8">
-             <NavLink to="/" isActive={location.pathname === "/"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>Home</NavLink>
-             
-             <Dropdown 
-                title="Services" 
-                items={serviceItems} 
-                basePath="/services" 
-                isActive={isServicesPage}
-                isOpen={activeDropdown === 'services'}
-                onHover={(state) => setActiveDropdown(state ? 'services' : null)}
-                isScrolled={isScrolled}
-                isDarkText={isDarkTextPage}
-                currentPath={location.pathname}
-             />
+             {/* Left Links */}
+             <div className="flex items-center gap-6">
+                <NavLink to="/" isActive={location.pathname === "/"}>Home</NavLink>
+                
+                <Dropdown 
+                    title="Services" 
+                    items={serviceItems} 
+                    basePath="/services" 
+                    isActive={isServicesPage}
+                    isOpen={activeDropdown === 'services'}
+                    onHover={(state) => setActiveDropdown(state ? 'services' : null)}
+                    currentPath={location.pathname}
+                />
 
-             <Dropdown 
-                title="Flex Rentals" 
-                items={rentalItems} 
-                basePath="/rentals"
-                isActive={isRentalsPage} 
-                isOpen={activeDropdown === 'rentals'}
-                onHover={(state) => setActiveDropdown(state ? 'rentals' : null)}
-                isScrolled={isScrolled}
-                isDarkText={isDarkTextPage}
-                currentPath={location.pathname}
-             />
+                <Dropdown 
+                    title="Flex Rentals" 
+                    items={rentalItems} 
+                    basePath="/rentals"
+                    isActive={isRentalsPage} 
+                    isOpen={activeDropdown === 'rentals'}
+                    onHover={(state) => setActiveDropdown(state ? 'rentals' : null)}
+                    currentPath={location.pathname}
+                />
+             </div>
 
-             <NavLink to="/portfolio" isActive={location.pathname === "/portfolio"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>Portfolio</NavLink>
-             <NavLink to="/pricing" isActive={location.pathname === "/pricing"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>Pricing</NavLink>
-             <NavLink to="/faq" isActive={location.pathname === "/faq"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>FAQ</NavLink>
+             {/* Center Logo */}
+             <Link to="/" className="relative z-50 flex items-center px-4 mb-4" onClick={closeMenu}>
+                <img
+                 src="/NewFlexLogo1.png"
+                 alt="Flex Events"
+                 className="h-12 w-auto transition-transform duration-300 hover:scale-105"
+               />
+             </Link>
+
+             {/* Right Links */}
+             <div className="flex items-center gap-6">
+                <NavLink to="/portfolio" isActive={location.pathname === "/portfolio"}>Portfolio</NavLink>
+                <NavLink to="/pricing" isActive={location.pathname === "/pricing"}>Pricing</NavLink>
+                <NavLink to="/faq" isActive={location.pathname === "/faq"}>FAQ</NavLink>
+                <NavLink to="/contact" isActive={location.pathname === "/contact"}>Contact</NavLink>
+             </div>
           </div>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Link to="/contact">
-                <button className="px-5 py-2.5 rounded-full text-sm font-medium bg-primary text-white hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-95">
-                    Contact Us
-                </button>
-            </Link>
-          </div>
+          {/* Desktop Actions (Removed in favor of inline Contact link) */}
+          <div className="hidden lg:none"></div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button (Right) */}
           <button 
-            className={`lg:hidden relative z-50 p-2 -mr-2 ${isScrolled || mobileMenuOpen || isDarkTextPage ? 'text-black' : 'text-white'}`}
+            className={`lg:hidden relative z-50 p-2 -mr-2 text-white`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <XMarkIcon className="w-8 h-8" /> : <Bars3Icon className="w-8 h-8" />}
@@ -130,14 +183,24 @@ export default function NavBar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
+
             <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-white pt-24 px-6 pb-6 lg:hidden overflow-y-auto"
+                initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
+                exit={{ opacity: 0, backdropFilter: "blur(0px)", transition: { delay: 0.4 } }} // Wait for items to stagger out
+                transition={{ duration: 0.3 }}
+                style={{
+                    backgroundColor: "color-mix(in srgb, rgb(30, 25, 22) 98%, transparent)",
+                }}
+                className="fixed inset-0 z-40 pt-32 px-6 pb-6 lg:hidden overflow-y-auto"
             >
-                <div className="flex flex-col space-y-6">
+                <motion.div 
+                  className="flex flex-col space-y-6"
+                  variants={menuVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
                     <MobileLink to="/" onClick={closeMenu} isActive={location.pathname === "/"}>Home</MobileLink>
                     
                     <MobileDropdown 
@@ -162,7 +225,7 @@ export default function NavBar() {
                     <MobileLink to="/pricing" onClick={closeMenu} isActive={location.pathname === "/pricing"}>Pricing</MobileLink>
                     <MobileLink to="/faq" onClick={closeMenu} isActive={location.pathname === "/faq"}>FAQ</MobileLink>
                     <MobileLink to="/contact" onClick={closeMenu} isActive={location.pathname === "/contact"}>Contact</MobileLink>
-                </div>
+                </motion.div>
             </motion.div>
         )}
       </AnimatePresence>
@@ -170,9 +233,9 @@ export default function NavBar() {
   );
 }
 
-const NavLink = ({ to, children, isActive, isScrolled, isMobile, isDarkText }) => {
-  const baseColor = isScrolled || isMobile || isDarkText ? 'text-[#1d1d1f]' : 'text-white';
-  const hoverColor = isScrolled || isMobile || isDarkText ? 'hover:text-primary' : 'hover:text-white/80';
+const NavLink = ({ to, children, isActive }) => {
+  const baseColor = 'text-white/90';
+  const hoverColor = 'hover:text-white';
   const activeColor = 'text-primary';
 
   return (
@@ -185,9 +248,9 @@ const NavLink = ({ to, children, isActive, isScrolled, isMobile, isDarkText }) =
   );
 };
 
-const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, isScrolled, currentPath, isDarkText }) => {
-    const baseColor = isScrolled || isDarkText ? 'text-[#1d1d1f]' : 'text-white';
-    const hoverColor = isScrolled || isDarkText ? 'hover:text-primary' : 'hover:text-white/80';
+const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, currentPath }) => {
+    const baseColor = 'text-white/90';
+    const hoverColor = 'hover:text-white';
     
     return (
     <div 
@@ -209,19 +272,19 @@ const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, isScrolle
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl py-2 overflow-hidden"
+                    className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-[#1e1916]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl py-2 overflow-hidden"
                 >
                     {items.map((item, idx) => {
                         const itemPath = `${basePath}/${idx + 1}`;
                         const isItemActive = currentPath === itemPath;
                         return (
-                            <Link 
+                             <Link 
                                 key={idx} 
                                 to={itemPath}
                                 className={`block px-4 py-2.5 text-sm transition-colors ${
                                     isItemActive 
-                                    ? 'text-primary bg-surface-subtle font-medium' 
-                                    : 'text-content-subtle hover:text-primary hover:bg-surface-subtle'
+                                    ? 'text-primary bg-white/5 font-medium' 
+                                    : 'text-white/70 hover:text-white hover:bg-white/5'
                                 }`}
                             >
                                 {item}
@@ -234,24 +297,57 @@ const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, isScrolle
     </div>
 )};
 
+const menuVariants = {
+  hidden: { 
+    opacity: 0,
+    transition: { 
+      when: "afterChildren",
+      staggerChildren: 0.05, 
+      staggerDirection: -1 
+    }
+  },
+  visible: { 
+    opacity: 1,
+    transition: { 
+      when: "beforeChildren",
+      staggerChildren: 0.07, 
+      delayChildren: 0.1 
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: { 
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 const MobileLink = ({ to, children, onClick, isActive }) => (
-    <Link 
-        to={to} 
-        onClick={onClick} 
-        className={`text-2xl font-display font-semibold ${isActive ? 'text-primary' : 'text-content-prominent'}`}
-    >
-        {children}
-    </Link>
+    <motion.div variants={itemVariants}>
+        <Link 
+            to={to} 
+            onClick={onClick} 
+            className={`text-2xl font-display font-semibold block ${isActive ? 'text-primary' : 'text-white/90'}`}
+        >
+            {children}
+        </Link>
+    </motion.div>
 );
 
 const MobileDropdown = ({ title, items, basePath, isActive, onClose, currentPath }) => {
     const [isOpen, setIsOpen] = useState(isActive);
 
     return (
-        <div>
+        <motion.div variants={itemVariants}>
             <button 
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-between w-full text-2xl font-display font-semibold ${isActive ? 'text-primary' : 'text-content-prominent'}`}
+                className={`flex items-center justify-between w-full text-2xl font-display font-semibold ${isActive ? 'text-primary' : 'text-white/90'}`}
             >
                 {title}
                 <ChevronDownIcon className={`w-6 h-6 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -264,29 +360,36 @@ const MobileDropdown = ({ title, items, basePath, isActive, onClose, currentPath
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                     >
-                        <div className="pl-4 pt-4 flex flex-col space-y-3 border-l-2 border-surface-subtle ml-2 mt-2">
+                        <motion.div 
+                            className="pl-4 pt-4 flex flex-col space-y-3 border-l-2 border-white/10 ml-2 mt-2"
+                            variants={menuVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="hidden"
+                        >
                             {items.map((item, idx) => {
                                 const itemPath = `${basePath}/${idx + 1}`;
                                 const isItemActive = currentPath === itemPath;
                                 return (
-                                    <Link 
-                                        key={idx} 
-                                        to={itemPath}
-                                        onClick={onClose}
-                                        className={`text-lg transition-colors ${
-                                            isItemActive 
-                                            ? 'text-primary font-medium' 
-                                            : 'text-content-subtle'
-                                        }`}
-                                    >
-                                        {item}
-                                    </Link>
+                                    <motion.div key={idx} variants={itemVariants}>
+                                        <Link 
+                                            to={itemPath}
+                                            onClick={onClose}
+                                            className={`text-lg transition-colors block ${
+                                                isItemActive 
+                                                ? 'text-primary font-medium' 
+                                                : 'text-white/60 hover:text-white'
+                                            }`}
+                                        >
+                                            {item}
+                                        </Link>
+                                    </motion.div>
                                 );
                             })}
-                        </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </motion.div>
     );
 };

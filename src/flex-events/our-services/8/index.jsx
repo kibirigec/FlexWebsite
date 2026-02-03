@@ -40,9 +40,9 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="sm:h-[100vh] bg-white">
       {/* Hero Section */}
-      <section className="relative h-[100dvh] flex flex-col justify-end bg-black text-white">
+      <section className="relative h-screen md:h-auto flex flex-col justify-end md:block bg-black text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -53,12 +53,21 @@ function App() {
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
+        {/* Green Gradient Overlay */}
+        <div
+          className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full hidden md:block 
+                   md:h-[218px] lg:h-[300px] 
+                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
+                  my-auto
+                  "
+        ></div>
+
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
-          <h1 className="text-4xl/10 md:text-6xl font-bold mb-4 leading-tight text-[white]">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24 md:py-48 w-full">
+          <h1 className="text-3xl/7 md:text-6xl font-bold mb-2 leading-tight text-[white]">
             Professional Backline Equipment
           </h1>
-          <p className="text-[17px]/6 md:text-xl text-white/90 mb-8 max-w-2xl font-light">
+          <p className="text-[17px]/6 md:text-xl text-white/90 mb-4 max-w-2xl font-light">
             Elevate your performance with our premium backline equipment rentals.
             From amplifiers to complete drum kits, we provide the tools you need
             for an outstanding show.
@@ -74,7 +83,7 @@ function App() {
       {/* Centered Text Section */}
       <section className="py-20 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-3xl/10 md:text-4xl font-bold mb-6 text-[#1d1d1f]">
+          <h2 className="text-3xl/7 md:text-4xl font-bold mb-2 text-[#1d1d1f]">
             Complete Backline Solutions for Every Performance
           </h2>
           <p className="text-[17px]/6 md:text-xl text-[#86868b] leading-relaxed">
