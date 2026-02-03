@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white">
+      <section className="relative h-[100dvh] md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -75,7 +75,7 @@ function App() {
           />
         </div>
         <div
-          className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
+          className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full hidden md:block 
                    md:h-[218px] lg:h-[300px] 
                   bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
                   my-auto
@@ -83,11 +83,11 @@ function App() {
         ></div>
 
         {/* Green Gradient - Covers Entire Section */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24 md:py-48 w-full">
+          <h1 className="text-3xl leading-tight text-white md:text-[32px] lg:text-[40px] font-bold mb-2">
             Wedding & Corporate Decor
           </h1>
-          <p className="text-[17px]/6 mb-8 max-w-2xl">
+          <p className="text-[17px]/6 text-white mb-8 max-w-2xl">
             Transform Your Vision into Stunning Reality
           </p>
           <Link to="/contact">
@@ -101,10 +101,10 @@ function App() {
       {/* Intro Section */}
       <section className="py-12 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
+          <h2 className="text-[24px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
             Let’s create a space that tells your <br /> unique story.{" "}
           </h2>
-          <p className="text-[17px]/6 text-[#86868b] ">
+          <p className="text-[17px]/6 !text-[#86868b] ">
             From intimate weddings to large corporate events, Flex Events brings
             your decor dreams to life. Our team specializes in creating
             beautiful, custom-designed decorations that fit your theme, style,
@@ -131,7 +131,7 @@ function App() {
 
             {/* Right Side - Content */}
             <div className="md:w-1/2 space-y-6">
-              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase">
+              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase !text-white">
                 Our Decor Services
               </h2>
 
@@ -159,7 +159,22 @@ function App() {
             </div>
           </div>
         </div>
+          <div 
+                  className="min-h-[2px] mx-auto md:mb-20 hidden-sm mt-16 relative"
+                >
+                  <motion.div 
+                    initial={{ backgroundPosition: "0% 50%" }}
+                    animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                    transition={{ 
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,#9BAB3C_50%,transparent_100%)] bg-[length:200%_100%]"
+                  />
+                </div>
       </section>
+      
 
       {/* Image Carousel Section */}
       <section className="py-20 bg-gray-100">

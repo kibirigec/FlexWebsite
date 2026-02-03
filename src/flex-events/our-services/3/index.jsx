@@ -16,34 +16,27 @@ function App() {
   return (
     <div className=" min-h-screen bg-white">
       {/* Hero Section with CTA */}
-      <section className="py-12 relative bg-black text-white">
+      <section className="relative h-[100dvh] flex flex-col justify-end bg-black text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
             alt="Event audio-visual setup"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-60"
           />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        <div
-          className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
-                   md:h-[218px] lg:h-[300px] 
-                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
-                  my-auto
-                  "
-        ></div>       
-        {/* Green Gradient Overlay */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
+          <h1 className="text-4xl/7 md:text-6xl font-bold mb-4 leading-tight text-white">
             Pro-Audio & Visual/Lighting
           </h1>
-          <p className="text-[17px]/6 mb-8 max-w-2xl">
-            Elevate your event with cutting-edge audio, visuals, and lighting
-            solutions.
+          <p className="text-lg/6 md:text-xl text-white/90 mb-8 max-w-2xl font-light">
+            Elevate your event with cutting-edge audio, visuals, and lighting solutions.
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border border-white">
+            <button className="px-8 py-3 border border-1 border-white text-white hover:bg-[#869433] transition-colors  font-medium">
               Get Started
             </button>
           </Link>
@@ -56,7 +49,7 @@ function App() {
           <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
             Our Audio-Visual & Lighting Services
           </h2>
-          <p className="text-[17px]/6 text-[#86868b] text-start">
+          <p className="text-[17px]/6 t text-[#86868b] text-start">
             At Flex Events, we know that a great event is more than just
             decor—it’s about setting the right mood. With our state-of-the-art
             sound, lighting, and visual solutions, we ensure that every moment
@@ -81,8 +74,8 @@ function App() {
 
             {/* Right Side - Content */}
             <div className="md:w-1/2 space-y-6">
-              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase">
-                Our Decor Services
+              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase !text-white">
+                Our Audio-Visual & Lighting Services
               </h2>
 
               <div className="h-1 w-24 bg-[#9BAB3C]"></div>

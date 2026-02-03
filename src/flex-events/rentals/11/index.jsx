@@ -6,36 +6,63 @@ import { motion } from "framer-motion";
 import BacklineEquipmentForm from "./components/BacklineEquipmentForm";
 
 function App() {
-  const heroImage = "/images/backline-hero.jpg";
-  const eventImage = "/images/backline1.jpg";
+  const heroImage = "/concertt.jpeg";
+  const eventImage = "/equipment.jpeg";
+
+  const serviceSections = [
+    {
+      title: "Professional Backline Equipment",
+      features: [
+        "High-quality amplifiers, guitars, bass guitars, and drum kits for professional performances.",
+        "Well-maintained equipment from top brands ensuring reliable sound quality.",
+        "Complete backline solutions for bands, solo artists, and music events.",
+      ],
+      image: "/equipment.jpeg",
+    },
+    {
+      title: "Flexible Rental Options",
+      features: [
+        "Short-term and long-term rental options available.",
+        "Delivery and setup services for your convenience.",
+        "Technical support and maintenance included with rentals.",
+      ],
+      image: "/concert.jpeg",
+    },
+    {
+      title: "Quality You Can Trust",
+      features: [
+        "Regular maintenance and quality checks on all equipment.",
+        "Backup equipment available for peace of mind.",
+        "Professional-grade gear suitable for any venue size.",
+      ],
+      image: "/concert3.jpeg",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section with CTA */}
-      <section className="relative bg-gray-900 text-white">
+      {/* Hero Section */}
+      <section className="relative h-[100dvh] flex flex-col justify-end bg-black text-white">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
             alt="Backline Equipment"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-60"
           />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        <div
-          className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full 
-                   md:h-[218px] lg:h-[300px] 
-                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
-                  my-auto"
-        ></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
+          <h1 className="text-3xl/7 leading-tight md:text-[32px] lg:text-[40px] font-bold mb-2 text-white">
             Professional Backline Equipment
           </h1>
-          <p className="text-[17px]/6 mb-8 max-w-2xl">
+          <p className="text-[17px]/6 md:text-xl text-white/90 mb-8 max-w-2xl font-light">
             Complete backline solutions for bands, solo artists, and music events
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border border-white hover:bg-white hover:text-black transition-colors duration-300">
+            <button className="px-8 py-3  text-white hover:bg-[#869433] transition-colors border border-white  font-medium">
               Get Started
             </button>
           </Link>
@@ -43,12 +70,12 @@ function App() {
       </section>
 
       {/* Centered Text Section */}
-      <section className="py-12 bg-[#F2F2F2]">
+      <section className="py-20 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
+          <h2 className="text-3xl/7 md:text-4xl font-bold mb-6 text-[#1d1d1f]">
             Quality Equipment for Every Performance
           </h2>
-          <p className="text-[17px]/6 text-[#86868b]">
+          <p className="text-[17px]/6 text-[#86868b] leading-relaxed">
             From amplifiers to complete drum kits, we provide professional-grade
             backline equipment that ensures your sound is perfect every time.
             Whether you're a touring band or local artist, our equipment meets
@@ -57,52 +84,58 @@ function App() {
         </div>
       </section>
 
-      {/* Text and Image Section with List */}
-      <section className="bg-[#333] text-white py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            {/* Left Side - Image */}
-            <div className="md:w-1/2">
-              <img
-                src={eventImage}
-                alt="Backline Equipment"
-                className="w-full aspect-[16/9] object-cover rounded-lg shadow-lg"
-              />
-            </div>
+      {/* Dynamic Sections with Alternating Layout */}
+      {serviceSections.map((section, index) => (
+        <section
+          key={index}
+          className={`bg-[#333] text-white py-20 ${
+            index == 1 ? "bg-[#F2F2F2]" : ""
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-8">
+            <div
+              className={`flex flex-col md:flex-row items-center gap-12 ${
+                index % 2 !== 0 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Left Side - Image */}
+              <div className="md:w-1/2">
+                <img
+                  src={section.image}
+                  alt={`${section.title} setup`}
+                  className="w-full aspect-[16/9] object-cover rounded-2xl shadow-2xl"
+                />
+              </div>
 
-            {/* Right Side - Content */}
-            <div className="md:w-1/2 space-y-6">
-              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase">
-                Our Backline Solutions
-              </h2>
+              {/* Right Side - Content */}
+              <div className={`md:w-1/2 space-y-6`}>
+                <h2
+                  className={`text-3xl md:text-4xl font-bold ${
+                    index == 1 ? "text-[#1D1D1F]" : "text-white"
+                  }`}
+                >
+                  {section.title}
+                </h2>
 
-              <div className="h-1 w-24 bg-[#9BAB3C]"></div>
+                <div className="h-1 w-24 bg-[#9BAB3C]"></div>
 
-              <ul className="space-y-1 text-[17px]/5 text-[#E0E0E0]">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span>
-                  High-quality amplifiers, guitars, and bass guitars
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span>
-                  Complete drum kits and percussion equipment
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span>
-                  Delivery and setup services included
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span>
-                  Technical support and maintenance provided
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#9BAB3C]">•</span>
-                  Flexible rental terms for any event duration
-                </li>
-              </ul>
+                <ul
+                  className={`space-y-3 text-lg ${
+                    index == 1 ? "text-[#86868b]" : "text-[#E0E0E0]"
+                  }`}
+                >
+                  {section.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-[#9BAB3C] text-xl">•</span> {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+      ))}
+
       <div className="min-h-[2px] mx-auto md:mb-20 mt-16 relative">
         <motion.div 
           initial={{ backgroundPosition: "0% 50%" }}
@@ -115,10 +148,15 @@ function App() {
           className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,#9BAB3C_50%,transparent_100%)] bg-[length:200%_100%]"
         />
       </div>
+
+      <section className="bg-[#333] py-12 md:px-6 mx-auto">
+         <div className="max-w-7xl mx-auto">
+             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+                Book Your Equipment
+             </h2>
+             <BacklineEquipmentForm />
+         </div>
       </section>
-
-
-      <BacklineEquipmentForm />
 
       <HoverLink />
       <Footer3 />

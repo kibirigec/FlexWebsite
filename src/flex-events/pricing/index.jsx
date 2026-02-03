@@ -1,9 +1,11 @@
 import React from "react";
 import { PricingContact } from "./components/PricingContact";
 import { Link } from "react-router-dom";
+import { Footer3 } from "../../globalComps/Footer3";
 
 export default function PricingPage() {
   return (
+    <>
     <div className="h-screen overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#9BAB3C]/5 rounded-full blur-3xl"></div>
@@ -85,5 +87,7 @@ export default function PricingPage() {
         </div>
       </div>
     </div>
+    <Footer3 />
+    </>
   );
 }

@@ -1,30 +1,20 @@
+"use client";
+
 import React from "react";
-import { Navbar6 } from "./components/Navbar6";
-import { Header5 } from "./components/Header5";
-import { Layout237 } from "./components/Layout237";
-import { Layout1 } from "./components/Layout1";
-import { Stats25 } from "./components/Stats25";
-import { Gallery1 } from "./components/Gallery1";
-import { Cta1 } from "./components/Cta1";
-import { Cta14 } from "./components/Cta14";
-// import WeddingDecorBookingForm  from "./components/WeddingDecorBookingForm";
-// import { Footer3 } from "./components/Footer3";
+import { Hero } from "./components/Hero";
+import { HomeAbout } from "./components/HomeAbout";
+import { HomeStats } from "./components/HomeStats";
+import { HomeGallery } from "./components/HomeGallery";
 import { Footer3 } from "../../globalComps/Footer3";
-import { InteractiveBook } from "../../components/InteractiveBook";
 
 export default function Page() {
   return (
-    <div>
-      <Header5 />
-      <Layout237 />
-      <Layout1 />
-      <Stats25 />
-      <Gallery1 />
-      <InteractiveBook />
-      <Cta1 />
-      {/* <WeddingDecorBookingForm /> */}
-      {/* <Cta14 /> */}
+    <main className="bg-surface-white min-h-screen">
+      <Hero />
+      <HomeAbout />
+      <HomeStats />
+      <HomeGallery />
       <Footer3 />
-    </div>
+    </main>
   );
 }

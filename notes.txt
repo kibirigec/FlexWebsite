@@ -1,0 +1,10 @@
+services/4 hero image
+
+
+
+
+
+
+
+text sizes, text-17px/6, 28px/7 --the 17 works for both mobile and desktop
+            headings - 28px/7

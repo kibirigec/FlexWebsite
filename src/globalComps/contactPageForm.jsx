@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircleIcon, EnvelopeIcon, PhoneIcon, MapPinIcon, ClockIcon } from "@heroicons/react/24/outline";
 
 export function ContactPageForm() {
   const [formData, setFormData] = useState({
@@ -11,12 +13,15 @@ export function ContactPageForm() {
     eventDescription: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
+
   const servicesOptions = [
-    "Full Event Management and Planning",
+    "Full Event Management",
     "Corporate/Wedding Services",
-    "Lighting",
-    "Sound and Visual Installation",
-    "Flex Brand Manufacturing",
+    "Lighting & Audio",
+    "Screens & Visuals",
+    "Brand Manufacturing",
   ];
 
   const handleChange = (e) => {
@@ -35,15 +40,22 @@ export function ContactPageForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setStatus(null);
 
     if (!formData.phone.trim()) {
       alert("Please enter a valid phone number.");
+      setLoading(false);
       return;
     }
 
     try {
-      await addDoc(collection(db, "inquiries"), formData);
-      alert("Inquiry submitted successfully!");
+      await addDoc(collection(db, "inquiries"), {
+        ...formData,
+        submittedAt: new Date(),
+        type: "contact_page"
+      });
+      setStatus("success");
       setFormData({
         name: "",
         email: "",
@@ -54,244 +66,228 @@ export function ContactPageForm() {
     } catch (error) {
       console.error("Error submitting inquiry:", error);
       alert(`Error: ${error.message}`);
+      setStatus("error");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f7fafc] via-[#f0f4ef] to-[#e9f5e1] text-black pt-24 pb-24 flex items-center justify-center">
-      <div className="w-full max-w-6xl mx-auto px-2 md:px-8">
-        {/* Card Container */}
-        <div className="bg-white/95 rounded-3xl shadow-2xl p-6 md:p-12">
-          {/* Page Title */}
-          <div className="text-center mb-4 leading-2.5">
-            <h1 className="text-4xl font-extrabold mb-2 text-[#213547] tracking-tight">Contact Us</h1>
-b            </div>
+    <section className="min-h-screen bg-white pt-32 pb-24 font-sans">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#1d1d1f] mb-6">
+              Contact Us
+           </h1>
+           <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
+              We would love to speak with you. Reach out to discuss your vision and receive a complimentary consultation.
+           </p>
+        </div>
 
-          <div className="text-center mb-8 leading-2.5">
-            <h1 className="text-2xl font-bold mb-4 text-[#213547]">
-              Send us a message, or message us directly on WhatsApp at
-              <a
-                href="https://wa.me/256772406122"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#25D366] underline hover:text-[#128C7E] transition-colors ml-1"
-              >
-                +256 772 406122
-              </a>
-            </h1>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-16">
+        <div className="bg-white rounded-3xl shadow-sm border border-black/5 overflow-hidden">
+          <div className="grid lg:grid-cols-[1fr_1.5fr] min-h-[600px]">
             {/* Left Column - Contact Info */}
-            <div className="md:w-1/2 flex flex-col justify-between">
+            <div className="bg-gray-50 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-black/5 flex flex-col justify-between">
               <div>
-                <h2 className="text-4xl font-extrabold mb-4 text-[#213547]">Let's work together</h2>
-                <p className="mb-4 leading-tight text-[#86868B] text-lg">
-                  We would love to speak with you.<br />
-                  Feel free to reach out using the below details.
-                </p>
-                <p className="mb-4 leading-tight text-[#86868B] text-lg">
-                  If your inquiry requires immediate attention, please feel free to
-                  contact us at the phone number listed below. Our team of
-                  experienced professionals is always available to assist you with
-                  your queries.
-                </p>
-                <p className="mb-4 leading-tight text-[#86868B] text-lg">
-                  We strive to provide prompt and efficient customer service, and we
-                  will do our best to respond to your email within 24 hours. We look
-                  forward to hearing from you soon!
-                </p>
-                <p className="font-bold mb-6 text-[#213547] text-lg">
-                  Get in touch today and receive a complimentary consultation.
-                </p>
-              </div>
-
-              <div className="space-y-6 mt-8">
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-[#9BAB3C] mt-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 01-8 0V8a4 4 0 018 0v4z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-bold text-[#213547]">Email</h3>
-                    <a href="mailto:info@flexevents.com" className="text-[#86868B] hover:text-[#9BAB3C] underline transition-colors">info@flexevents.com</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-[#9BAB3C] mt-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-bold text-[#213547]">Phone</h3>
-                    <a href="tel:+256772406122" className="block text-sm underline decoration-black underline-offset-1 text-[#86868B] hover:text-[#9BAB3C] transition-colors">+256 772 406 122</a>
-                    <a href="tel:+256708406122" className="block text-sm underline decoration-black underline-offset-1 text-[#86868B] hover:text-[#9BAB3C] transition-colors">+256 708 406 122</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-[#9BAB3C] mt-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-bold text-[#213547]">Address</h3>
-                    <p className="text-[#86868B]">Plot 2973, Kisaasi-Kyanja Road<br />Kyanja, Kampala, Uganda</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-[#9BAB3C] mt-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-bold text-[#213547]">Hours</h3>
-                    <p className="text-[#86868B]">Mon-Fri - 9:00AM - 7:30PM</p>
-                    <p className="text-[#86868B]">Sat - 9:00AM - 6:30PM</p>
-                    <p className="text-[#86868B]">Sun - <span className="text-[black]">CLOSED</span></p>
-                  </div>
+                <h2 className="text-3xl font-bold tracking-tight text-[#1d1d1f] mb-6">
+                   Let's work <span className="text-[#9BAB3C]">together</span>
+                </h2>
+                <div className="space-y-4 text-gray-500 text-lg leading-relaxed mb-12">
+                  <p>
+                    If your inquiry requires immediate attention, please feel free to
+                    contact us directly. Our team is available to assist you.
+                  </p>
                 </div>
               </div>
 
-              {/* Social Media Icons */}
-              {/* <div className="flex gap-4 mt-8">
-                <a href="#" className="text-[#0A66C2] hover:text-[#004182] bg-white rounded-full p-2 shadow transition" aria-label="LinkedIn">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-[#1877F3] hover:text-[#0a58ca] bg-white rounded-full p-2 shadow transition" aria-label="Facebook">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 12c0-5.523-4.477-10-10-10s-10 4.477-10 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.891h2.54v-2.203c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.891h-2.33v6.988c4.781-.75 8.437-4.887 8.437-9.878z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-[#1DA1F2] hover:text-[#0a8cd8] bg-white rounded-full p-2 shadow transition" aria-label="Twitter">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.059 10.059 0 01-3.126 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-[#FF0000] hover:text-[#b30000] bg-white rounded-full p-2 shadow transition" aria-label="YouTube">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg>
-                </a>
-              </div> */}
-            </div>
+              <div className="space-y-8">
+                <ContactItem 
+                  icon={<EnvelopeIcon className="w-5 h-5" />}
+                  label="Email"
+                  value="info@flexevents.ug"
+                  href="mailto:info@flexevents.ug"
+                />
+                
+                <div className="flex items-start gap-4 group">
+                  <div className="mt-1 text-[#9BAB3C]">
+                    <PhoneIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1d1d1f] text-sm uppercase tracking-wide mb-1">Phone</h3>
+                    <div className="flex flex-col gap-1">
+                      <a href="tel:+256772406122" className="text-lg text-gray-500 hover:text-[#9BAB3C] transition-colors">+256 772 406 122</a>
+                      <a href="tel:+256708406122" className="text-lg text-gray-500 hover:text-[#9BAB3C] transition-colors">+256 708 406 122</a>
+                    </div>
+                  </div>
+                </div>
 
-            {/* Divider */}
-            <div className="hidden md:block md:mx-8">
-              <div className="h-full w-px bg-gradient-to-b from-[#9BAB3C]/30 via-[#e9f5e1] to-[#9BAB3C]/30"></div>
+                <ContactItem 
+                  icon={<MapPinIcon className="w-5 h-5" />}
+                  label="Address"
+                  value={<>Plot 2973, Kisaasi-Kyanja Road<br />Kyanja, Kampala, Uganda</>}
+                />
+
+                <div className="flex items-start gap-4 group">
+                  <div className="mt-1 text-[#9BAB3C]">
+                    <ClockIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1d1d1f] text-sm uppercase tracking-wide mb-1">Hours</h3>
+                    <div className="text-lg text-gray-500">
+                        <p>Mon-Fri: 9:00AM - 7:30PM</p>
+                        <p>Sat: 9:00AM - 6:30PM</p>
+                        <p>Sun: <span className="text-red-500 font-medium">Closed</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right Column - Form */}
-            <div className="md:w-1/2 mt-8 md:mt-0 bg-[#FAFAFA] p-8 rounded-2xl shadow-lg border border-[#e9f5e1]">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-semibold mb-1 text-[#213547]"
-                  >
-                    NAME *
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full p-3 border border-[#9BAB3C] rounded focus:outline-none focus:ring-2 focus:ring-[#9BAB3C] focus:border-[#9BAB3C] transition"
-                    required
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-semibold mb-1 text-[#213547]"
+            <div className="p-8 md:p-12 lg:p-16 relative bg-white">
+              <AnimatePresence>
+                 {status === 'success' ? (
+                    <motion.div 
+                       initial={{ opacity: 0, scale: 0.95 }}
+                       animate={{ opacity: 1, scale: 1 }}
+                       className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10 p-8 text-center"
                     >
-                      EMAIL *
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-[#9BAB3C] rounded focus:outline-none focus:ring-2 focus:ring-[#9BAB3C] focus:border-[#9BAB3C] transition"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-semibold mb-1 text-[#213547]"
-                    >
-                      PHONE NUMBER *
-                    </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-[#9BAB3C] rounded focus:outline-none focus:ring-2 focus:ring-[#9BAB3C] focus:border-[#9BAB3C] transition"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <p className="block text-sm font-semibold mb-1 text-[#213547]">
-                    YOUR INQUIRY IS REGARDING *
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {servicesOptions.map((option) => (
-                      <label
-                        key={option}
-                        className="flex items-center space-x-2 cursor-pointer text-[#213547]"
-                      >
+                       <CheckCircleIcon className="w-20 h-20 text-[#9BAB3C] mb-6" />
+                       <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">Message Sent!</h3>
+                       <p className="text-gray-500 max-w-md">
+                          Thank you for reaching out. We have received your details and will get back to you shortly.
+                       </p>
+                       <button 
+                          onClick={() => setStatus(null)}
+                          className="mt-8 text-[#9BAB3C] font-medium hover:underline"
+                       >
+                          Send another message
+                       </button>
+                    </motion.div>
+                 ) : (
+                  <form onSubmit={handleSubmit} className="space-y-8 max-w-xl mx-auto">
+                    <div className="space-y-8">
+                      <div className="relative group">
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Name</label>
                         <input
-                          type="checkbox"
-                          name="selectedServices"
-                          value={option}
-                          checked={formData.selectedServices.includes(option)}
-                          onChange={() => handleCheckboxChange(option)}
-                          className="form-checkbox text-[#9BAB3C] border-[#9BAB3C] focus:ring-[#9BAB3C]"
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none"
+                          placeholder="Your full name"
+                          required
                         />
-                        <span>{option}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
+                      </div>
 
-                <div>
-                  <label
-                    htmlFor="eventDescription"
-                    className="block text-sm font-semibold mb-1 text-[#213547]"
-                  >
-                    INQUIRY
-                  </label>
-                  <textarea
-                    id="eventDescription"
-                    name="eventDescription"
-                    value={formData.eventDescription}
-                    onChange={handleChange}
-                    className="w-full p-3 border border-[#9BAB3C] rounded focus:outline-none focus:ring-2 focus:ring-[#9BAB3C] focus:border-[#9BAB3C] h-32 transition"
-                    placeholder="Tell us about your event"
-                  ></textarea>
-                </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="relative group">
+                           <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Email</label>
+                           <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none"
+                            placeholder="john@example.com"
+                            required
+                           />
+                        </div>
+                        <div className="relative group">
+                           <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Phone</label>
+                           <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none"
+                            placeholder="+256 700 ..."
+                            required
+                           />
+                        </div>
+                      </div>
 
-                <button
-                  type="submit"
-                  className="w-full p-3 bg-[black] text-white rounded font-bold text-lg shadow hover:bg-[#222222] transition-all duration-300 transform hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#9BAB3C] focus:ring-offset-2"
-                >
-                  SUBMIT
-                </button>
-              </form>
+                      <div>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">I'm interested in</label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {servicesOptions.map((option) => (
+                            <label
+                              key={option}
+                              className={`flex items-center space-x-3 cursor-pointer group`}
+                            >
+                              <input
+                                type="checkbox"
+                                name="selectedServices"
+                                value={option}
+                                checked={formData.selectedServices.includes(option)}
+                                onChange={() => handleCheckboxChange(option)}
+                                className="w-4 h-4 rounded border-gray-300 text-black focus:ring-black accent-black"
+                              />
+                              <span className={`text-sm ${formData.selectedServices.includes(option) ? 'text-black font-medium' : 'text-gray-500'} group-hover:text-black transition-colors`}>
+                                {option}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="relative group">
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">Message</label>
+                        <textarea
+                          name="eventDescription"
+                          value={formData.eventDescription}
+                          onChange={handleChange}
+                          className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none min-h-[100px] resize-y"
+                          placeholder="Tell us about your event..."
+                        ></textarea>
+                      </div>
+                    </div>
+
+                    <div className="pt-4">
+                        <button
+                            type="button"
+                            onClick={() => {
+                                const message = `*New Inquiry via Contact Page*\n\n` +
+                                    `*Name:* ${formData.name}\n` +
+                                    `*Email:* ${formData.email}\n` +
+                                    `*Phone:* ${formData.phone}\n` +
+                                    `*Interested Services:* ${formData.selectedServices.length > 0 ? formData.selectedServices.join(', ') : 'None selected'}\n` +
+                                    `*Message:* ${formData.eventDescription || 'N/A'}`;
+                                
+                                const encodedMessage = encodeURIComponent(message);
+                                window.open(`https://wa.me/256772406122?text=${encodedMessage}`, '_blank');
+                            }}
+                            className="w-full bg-black text-white font-medium py-4 rounded-full shadow-lg hover:bg-gray-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm tracking-wide uppercase flex items-center justify-center gap-2"
+                        >
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.2 53.7 21.8 57.4 2.6 3.7 37.8 59 91.8 80.8 53.8 21.9 53.8 14.6 63.9 13.6 10.1-1 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                            WhatsApp
+                        </button>
+                    </div>
+                  </form>
+                 )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
+
+const ContactItem = ({ icon, label, value, href }) => (
+  <div className="flex items-start gap-4 group">
+    <div className="mt-1 text-[#9BAB3C]">
+      {icon}
+    </div>
+    <div>
+      <h3 className="font-semibold text-[#1d1d1f] text-sm uppercase tracking-wide mb-1">{label}</h3>
+      {href ? (
+        <a href={href} className="text-lg text-gray-500 hover:text-[#9BAB3C] transition-colors">{value}</a>
+      ) : (
+        <p className="text-lg text-gray-500">{value}</p>
+      )}
+    </div>
+  </div>
+);
 
 export default ContactPageForm;

@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white">
+      <section className="relative h-[100dvh] md:h-auto flex flex-col justify-end md:block bg-gray-900 text-white">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -23,7 +23,7 @@ function App() {
           />
         </div>
         <div
-          className="absolute  h-full inset-x-0 md:top-40 lg:top-40 w-full 
+          className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full hidden md:block 
                          md:h-[218px] lg:h-[300px] 
                         bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
                         my-auto
@@ -31,11 +31,11 @@ function App() {
         ></div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24 md:py-48 w-full">
+          <h1 className="text-3xl leading-tight text-white md:text-[32px] lg:text-[40px] font-bold mb-2">
             Experience Unmatched Audio Excellence
           </h1>
-          <p className="text-[17px]/6 mb-8 max-w-2xl">
+          <p className="text-[17px]/6 text-white mb-8 max-w-2xl">
             High-performance, customized loudspeakers designed for exceptional
             sound clarity and durability.
           </p>
@@ -77,7 +77,7 @@ function App() {
 
             {/* Right Side - Content */}
             <div className="md:w-1/2 space-y-6">
-              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase">
+              <h2 className="text-[24px]/6 md:text-[30px]/8 font-bold uppercase !text-white">
                 Why Choose Flex Audio?
               </h2>
 

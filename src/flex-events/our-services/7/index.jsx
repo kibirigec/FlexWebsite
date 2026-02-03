@@ -6,7 +6,7 @@ import HoverLink from "../../../globalComps/HoverLink";
 import { motion } from "framer-motion";
 
 function App() {
-  const heroImage = "/images/event-planning-hero.jpg";
+  const heroImage = "/weddingplan.jpeg";
 
   // Accordion State
   const [openIndex, setOpenIndex] = useState(null);
@@ -77,43 +77,39 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
       <div className="bg-black">
-        <section className="relative bg-gray-900 text-white">
+        <section className="relative h-[100dvh] flex flex-col justify-end bg-gray-900 text-white">
           <div className="absolute inset-0 z-0">
             <img
               src={heroImage}
               alt="Event planning and management"
-              className="w-full h-full object-cover opacity-40"
+              className="w-full h-full object-cover opacity-50"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           </div>
-          <div className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full 
-                   md:h-[218px] lg:h-[300px] 
-                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
-                  my-auto"></div>
 
           {/* Content */}
           <motion.div 
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48"
+            className="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full"
           >
             <motion.h1 
               variants={fadeInUp}
-              className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2"
+              className="text-4xl/10 md:text-6xl/10 font-bold mb-4 leading-tight !text-white"
             >
               Full Event Planning & Management
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="text-[17px]/6 mb-8 max-w-2xl"
+              className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl font-light"
             >
               From concept to completion – Your vision, our expertise.
             </motion.p>
             <motion.div variants={fadeInUp}>
               <Link to="/contact">
-                <button className="px-4 py-2 text-white border border-white hover:bg-white hover:text-black transition-colors duration-300">
+                <button className="px-8 py-3 border border-white border-1 text-white hover:bg-[#869433] transition-colors duration-300  font-medium">
                   Get Started
                 </button>
               </Link>
@@ -131,10 +127,10 @@ function App() {
         className="py-20 bg-gray-50 text-center px-6"
       >
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-6 text-[#1d1d1f]">
             Seamless Event Planning & Execution
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-[17px]/6 text-[#86868b]">
             At Flex Events, we provide end-to-end event management, ensuring a
             flawless experience from planning to execution. Whether it's a
             corporate conference, wedding, or product launch, we handle
@@ -161,37 +157,41 @@ function App() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-4 max-w-4xl mx-auto"
           >
             {eventServices.map((service, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="border border-[#9bab3c] rounded-2xl mx-auto shadow-md overflow-hidden"
+                className="border-b border-gray-200 last:border-0 overflow-hidden"
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full text-left px-6 py-4 flex justify-between items-center bg-[#9bab3c] text-white hover:bg-[#869433] transition"
+                  className="w-full text-left py-6 flex justify-between items-center group"
                 >
-                  <span className="text-lg font-medium">
-                    {index + 1}. {service.title}
+                  <span className={`text-xl md:text-2xl font-semibold transition-colors duration-300 ${openIndex === index ? "text-[#9bab3c]" : "text-[#1d1d1f] group-hover:text-[#9bab3c]"}`}>
+                    {service.title}
                   </span>
-                  <motion.svg
+                  <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    className={`h-8 w-8 flex items-center justify-center rounded-full transition-colors duration-300 ${openIndex === index ? "bg-[#9bab3c] text-white" : "bg-gray-100 text-gray-500 group-hover:bg-[#9bab3c] group-hover:text-white"}`}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </motion.svg>
+                    <svg
+                      className="h-5 w-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </motion.div>
                 </button>
 
                 <motion.div
@@ -203,7 +203,7 @@ function App() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 py-4 bg-white text-gray-800 border-t border-[#9bab3c]">
+                  <div className="pb-8 text-[17px]/7 text-[#86868b]">
                     {service.description}
                   </div>
                 </motion.div>
@@ -242,7 +242,7 @@ function App() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-col max-w-3xl mx-auto space-y-0.5 text-gray-700 text-lg items-start"
+            className="flex flex-col max-w-3xl mx-auto space-y-2 text-gray-700 text-base items-start"
           >
             {[
               "Tailored Planning – Every event is customized to your vision.",
@@ -254,25 +254,9 @@ function App() {
               <motion.li 
                 key={index} 
                 variants={listItem}
-                className="flex items-center space-x-3 text-left"
+                className="flex items-start space-x-3 text-left"
               >
-                <motion.svg
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-[#9BAB3C]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </motion.svg>
+                <span className="text-[#9BAB3C] text-xl leading-none mt-1">•</span>
                 <span>{text}</span>
               </motion.li>
             ))}

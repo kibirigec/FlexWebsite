@@ -3,9 +3,11 @@ import { Footer3 } from "../../../globalComps/Footer3";
 import { Link } from "react-router-dom";
 import HoverLink from "../../../globalComps/HoverLink";
 import { motion } from "framer-motion";
+// Importing the form from rentals since it's the same service
+import BacklineEquipmentForm from "../../rentals/11/components/BacklineEquipmentForm";
 
 function App() {
-  const heroImage = "/images/backline-hero.jpg";
+  const heroImage = "/concertt.jpeg";
 
   const serviceSections = [
     {
@@ -15,7 +17,7 @@ function App() {
         "Well-maintained equipment from top brands ensuring reliable sound quality.",
         "Complete backline solutions for bands, solo artists, and music events.",
       ],
-      image: "/images/backline1.jpg",
+      image: "/equipment.jpeg",
     },
     {
       title: "Flexible Rental Options",
@@ -24,7 +26,7 @@ function App() {
         "Delivery and setup services for your convenience.",
         "Technical support and maintenance included with rentals.",
       ],
-      image: "/images/backline2.jpg",
+      image: "/concert.jpeg",
     },
     {
       title: "Quality You Can Trust",
@@ -33,43 +35,36 @@ function App() {
         "Backup equipment available for peace of mind.",
         "Professional-grade gear suitable for any venue size.",
       ],
-      image: "/images/backline3.jpg",
+      image: "/concert3.jpeg",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white">
+      <section className="relative h-[100dvh] flex flex-col justify-end bg-black text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
             alt="Flex Backline Equipment"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-60"
           />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        {/* Gradient (Fixed Height) */}
-        <div
-          className="absolute h-full inset-x-0 md:top-40 lg:top-40 w-full 
-                   md:h-[218px] lg:h-[300px] 
-                  bg-gradient-to-r from-[#9BAB3C]/50 to-transparent z-0 
-                  my-auto"
-        ></div>
-
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-48">
-          <h1 className="text-[30px]/7 md:text-[32px] lg:text-[40px] font-bold mb-2">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
+          <h1 className="text-4xl/10 md:text-6xl font-bold mb-4 leading-tight text-[white]">
             Professional Backline Equipment
           </h1>
-          <p className="text-[17px]/6 mb-8 max-w-2xl">
+          <p className="text-[17px]/6 md:text-xl text-white/90 mb-8 max-w-2xl font-light">
             Elevate your performance with our premium backline equipment rentals.
             From amplifiers to complete drum kits, we provide the tools you need
             for an outstanding show.
           </p>
           <Link to="/contact">
-            <button className="px-4 py-2 text-white border border-white hover:bg-white hover:text-black transition-colors duration-300">
+            <button className="px-8 py-3  text-white hover:bg-[#869433] transition-colors border border-1 border-white font-medium">
               Get Started
             </button>
           </Link>
@@ -77,12 +72,12 @@ function App() {
       </section>
 
       {/* Centered Text Section */}
-      <section className="py-12 bg-[#F2F2F2]">
+      <section className="py-20 bg-[#F2F2F2]">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <h2 className="text-[28px]/7 md:text-[32px] lg:text-[30px] font-bold mb-4 text-[#1d1d1f]">
+          <h2 className="text-3xl/10 md:text-4xl font-bold mb-6 text-[#1d1d1f]">
             Complete Backline Solutions for Every Performance
           </h2>
-          <p className="text-[17px]/6 text-[#86868b] text-start">
+          <p className="text-[17px]/6 md:text-xl text-[#86868b] leading-relaxed">
             Whether you're a touring band, local artist, or event organizer, our
             comprehensive backline equipment ensures your sound is perfect every
             time. We provide everything from individual instruments to complete
@@ -95,13 +90,13 @@ function App() {
       {serviceSections.map((section, index) => (
         <section
           key={index}
-          className={`bg-[#333] text-white py-16 ${
+          className={`bg-[#333] text-white py-20 ${
             index == 1 ? "bg-[#F2F2F2]" : ""
           }`}
         >
           <div className="max-w-7xl mx-auto px-8">
             <div
-              className={`flex flex-col md:flex-row items-center gap-8 ${
+              className={`flex flex-col md:flex-row items-center gap-12 ${
                 index % 2 !== 0 ? "md:flex-row-reverse" : ""
               }`}
             >
@@ -110,16 +105,16 @@ function App() {
                 <img
                   src={section.image}
                   alt={`${section.title} setup`}
-                  className="w-full aspect-[16/9] object-cover rounded-lg shadow-lg"
+                  className="w-full aspect-[16/9] object-cover rounded-2xl shadow-2xl"
                 />
               </div>
 
               {/* Right Side - Content */}
               <div className={`md:w-1/2 space-y-6`}>
                 <h2
-                  className={`text-[24px]/6 md:text-[30px]/8 font-bold ${
-                    index == 1 ? "text-[#1D1D1F]" : ""
-                  } uppercase`}
+                  className={`text-3xl/10 md:text-4xl font-bold ${  
+                    index == 1 ? "text-[#1D1D1F]" : "text-white"
+                  }`}
                 >
                   {section.title}
                 </h2>
@@ -127,13 +122,13 @@ function App() {
                 <div className="h-1 w-24 bg-[#9BAB3C]"></div>
 
                 <ul
-                  className={`space-y-1 text-[17px]/5 ${
+                  className={`space-y-3 text-lg ${
                     index == 1 ? "text-[#86868b]" : "text-[#E0E0E0]"
                   }`}
                 >
                   {section.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#9BAB3C]">•</span> {feature}
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-[#9BAB3C] text-xl">•</span> {feature}
                     </li>
                   ))}
                 </ul>
@@ -156,22 +151,13 @@ function App() {
         />
       </div>
 
-      <section className="bg-[#333] py-6 md:px-28 mx-auto">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white text-center mb-8">
-            Ready to Elevate Your Performance?
-          </h2>
-          <p className="text-white text-center mb-8">
-            Contact us to discuss your backline equipment needs and get a custom quote.
-          </p>
-          <div className="text-center">
-            <Link to="/contact">
-              <button className="px-6 py-3 bg-[#9BAB3C] text-white hover:bg-[#869433] transition-colors duration-300">
-                Contact Us
-              </button>
-            </Link>
-          </div>
-        </div>
+      <section className="bg-[#333] py-12 md:px-6 mx-auto">
+         <div className="max-w-7xl mx-auto">
+             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+                Book Your Equipment
+             </h2>
+             <BacklineEquipmentForm />
+         </div>
       </section>
 
       <HoverLink />

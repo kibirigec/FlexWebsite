@@ -1,99 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 
-const HoverLink = () => {
+const ServicesSlider = () => {
   const services = [
-    { name: "Full Event Planning & Management", imageUrl: "/path/to/image1.jpg" },
-    { name: "Invitation Cards", imageUrl: "/7984652.jpg" },
-    { name: "Pro-Audio & Visual/Lighting", imageUrl: "/night-lights.jpeg" },
-    { name: "Home Audio", imageUrl: "/home1.jpg" },
-    { name: "Professional AV Systems Installations", imageUrl: "/lineraynight.jpeg" },
-    { name: "Custom Audio Manufacturing (Flex Audio Brand)", imageUrl: "/audio1.jpg" },
-    { name: "Wedding & Corporate Decor", imageUrl: "/path/to/decor-image.jpg" }
+    { name: "Full Event Planning", desc: "Comprehensive management for flawless events.", imageUrl: "/images/event-planning-hero.jpg", link: "/services/7" },
+    { name: "Invitation Cards", desc: "Custom designs to set the perfect tone.", imageUrl: "/7984652.jpg", link: "/services/2" },
+    { name: "Pro-Audio & Visual", desc: "Immersive sound and lighting experiences.", imageUrl: "/night-lights.jpeg", link: "/services/3" },
+    { name: "Home Audio", desc: "Premium audio for your personal space.", imageUrl: "/home1.jpg", link: "/services/4" },
+    { name: "AV Installations", desc: "Permanent setups for venues and offices.", imageUrl: "/lineraynight.jpeg", link: "/services/5" },
+    { name: "Flex Audio Brand", desc: "Custom-manufactured professional gear.", imageUrl: "/audio1.jpg", link: "/services/6" },
+    { name: "Wedding Decor", desc: "Stunning visuals for your special day.", imageUrl: "/wedding-decor.jpeg", link: "/services/1" }
   ];
 
-  const scrollRef = React.useRef(null);
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -350, behavior: 'smooth' });
-    }
-  };
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 350, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="px-4 md:px-12 lg:px-24 py-12 md:py-20 my-8 md:my-16">
-      <div className='my-auto'>
-        <p className='text-xl font-bold md:text-4xl lg:text-xl text-[#86868B] mb-8 '>
-          All Services
-        </p>
+    <section className="py-24 bg-surface-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 flex items-end justify-between">
+         <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-content-prominent mb-2">Explore All Services</h2>
+            <p className="text-content-subtle">Everything you need for a spectacular event.</p>
+         </div>
+         <div className="hidden md:flex gap-2">
+            {/* Navigation buttons could go here if using a real slider library, 
+                but for now we'll use a horizontal scroll container */}
+         </div>
       </div>
-      {/* Horizontal Scroll Container with Arrow Buttons */}
-      <div className="relative">
-        {/* Left Arrow Button */}
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-[#9BAB3C] text-[#9BAB3C] rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-[#9BAB3C] hover:text-white transition"
-          aria-label="Scroll left"
-          type="button"
-          style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        {/* Right Arrow Button */}
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-[#9BAB3C] text-[#9BAB3C] rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-[#9BAB3C] hover:text-white transition"
-          aria-label="Scroll right"
-          type="button"
-          style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-        <div ref={scrollRef} className="overflow-x-auto">
-          <div className="flex space-x-8 px-0 max-w-7xl mx-auto pb-4">
-            {services.map((service, index) => (
-              <Link 
-                to={`/services/${index + 1}`} 
-                key={service.name}
-                className="bg-white rounded-xl shadow-lg flex flex-col justify-between transition-transform hover:-translate-y-1 hover:shadow-2xl group"
-                style={{ minWidth: 320, maxWidth: 350 }}
-              >
-                {/* Image */}
-                <div className="h-48 w-full overflow-hidden rounded-t-xl">
-                  <img
-                    src={service.imageUrl}
-                    alt={service.name}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                {/* Colored line */}
-                <div className="h-1 w-full" style={{ backgroundColor: '#9BAB3C' }} />
-                {/* Title */}
-                <div className="flex-1 flex items-center justify-center px-4 py-4">
-                  <h3 className="text-2xl font-semibold text-center text-[#23235B]">{service.name}</h3>
-                </div>
-                {/* View link */}
-                <div className="px-4 pb-4 flex items-center">
-                  <span className="text-lg text-[#23235B] font-medium group-hover:underline group-hover:text-[#9BAB3C] transition-colors duration-200">View</span>
-                  <svg className="ml-2 w-5 h-5 text-[#23235B] group-hover:text-[#9BAB3C] transition-colors duration-200" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+
+      <div className="flex overflow-x-auto gap-6 pb-8 px-6 lg:px-8 snap-x snap-mandatory hide-scrollbar">
+        {services.map((service, index) => (
+          <Link 
+            to={service.link} 
+            key={index}
+            className="group relative min-w-[300px] md:min-w-[350px] aspect-[3/4] rounded-3xl overflow-hidden snap-center bg-gray-100"
+          >
+            <img
+              src={service.imageUrl}
+              alt={service.name}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            
+            <div className="absolute bottom-0 left-0 p-8 w-full">
+               <h3 className="text-2xl font-bold text-white mb-2">{service.name}</h3>
+               <p className="text-white/80 text-sm mb-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-opacity duration-300 transform">
+                 {service.desc}
+               </p>
+               <div className="flex items-center text-primary font-medium text-sm mt-2 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300 delay-100 transform">
+                  <span>View Service</span>
+                  <ArrowLongRightIcon className="w-4 h-4 ml-2" />
+               </div>
+            </div>
+          </Link>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default HoverLink;
+export default ServicesSlider;

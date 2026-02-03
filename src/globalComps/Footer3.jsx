@@ -2,148 +2,93 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  BiLogoFacebookCircle,
-  BiLogoInstagram,
-  BiLogoLinkedinSquare,
-  BiLogoYoutube,
-} from "react-icons/bi";
-import { FaXTwitter } from "react-icons/fa6";
 
 export function Footer3() {
   return (
-    <footer
-      id="relume"
-      className="bg-[#333] text-white lg:h-[90vh] py-12 md:py-18 lg:py-20 w-full mb-0 overflow-hidden"
-    >
-      <div className="max-w-screen-xl container mx-auto px-8 md:px-0 lg:px-8">
-        <div className="lg:mt-[-48px] grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
-          <div>
-            <div className="mb-6 md:mb-8 lg:mt-[-38px]">
-              <a href="#">
-                <img
-                  src="/NewFlexLogo1.png"
-                  alt="Logo image"
-                  className="inline-block min-w-[80px] w-[100px] h-auto"
-                />
-              </a>
+    <footer className="bg-[#111111] text-white py-16 lg:py-20 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Brand & Contact Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link to="/" className="inline-block">
+              <img
+                src="/NewFlexLogo1.png"
+                alt="Flex Events"
+                className="h-12 w-auto brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300"
+              />
+            </Link>
+            
+            <div className="space-y-4 text-sm leading-relaxed text-[#A1A1A6]">
+              <div>
+                <h4 className="font-semibold text-white mb-1">Address</h4>
+                <p>Plot 2973, Kisaasi-Kyanja Road<br />Kyanja, Kampala, Uganda</p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-white mb-1">Contact</h4>
+                <div className="flex flex-col space-y-1">
+                  <a href="tel:+256772406122" className="hover:text-primary transition-colors">+256 772 406 122</a>
+                  <a href="mailto:info@flexeventsug.com" className="hover:text-primary transition-colors">info@flexevents.ug</a>
+                </div>
+              </div>
             </div>
-            <div className="mb-6 md:mb-8">
-              <p className="mb-1 text-sm ">Address:</p>
-              <p className="mb-5 text-sm md:mb-6 flex">
-                Plot 2973, Kisaasi-Kyanja Road
-                <br />
-                Kyanja, Kampala, Uganda
-              </p>
-              <p className="mb-1 text-sm ">Contact:</p>
-              <a
-                href="tel:+256772406122"
-                className="block text-sm underline decoration-black underline-offset-1"
-              >
-                +256 772 406 122
-              </a>
-              <a
-                href="mailto:info@flexeventsug.com"
-                className="block text-sm underline decoration-black underline-offset-1"
-              >
-                info@flexevents.ug
-              </a>
-            </div>
-            {/* <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
-              <a href="#">
-                <BiLogoFacebookCircle className="size-6" />
-              </a>
-              <a href="#">
-                <BiLogoInstagram className="size-6" />
-              </a>
-              <a href="#">
-                <FaXTwitter className="size-6 p-0.5" />
-              </a>
-              <a href="#">
-                <BiLogoLinkedinSquare className="size-6" />
-              </a>
-              <a href="#">
-                <BiLogoYoutube className="size-6" />
-              </a>
-            </div> */}
           </div>
-          <div className="lg:mt-4 grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
-            <ul>
-              <li className="py-2 text-lg  text-[#C4C4C4]">
-                Services:
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/1"><span className="text-[17px] mr-2">•</span>Weddings</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/2"><span className="text-[17px] mr-2">•</span>Invitation Cards</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/3"><span className="text-[17px] mr-2">•</span>Audio Systems</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/4"><span className="text-[17px] mr-2">•</span>Home Audio</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/5"><span className="text-[17px] mr-2">•</span>AV Installations</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/6"><span className="text-[17px] mr-2">•</span>Custom Manufacturing</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/services/7"><span className="text-[17px] mr-2">•</span>Event Management</Link>
-              </li>
-            </ul>
-            <ul>
-              <li className="py-1 text-lg  text-[#C4C4C4]">
-                Rentals:
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/1"> <span className="text-[17px] mr-2">•</span>P.A System</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/2"><span className="text-[17px] mr-2">•</span>Line Array Sound System</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/3"><span className="text-[17px] mr-2">•</span>Pro Lights & Effects</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/4"><span className="text-[17px] mr-2">•</span>Aluminium Stages</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/5"><span className="text-[17px] mr-2">•</span>LED Screens</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/6"><span className="text-[17px] mr-2">•</span>Karaoke Machines</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/7"><span className="text-[17px] mr-2">•</span>Projectors & Screens</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/8"><span className="text-[17px] mr-2">•</span>DJ Equipment</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C] ">
-                <Link to="/rentals/9"><span className="text-[17px] mr-2">•</span>Wedding Decor</Link>
-              </li>
-              <li className="py-1 text-sm  hover:text-[#9BAB3C]">
-                <Link to="/rentals/10"><span className="text-[17px] mr-2">•</span>Power/Generators</Link>
-              </li>
-            </ul>
+
+          {/* Spacer */}
+          <div className="hidden lg:block lg:col-span-2"></div>
+
+          {/* Links Columns */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Services</h3>
+              <ul className="space-y-2">
+                {[
+                  { name: "Weddings", path: "/services/1" },
+                  { name: "Invitation Cards", path: "/services/2" },
+                  { name: "Audio Systems", path: "/services/3" },
+                  { name: "Home Audio", path: "/services/4" },
+                  { name: "AV Installations", path: "/services/5" },
+                  { name: "Custom Manufacturing", path: "/services/6" },
+                  { name: "Event Management", path: "/services/7" },
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="text-sm text-[#A1A1A6] hover:text-primary transition-colors duration-200 block py-0.5">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Rentals</h3>
+              <ul className="space-y-2">
+                {[
+                  { name: "P.A System", path: "/rentals/1" },
+                  { name: "Line Array Sound System", path: "/rentals/2" },
+                  { name: "Pro Lights & Effects", path: "/rentals/3" },
+                  { name: "Aluminium Stages", path: "/rentals/4" },
+                  { name: "LED Screens", path: "/rentals/5" },
+                  { name: "Karaoke Machines", path: "/rentals/6" },
+                  { name: "Projectors & Screens", path: "/rentals/7" },
+                  { name: "DJ Equipment", path: "/rentals/8" },
+                  { name: "Wedding Decor", path: "/rentals/9" },
+                  { name: "Power/Generators", path: "/rentals/10" },
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="text-sm text-[#A1A1A6] hover:text-primary transition-colors duration-200 block py-0.5">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="h-px w-full bg-black lg:mt-[-56px]" />
-        <div className="flex flex-col-reverse items-start justify-between pb-4 pt-6 text-sm md:flex-row md:items-center md:pb-0 md:pt-8">
-          <p className="mt-8 md:mt-0">
-            © 2025 FlexEvents. All rights reserved.
-          </p>
-          <ul className="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0">
-            {/* <li className="underline">
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li className="underline">
-              <a href="#">Terms of Service</a>
-            </li> */}
-          </ul>
+
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-[#6E6E73]">
+          <p>© {new Date().getFullYear()} FlexEvents. All rights reserved.</p>
         </div>
       </div>
     </footer>

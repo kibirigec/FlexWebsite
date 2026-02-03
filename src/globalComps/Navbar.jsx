@@ -1,612 +1,292 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDownIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+const rentalItems = [
+  "P.A System & Music/Mobile Disco",
+  "Line Array Sound System",
+  "Pro-Lights & Effects",
+  "Aluminum Truss & Stages",
+  "LED Screens & Video Walls",
+  "Karaoke Mics / KTv Machines",
+  "DLP Projectors & Screens",
+  "DJ Equipment",
+  "Wedding & Corporate Decor Rentals",
+  "Power / Generators",
+  "Backline Equipment",
+];
+
+const serviceItems = [
+  "Wedding & Corporate Decor",
+  "Invitation Cards",
+  "Pro-Audio & Visual/Lighting",
+  "Home Audio",
+  "Systems Installations",
+  "Flex Audio Brand ",
+  "Full Event Management and Planning",
+  "Backline Equipment",
+];
 
 export default function NavBar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // 'rentals' | 'services' | null
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [rentalsDropdownOpen, setRentalsDropdownOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const rentalsDropdownRef = useRef(null);
-  const servicesDropdownRef = useRef(null);
-  const mobileMenuRef = useRef(null);
 
-  // The active page is always the current location pathname.
-  const activePage = location.pathname;
-
-  // Define the navigation items first
-  const rentalItems = [
-    "P.A System & Music/Mobile Disco",
-    "Line Array Sound System",
-    "Pro-Lights & Effects",
-    "Aluminum Truss & Stages",
-    "LED Screens & Video Walls",
-    "Karaoke Mics / KTv Machines",
-    "DLP Projectors & Screens",
-    "DJ Equipment",
-    "Wedding & Corporate Decor Rentals",
-    "Power / Generators",
-    "Backline Equipment",
-  ];
-
-  const serviceItems = [
-    "Wedding & Corporate Decor",
-    "Invitation Cards",
-    "Pro-Audio & Visual/Lighting",
-    "Home Audio",
-    "Systems Installations",
-    "Flex Audio Brand ",
-    "Full Event Management and Planning",
-    "Backline Equipment",
-  ];
-
-  // Check if the location is in the rentals or services sections
-  const isRentalsPage = activePage.startsWith("/rentals");
-  const isServicesPage = activePage.startsWith("/services");
-
-  // Get the active rental or service item based on the URL
-  const activeRentalIndex = isRentalsPage
-    ? parseInt(activePage.split("/")[2]) - 1
-    : -1;
-  const activeServiceIndex = isServicesPage
-    ? parseInt(activePage.split("/")[2]) - 1
-    : -1;
-
-  // Get the active page name
-  const activeRentalName =
-    activeRentalIndex >= 0 && activeRentalIndex < rentalItems.length
-      ? rentalItems[activeRentalIndex]
-      : "";
-  const activeServiceName =
-    activeServiceIndex >= 0 && activeServiceIndex < serviceItems.length
-      ? serviceItems[activeServiceIndex]
-      : "";
-
-  // Close dropdowns when clicking outside
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        rentalsDropdownRef.current &&
-        !rentalsDropdownRef.current.contains(event.target)
-      ) {
-        setRentalsDropdownOpen(false);
-      }
-      if (
-        servicesDropdownRef.current &&
-        !servicesDropdownRef.current.contains(event.target)
-      ) {
-        setServicesDropdownOpen(false);
-      }
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target) &&
-        !event.target.closest('button[aria-controls="navbar-sticky"]')
-      ) {
-        setIsOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const isRentalsPage = location.pathname.startsWith("/rentals");
+  const isServicesPage = location.pathname.startsWith("/services");
+  
+  // Pages that should have black navbar text by default
+  const isDarkTextPage = ["/faq", "/pricing", "/portfolio", "/contact"].some(path => location.pathname.startsWith(path));
+
   return (
-    <nav className="fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600 backdrop-filter backdrop-blur-lg bg-black/65">
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4 px-8 md:px-8 lg:px-8">
-        {/* Logo */}
-        <div className="flex items-center ">
-          <Link
-            to="/"
-            className="flex items-center space-x-1 rtl:space-x-reverse"
-          >
-            <img
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled || mobileMenuOpen ? "bg-white/90 backdrop-blur-xl border-b border-white/20 shadow-sm" : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="relative z-50 flex items-center gap-2 group" onClick={closeMenu}>
+             <img
               src="/NewFlexLogo1.png"
-              alt="Logo image"
-              className="inline-block min-w-[80px] w-[90px] h-auto"
+              alt="Flex Events"
+              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
-        </div>
 
-        {/* Navigation Menu (Desktop) - Centered */}
-        <div className="hidden lg:flex items-center flex-1 mx-auto justify-center">
-          <div className="flex items-center space-x-2 md:space-x-4 border border-[#9BAB3C]">
-            {/* Home Link */}
-            <div>
-              <Link
-                to="/"
-                className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
-                  ${
-                    activePage === "/"
-                      ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0"
-                      : "text-white"
-                  }
-                  before:content-[''] before:absolute before:inset-0 before:w-full 
-                  before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
-                  before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
-                  hover:before:scale-x-100`}
-              >
-                Home
-              </Link>
-            </div>
+            {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+             <NavLink to="/" isActive={location.pathname === "/"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>Home</NavLink>
+             
+             <Dropdown 
+                title="Services" 
+                items={serviceItems} 
+                basePath="/services" 
+                isActive={isServicesPage}
+                isOpen={activeDropdown === 'services'}
+                onHover={(state) => setActiveDropdown(state ? 'services' : null)}
+                isScrolled={isScrolled}
+                isDarkText={isDarkTextPage}
+                currentPath={location.pathname}
+             />
 
-            {/* Services Dropdown */}
-            <div ref={servicesDropdownRef} className="relative">
-              <div className="flex flex-col items-center">
-                <button
-                  onClick={() => {
-                    setServicesDropdownOpen(!servicesDropdownOpen);
-                    setRentalsDropdownOpen(false);
-                  }}
-                  className={`relative py-4 px-4 md:hover:text-[#9BAB3C] flex items-center transition-colors duration-300
-                    ${
-                      isServicesPage
-                        ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0"
-                        : "text-white"
-                    }
-                    before:content-[''] before:absolute before:inset-0 before:w-full 
-                    before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
-                    before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
-                    ${
-                      isServicesPage
-                        ? "before:scale-x-100 before:border-b-2"
-                        : "before:scale-x-0"
-                    }
-                    hover:before:scale-x-100`}
-                >
-                  Services
-                  <svg
-                    className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                      servicesDropdownOpen ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
+             <Dropdown 
+                title="Flex Rentals" 
+                items={rentalItems} 
+                basePath="/rentals"
+                isActive={isRentalsPage} 
+                isOpen={activeDropdown === 'rentals'}
+                onHover={(state) => setActiveDropdown(state ? 'rentals' : null)}
+                isScrolled={isScrolled}
+                isDarkText={isDarkTextPage}
+                currentPath={location.pathname}
+             />
 
-              <div
-                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-[#9BAB3C] rounded-md shadow-xl z-30 overflow-hidden transition-all duration-500 ${
-                  servicesDropdownOpen
-                    ? "max-h-[500px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="py-2">
-                  {serviceItems.map((service, index) => (
-                    <Link
-                      key={index}
-                      to={`/services/${index + 1}`}
-                      onClick={() => setServicesDropdownOpen(false)}
-                      className={`block px-4 py-2 text-sm hover:bg-[#9BAB3C] hover:text-white transition-all duration-500 ${
-                        activeServiceIndex === index
-                          ? "bg-[#9BAB3C]/30 text-[#9BAB3C]"
-                          : "text-white"
-                      }`}
-                      style={{
-                        opacity: servicesDropdownOpen ? 1 : 0,
-                        transform: servicesDropdownOpen
-                          ? "translateY(0)"
-                          : "translateY(-10px)",
-                        transitionDelay: `${index * 50}ms`,
-                      }}
-                    >
-                      {service}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Rentals Dropdown */}
-            <div ref={rentalsDropdownRef} className="relative">
-              <div className="flex flex-col items-center">
-                <button
-                  onClick={() => {
-                    setRentalsDropdownOpen(!rentalsDropdownOpen);
-                    setServicesDropdownOpen(false);
-                  }}
-                  className={`relative py-4 px-4 md:hover:text-[#9BAB3C] flex items-center transition-colors duration-300
-                    ${
-                      isRentalsPage
-                        ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0"
-                        : "text-white"
-                    }
-                    before:content-[''] before:absolute before:inset-0 before:w-full 
-                    before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
-                    before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
-                    ${
-                      isRentalsPage
-                        ? "before:scale-x-100 before:border-b-2"
-                        : "before:scale-x-0"
-                    }
-                    hover:before:scale-x-100`}
-                >
-                  Flex Rentals
-                  <svg
-                    className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                      rentalsDropdownOpen ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-
-              <div
-                className={`absolute left-0 mt-2 w-72 bg-black/95 border border-[#9BAB3C] rounded-md shadow-xl z-30 overflow-hidden transition-all duration-500 ${
-                  rentalsDropdownOpen
-                    ? "max-h-[500px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="py-2">
-                  {rentalItems.map((rental, index) => (
-                    <Link
-                      key={index}
-                      to={`/rentals/${index + 1}`}
-                      onClick={() => setRentalsDropdownOpen(false)}
-                      className={`block px-4 py-2 text-sm hover:bg-[#9BAB3C] hover:text-white transition-all duration-300 ${
-                        activeRentalIndex === index
-                          ? "bg-[#9BAB3C]/30 text-[#9BAB3C]"
-                          : "text-white"
-                      }`}
-                      style={{
-                        opacity: rentalsDropdownOpen ? 1 : 0,
-                        transform: rentalsDropdownOpen
-                          ? "translateY(0)"
-                          : "translateY(-10px)",
-                        // transitionDelay: `${index * 50}ms`,
-                      }}
-                    >
-                      {rental}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* FAQ Link */}
-            <div>
-              <Link
-                to="/faq"
-                className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
-                  ${
-                    activePage === "/faq"
-                      ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0"
-                      : "text-white"
-                  }
-                  before:content-[''] before:absolute before:inset-0 before:w-full 
-                  before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
-                  before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
-                  hover:before:scale-x-100`}
-              >
-                FAQ
-              </Link>
-            </div>
-
-            {/* Pricing Link */}
-            <div>
-              <Link
-                to="/pricing"
-                className={`relative py-4 px-4 md:hover:text-[#9BAB3C] border-0 transition-colors duration-300
-                  ${
-                    activePage === "/pricing"
-                      ? "text-[#9BAB3C] dark:text-[#9BAB3C] dark:border-0"
-                      : "text-white"
-                  }
-                  before:content-[''] before:absolute before:inset-0 before:w-full 
-                  before:bg-[#9BAB3C]/20 before:scale-x-0 before:transition-all before:duration-300 before:ease-in-out 
-                  before:border-b-[0px] hover:before:border-b-2 before:border-[#9BAB3C]
-                  hover:before:scale-x-100`}
-              >
-                Pricing
-              </Link>
-            </div>
+             <NavLink to="/portfolio" isActive={location.pathname === "/portfolio"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>Portfolio</NavLink>
+             <NavLink to="/pricing" isActive={location.pathname === "/pricing"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>Pricing</NavLink>
+             <NavLink to="/faq" isActive={location.pathname === "/faq"} isScrolled={isScrolled} isDarkText={isDarkTextPage}>FAQ</NavLink>
           </div>
-        </div>
 
-        {/* Right Side: About and Contact buttons - Only visible on large screens */}
-        <div className="hidden lg:flex items-center mr-4 md:mr-0 space-x-2">
-          {/* About Link */}
-          <Link to="/about">
-            <button className="px-4 py-2 text-white transition-all duration-300 hover:bg-white hover:text-black">
-              About
-            </button>
-          </Link>
-          {/* vertical separator */}
-          <div className="h-[36px] bg-white w-[1px]" />
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Link to="/contact">
+                <button className="px-5 py-2.5 rounded-full text-sm font-medium bg-primary text-white hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-95">
+                    Contact Us
+                </button>
+            </Link>
+          </div>
 
-          {/* Contact Button */}
-          <Link to="/contact">
-            <button className="px-4 py-2 text-white transition-all duration-300 hover:bg-white hover:text-black">
-              Contact
-            </button>
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button - Visible on all screens below lg breakpoint */}
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex lg:hidden items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-sticky"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation menu"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
+          {/* Mobile Menu Button */}
+          <button 
+            className={`lg:hidden relative z-50 p-2 -mr-2 ${isScrolled || mobileMenuOpen || isDarkTextPage ? 'text-black' : 'text-white'}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
-
-        {/* Mobile Menu */}
-        <div
-          ref={mobileMenuRef}
-          className={`${
-            isOpen ? "block" : "hidden"
-          } w-full lg:hidden absolute top-full left-0 bg-black/95 mt-2 transition-all duration-300`}
-        >
-          <ul className="flex flex-col p-2">
-            {/* Home Link */}
-            <li className="mb-2">
-              <Link
-                to="/"
-                onClick={() => setIsOpen(false)}
-                className={`block py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                  activePage === "/"
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
-                }`}
-              >
-                Home
-              </Link>
-            </li>
-
-            {/* Services Dropdown for Mobile */}
-            <li className="mb-2">
-              <div>
-                <button
-                  onClick={() => {
-                    setServicesDropdownOpen(!servicesDropdownOpen);
-                    setRentalsDropdownOpen(false);
-                  }}
-                  className={`flex items-center justify-between w-full py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                    isServicesPage
-                      ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                      : "text-white"
-                  }`}
-                >
-                  Services
-                  <svg
-                    className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                      servicesDropdownOpen ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    ></path>
-                  </svg>
-                </button>
-
-                {/* Display active service name for mobile */}
-                {isServicesPage &&
-                  activeServiceName &&
-                  !servicesDropdownOpen && (
-                    <span className="text-xs text-[#9BAB3C] mt-1 pl-3 block truncate">
-                      {activeServiceName}
-                    </span>
-                  )}
-              </div>
-
-              <div
-                className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${
-                  servicesDropdownOpen
-                    ? "max-h-[1000px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                {serviceItems.map((service, index) => (
-                  <Link
-                    key={index}
-                    to={`/services/${index + 1}`}
-                    onClick={() => {
-                      setServicesDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                    className={`block py-2 text-sm hover:text-[#9BAB3C] transition-colors duration-300 ${
-                      activeServiceIndex === index
-                        ? "text-[#9BAB3C] bg-[#9BAB3C]/10"
-                        : "text-white"
-                    }`}
-                    style={{
-                      opacity: servicesDropdownOpen ? 1 : 0,
-                      transform: servicesDropdownOpen
-                        ? "translateY(0)"
-                        : "translateY(-10px)",
-                      transition: "opacity 300ms, transform 300ms",
-                      transitionDelay: `${index * 50}ms`,
-                    }}
-                  >
-                    {service}
-                  </Link>
-                ))}
-              </div>
-            </li>
-
-            {/* Rentals Dropdown for Mobile */}
-            <li className="mb-2">
-              <div>
-                <button
-                  onClick={() => {
-                    setRentalsDropdownOpen(!rentalsDropdownOpen);
-                    setServicesDropdownOpen(false);
-                  }}
-                  className={`flex items-center justify-between w-full py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                    isRentalsPage
-                      ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                      : "text-white"
-                  }`}
-                >
-                  Flex Rentals
-                  <svg
-                    className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                      rentalsDropdownOpen ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    ></path>
-                  </svg>
-                </button>
-
-                {/* Display active rental name for mobile */}
-                {isRentalsPage && activeRentalName && !rentalsDropdownOpen && (
-                  <span className="text-xs text-[#9BAB3C] mt-1 pl-3 block truncate">
-                    {activeRentalName}
-                  </span>
-                )}
-              </div>
-
-              <div
-                className={`pl-4 mt-2 overflow-hidden transition-all duration-500 ${
-                  rentalsDropdownOpen
-                    ? "max-h-[1000px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                {rentalItems.map((rental, index) => (
-                  <Link
-                    key={index}
-                    to={`/rentals/${index + 1}`}
-                    onClick={() => {
-                      setRentalsDropdownOpen(false);
-                      setIsOpen(false);
-                    }}
-                    className={`block py-2 text-sm hover:text-[#9BAB3C] transition-colors duration-300 ${
-                      activeRentalIndex === index
-                        ? "text-[#9BAB3C] bg-[#9BAB3C]/10"
-                        : "text-white"
-                    }`}
-                    style={{
-                      opacity: rentalsDropdownOpen ? 1 : 0,
-                      transform: rentalsDropdownOpen
-                        ? "translateY(0)"
-                        : "translateY(-10px)",
-                      transition: "opacity 300ms, transform 300ms",
-                      transitionDelay: `${index * 50}ms`,
-                    }}
-                  >
-                    {rental}
-                  </Link>
-                ))}
-              </div>
-            </li>
-
-            {/* FAQ Link */}
-            <li className="mb-2">
-              <Link
-                to="/faq"
-                onClick={() => setIsOpen(false)}
-                className={`block py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                  activePage === "/faq"
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
-                }`}
-              >
-                FAQ
-              </Link>
-            </li>
-
-            {/* Pricing Link */}
-            <li className="mb-2">
-              <Link
-                to="/pricing"
-                onClick={() => setIsOpen(false)}
-                className={`block py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                  activePage === "/pricing"
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
-                }`}
-              >
-                Pricing
-              </Link>
-            </li>
-
-            {/* About Link */}
-            <li className="mb-2">
-              <Link
-                to="/about"
-                onClick={() => setIsOpen(false)}
-                className={`block py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                  activePage === "/about"
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
-                }`}
-              >
-                About
-              </Link>
-            </li>
-
-            {/* Contact Link */}
-            <li className="mb-2">
-              <Link
-                to="/contact"
-                onClick={() => setIsOpen(false)}
-                className={`block py-2 px-3 hover:text-[#9BAB3C] transition-colors duration-300 ${
-                  activePage === "/contact"
-                    ? "text-[#9BAB3C] dark:text-[#9BAB3C]"
-                    : "text-white"
-                }`}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
+            {mobileMenuOpen ? <XMarkIcon className="w-8 h-8" /> : <Bars3Icon className="w-8 h-8" />}
+          </button>
         </div>
-      </div>
-    </nav>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-40 bg-white pt-24 px-6 pb-6 lg:hidden overflow-y-auto"
+            >
+                <div className="flex flex-col space-y-6">
+                    <MobileLink to="/" onClick={closeMenu} isActive={location.pathname === "/"}>Home</MobileLink>
+                    
+                    <MobileDropdown 
+                        title="Services" 
+                        items={serviceItems} 
+                        basePath="/services"
+                        isActive={isServicesPage}
+                        onClose={closeMenu}
+                        currentPath={location.pathname}
+                    />
+
+                    <MobileDropdown 
+                        title="Flex Rentals" 
+                        items={rentalItems} 
+                        basePath="/rentals"
+                        isActive={isRentalsPage}
+                        onClose={closeMenu}
+                        currentPath={location.pathname}
+                    />
+                    
+                    <MobileLink to="/portfolio" onClick={closeMenu} isActive={location.pathname === "/portfolio"}>Portfolio</MobileLink>
+                    <MobileLink to="/pricing" onClick={closeMenu} isActive={location.pathname === "/pricing"}>Pricing</MobileLink>
+                    <MobileLink to="/faq" onClick={closeMenu} isActive={location.pathname === "/faq"}>FAQ</MobileLink>
+                    <MobileLink to="/contact" onClick={closeMenu} isActive={location.pathname === "/contact"}>Contact</MobileLink>
+                </div>
+            </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
+
+const NavLink = ({ to, children, isActive, isScrolled, isMobile, isDarkText }) => {
+  const baseColor = isScrolled || isMobile || isDarkText ? 'text-[#1d1d1f]' : 'text-white';
+  const hoverColor = isScrolled || isMobile || isDarkText ? 'hover:text-primary' : 'hover:text-white/80';
+  const activeColor = 'text-primary';
+
+  return (
+    <Link 
+      to={to} 
+      className={`text-sm font-medium transition-colors duration-200 ${isActive ? activeColor : `${baseColor} ${hoverColor}`}`}
+    >
+      {children}
+    </Link>
+  );
+};
+
+const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, isScrolled, currentPath, isDarkText }) => {
+    const baseColor = isScrolled || isDarkText ? 'text-[#1d1d1f]' : 'text-white';
+    const hoverColor = isScrolled || isDarkText ? 'hover:text-primary' : 'hover:text-white/80';
+    
+    return (
+    <div 
+        className="relative h-20 flex items-center"
+        onMouseEnter={() => onHover(true)}
+        onMouseLeave={() => onHover(false)}
+    >
+        <button 
+            className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${isActive || isOpen ? 'text-primary' : `${baseColor} ${hoverColor}`}`}
+        >
+            {title}
+            <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl py-2 overflow-hidden"
+                >
+                    {items.map((item, idx) => {
+                        const itemPath = `${basePath}/${idx + 1}`;
+                        const isItemActive = currentPath === itemPath;
+                        return (
+                            <Link 
+                                key={idx} 
+                                to={itemPath}
+                                className={`block px-4 py-2.5 text-sm transition-colors ${
+                                    isItemActive 
+                                    ? 'text-primary bg-surface-subtle font-medium' 
+                                    : 'text-content-subtle hover:text-primary hover:bg-surface-subtle'
+                                }`}
+                            >
+                                {item}
+                            </Link>
+                        );
+                    })}
+                </motion.div>
+            )}
+        </AnimatePresence>
+    </div>
+)};
+
+const MobileLink = ({ to, children, onClick, isActive }) => (
+    <Link 
+        to={to} 
+        onClick={onClick} 
+        className={`text-2xl font-display font-semibold ${isActive ? 'text-primary' : 'text-content-prominent'}`}
+    >
+        {children}
+    </Link>
+);
+
+const MobileDropdown = ({ title, items, basePath, isActive, onClose, currentPath }) => {
+    const [isOpen, setIsOpen] = useState(isActive);
+
+    return (
+        <div>
+            <button 
+                onClick={() => setIsOpen(!isOpen)}
+                className={`flex items-center justify-between w-full text-2xl font-display font-semibold ${isActive ? 'text-primary' : 'text-content-prominent'}`}
+            >
+                {title}
+                <ChevronDownIcon className={`w-6 h-6 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pl-4 pt-4 flex flex-col space-y-3 border-l-2 border-surface-subtle ml-2 mt-2">
+                            {items.map((item, idx) => {
+                                const itemPath = `${basePath}/${idx + 1}`;
+                                const isItemActive = currentPath === itemPath;
+                                return (
+                                    <Link 
+                                        key={idx} 
+                                        to={itemPath}
+                                        onClick={onClose}
+                                        className={`text-lg transition-colors ${
+                                            isItemActive 
+                                            ? 'text-primary font-medium' 
+                                            : 'text-content-subtle'
+                                        }`}
+                                    >
+                                        {item}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
