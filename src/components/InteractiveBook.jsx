@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./Experience";
 import { UI } from "./UI";
@@ -13,6 +13,7 @@ export const InteractiveBook = () => {
   const [page, setPage] = useAtom(pageAtom);
   const [isInteracting, setIsInteracting] = useState(false);
   const isMobile = !isMdOrLg;
+  const bookRef = useRef(null);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -24,6 +25,28 @@ export const InteractiveBook = () => {
     
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  // Auto-disable interaction when scrolling away
+  useEffect(() => {
+    if (!bookRef.current || !isMobile) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && isInteracting) {
+            setIsInteracting(false);
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when only 10% is visible (scrolled away)
+    );
+
+    observer.observe(bookRef.current);
+
+    return () => {
+      if (bookRef.current) observer.unobserve(bookRef.current);
+    };
+  }, [isMobile, isInteracting]);
 
   return (
     <section className="py-16 bg-white">
@@ -53,7 +76,7 @@ export const InteractiveBook = () => {
           Container height controls the overall size of the book viewport
           Adjust h-[600px] to make the container taller or shorter
         */}
-        <div className="relative w-full">
+        <div ref={bookRef} className="relative w-full">
           {/* Mobile Overlay - Tap to Interact */}
           {isMobile && !isInteracting && (
             <div 
@@ -119,7 +142,11 @@ export const InteractiveBook = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-4 gap-4">
+        <div className={`flex justify-center mt-4 gap-4 transition-all duration-500 transform ${
+          isMobile && !isInteracting 
+            ? "opacity-0 blur-sm pointer-events-none translate-y-4" 
+            : "opacity-100 blur-0 translate-y-0"
+        }`}>
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
             className="px-6 py-2 border-2 border-black   text-black bg-transparent rounded-full hover:bg-black hover:text-white transition-colors font-medium"

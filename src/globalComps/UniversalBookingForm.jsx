@@ -161,7 +161,7 @@ export function UniversalBookingForm({
                                 const encodedMessage = encodeURIComponent(message);
                                 window.open(`https://wa.me/256772406122?text=${encodedMessage}`, '_blank');
                             }}
-                            className="w-full bg-black text-white font-medium py-4 rounded-full shadow-lg hover:bg-gray-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm tracking-wide uppercase flex items-center justify-center gap-2"
+                            className="w-full bg-[#9BAB3C] text-white font-medium py-4 rounded-full shadow-lg hover:bg-[#869433] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm tracking-wide uppercase flex items-center justify-center gap-2"
                         >
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.2 53.7 21.8 57.4 2.6 3.7 37.8 59 91.8 80.8 53.8 21.9 53.8 14.6 63.9 13.6 10.1-1 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
                             WhatsApp
@@ -177,16 +177,13 @@ export function UniversalBookingForm({
 }
 
 const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
-    // Vantara style: Clean, border-bottom, no background, minimal placeholders
-    const baseInputStyles = "w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none";
+    // Green Theme: Clean, green border-bottom, no background, green placeholders
+    const baseInputStyles = "w-full py-3 bg-transparent border-b border-[#9BAB3C]/30 focus:border-[#9BAB3C] text-gray-900 placeholder:text-[#9BAB3C]/50 transition-colors outline-none rounded-none";
     
-    // Label display logic: Show label above only for accessibility/clarity if needed, 
-    // or rely on placeholder if it's a simple text input. 
-    // The Vantara screenshot looks like standard inputs with labels. 
-    // We will render a very subtle label above.
+    // Label display logic: simple and clean, now GREEN
     const renderLabel = () => (
-        <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">
-            {field.label} {field.required ? "" : <span className="float-right text-[10px] text-gray-400 normal-case tracking-normal">Optional</span>}
+        <label className="block text-xs font-bold uppercase tracking-wider text-[#9BAB3C] mb-1">
+            {field.label} {field.required ? "" : <span className="float-right text-[10px] text-[#9BAB3C]/60 normal-case tracking-normal">Optional</span>}
         </label>
     );
 
@@ -229,7 +226,6 @@ const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
                 </div>
             );
         case 'checkbox':
-             // Should rarely be used per "no consent" request, but good to have styled cleanly
              return (
                  <label className="flex items-center space-x-3 cursor-pointer py-2 hover:opacity-80 transition-opacity">
                      <input
@@ -237,7 +233,7 @@ const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
                          name={field.name}
                          checked={!!value}
                          onChange={onChange}
-                         className="w-4 h-4 rounded border-gray-300 text-black focus:ring-black accent-black"
+                         className="w-4 h-4 rounded border-gray-300 text-[#9BAB3C] focus:ring-[#9BAB3C] accent-[#9BAB3C]"
                      />
                      <span className="text-sm text-gray-600">{field.label}</span>
                  </label>
@@ -253,9 +249,9 @@ const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
                                     type="checkbox"
                                     checked={value?.includes(opt) || false}
                                     onChange={() => onCheckboxGroupChange(field.name, opt)}
-                                    className="w-4 h-4 rounded border-gray-300 text-black focus:ring-black accent-black"
+                                    className="w-4 h-4 rounded border-gray-300 text-[#9BAB3C] focus:ring-[#9BAB3C] accent-[#9BAB3C]"
                                 />
-                                <span className={`text-sm ${value?.includes(opt) ? 'text-black' : 'text-gray-500'} group-hover:text-black transition-colors`}>
+                                <span className={`text-sm ${value?.includes(opt) ? 'text-[#9BAB3C]' : 'text-gray-500'} group-hover:text-[#9BAB3C] transition-colors`}>
                                     {opt.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase())}
                                 </span>
                             </label>
