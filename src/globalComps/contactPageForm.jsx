@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,6 +14,30 @@ export function ContactPageForm() {
   });
 
   const [isDesktop, setIsDesktop] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
+
+  const servicesOptions = [
+    "Full Event Management",
+    "Corporate/Wedding Services",
+    "Lighting & Audio",
+    "Screens & Visuals",
+    "Brand Manufacturing",
+  ];
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCheckboxChange = (option) => {
+    setFormData((prev) => {
+      const selectedServices = prev.selectedServices.includes(option)
+        ? prev.selectedServices.filter((service) => service !== option)
+        : [...prev.selectedServices, option];
+
+      return { ...prev, selectedServices };
+    });
+  };
 
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);

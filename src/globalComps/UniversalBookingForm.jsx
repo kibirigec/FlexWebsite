@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,6 +13,43 @@ export function UniversalBookingForm({
 }) {
   const [formData, setFormData] = useState({});
   const [isDesktop, setIsDesktop] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+
+  // Initialize form state
+  useEffect(() => {
+    const initial = {};
+    fields.forEach(field => {
+       if (field.type === 'checkbox-group') {
+          initial[field.name] = [];
+       } else if (field.type === 'checkbox') {
+          initial[field.name] = false;
+       } else {
+          initial[field.name] = "";
+       }
+    });
+    setFormData(initial);
+  }, [fields]);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    
+    if (type === 'checkbox') {
+        setFormData(prev => ({ ...prev, [name]: checked }));
+    } else {
+        setFormData(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleCheckboxGroupChange = (fieldName, optionValue) => {
+    setFormData(prev => {
+        const currentValues = prev[fieldName] || [];
+        const newValues = currentValues.includes(optionValue)
+            ? currentValues.filter(v => v !== optionValue)
+            : [...currentValues, optionValue];
+        return { ...prev, [fieldName]: newValues };
+    });
+  };
 
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
