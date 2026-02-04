@@ -34,6 +34,7 @@ export function ContactPageForm() {
     }
 
     try {
+      // 1. Save to Firestore
       await addDoc(collection(db, "inquiries"), {
         ...formData,
         submittedAt: new Date(),
@@ -42,6 +43,16 @@ export function ContactPageForm() {
       });
       
       if (isDesktop) {
+        // 2. Send Email via Netlify Function
+        const response = await fetch('/.netlify/functions/send-email', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+             throw new Error("Failed to send email notification");
+        }
         setStatus("success");
       } else {
         // Mobile: Redirect to WhatsApp

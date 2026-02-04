@@ -27,6 +27,7 @@ export function UniversalBookingForm({
     setStatus(null);
 
     try {
+      // 1. Save to Firestore (Database Record)
       await addDoc(collection(db, collectionName), {
         ...formData,
         submittedAt: new Date(),
@@ -34,6 +35,17 @@ export function UniversalBookingForm({
       });
       
       if (isDesktop) {
+         // 2. Send Email via Netlify Function (Desktop Only)
+         const response = await fetch('/.netlify/functions/send-email', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(formData)
+         });
+
+         if (!response.ok) {
+             throw new Error("Failed to send email notification");
+         }
+
          setStatus('success');
       } else {
          // Mobile: Redirect to WhatsApp
@@ -55,6 +67,8 @@ export function UniversalBookingForm({
 
     } catch (error) {
       console.error("Error submitting form:", error);
+      // If only email fails but DB works, we might still want to show success or a specific warning.
+      // For now, simpler to show error if anything major breaks.
       setStatus('error');
     } finally {
       setLoading(false);
