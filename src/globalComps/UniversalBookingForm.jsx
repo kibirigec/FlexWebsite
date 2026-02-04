@@ -178,7 +178,8 @@ export function UniversalBookingForm({
 
 const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
     // Vantara style: Clean, border-bottom, no background, minimal placeholders
-    const baseInputStyles = "w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none";
+    // User requested "outlined boxes".
+    const baseInputStyles = "w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm";
     
     // Label display logic: Show label above only for accessibility/clarity if needed, 
     // or rely on placeholder if it's a simple text input. 

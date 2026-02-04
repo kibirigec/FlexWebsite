@@ -174,7 +174,7 @@ export function ContactPageForm() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none"
+                          className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
                           placeholder="Your full name"
                           required
                         />
@@ -188,7 +188,7 @@ export function ContactPageForm() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none"
+                            className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
                             placeholder="john@example.com"
                             required
                            />
@@ -200,7 +200,7 @@ export function ContactPageForm() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none"
+                            className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
                             placeholder="+256 700 ..."
                             required
                            />
@@ -237,7 +237,7 @@ export function ContactPageForm() {
                           name="eventDescription"
                           value={formData.eventDescription}
                           onChange={handleChange}
-                          className="w-full py-3 bg-transparent border-b border-gray-200 focus:border-[#000] text-gray-900 placeholder:text-gray-400 transition-colors outline-none rounded-none min-h-[100px] resize-y"
+                          className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm min-h-[100px] resize-y"
                           placeholder="Tell us about your event..."
                         ></textarea>
                       </div>

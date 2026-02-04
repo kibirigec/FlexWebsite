@@ -241,9 +241,10 @@ const NavLink = ({ to, children, isActive }) => {
   return (
     <Link 
       to={to} 
-      className={`text-sm font-medium transition-colors duration-200 ${isActive ? activeColor : `${baseColor} ${hoverColor}`}`}
+      className={`text-sm font-medium transition-colors duration-200 relative group ${isActive ? activeColor : `${baseColor} ${hoverColor}`}`}
     >
       {children}
+      <span className={`absolute left-0 -bottom-1 w-full h-[1px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ease-out ${isActive ? 'scale-x-100' : ''}`} />
     </Link>
   );
 };
@@ -254,25 +255,28 @@ const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, currentPa
     
     return (
     <div 
-        className="relative h-20 flex items-center"
+        className="relative h-16 flex items-center" // Reduced from h-20 to h-16
         onMouseEnter={() => onHover(true)}
         onMouseLeave={() => onHover(false)}
     >
         <button 
-            className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${isActive || isOpen ? 'text-primary' : `${baseColor} ${hoverColor}`}`}
+            className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 group ${isActive || isOpen ? 'text-primary' : `${baseColor} ${hoverColor}`}`}
         >
-            {title}
-            <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+            <span className="relative">
+                {title}
+                <span className={`absolute left-0 bottom-0 w-full h-[1px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${isActive ? 'scale-x-100' : ''}`} />
+            </span>
+            <ChevronDownIcon className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
 
         <AnimatePresence>
             {isOpen && (
                 <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 0, scale: 0.95 }} // Lowered y start slightly to be closer
+                    animate={{ opacity: 1, y: 8, scale: 1 }} // y:8 pushes it down just a bit from top-full
+                    exit={{ opacity: 0, y: 0, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-[#1e1916]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl py-2 overflow-hidden"
+                    className="absolute top-10 left-1/2 -translate-x-1/2 w-64 bg-[#1e1916]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl py-2 overflow-hidden"
                 >
                     {items.map((item, idx) => {
                         const itemPath = `${basePath}/${idx + 1}`;
@@ -281,13 +285,14 @@ const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, currentPa
                              <Link 
                                 key={idx} 
                                 to={itemPath}
-                                className={`block px-4 py-2.5 text-sm transition-colors ${
+                                className={`block px-4 py-2.5 text-sm transition-colors relative group/item ${
                                     isItemActive 
                                     ? 'text-primary bg-white/5 font-medium' 
                                     : 'text-white/70 hover:text-white hover:bg-white/5'
                                 }`}
                             >
-                                {item}
+                                <span className="relative z-10">{item}</span>
+                                {isItemActive && <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary h-full" />}
                             </Link>
                         );
                     })}
