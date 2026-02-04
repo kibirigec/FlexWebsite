@@ -52,7 +52,7 @@ export function HomeGallery() {
       </div>
 
       <div className="text-center">
-         <Button to="/portfolio" size="lg" className="!shadow-none !bg-transparent !border !border-black !text-black !rounded-sm">View Full Portfolio</Button>
+         <Button to="/portfolio" size="lg" className="!shadow-none !bg-white !border !border-primary !text-black !rounded-sm !hover:bg-primary/5 !hover:text-primary">View Full Portfolio</Button>
       </div>
     </section>
   );

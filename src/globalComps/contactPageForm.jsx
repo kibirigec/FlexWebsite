@@ -104,8 +104,8 @@ export function ContactPageForm() {
                 <ContactItem 
                   icon={<EnvelopeIcon className="w-5 h-5" />}
                   label="Email"
-                  value="info@flexevents.ug"
-                  href="mailto:info@flexevents.ug"
+                  value="flexbrandug@gmail.com"
+                  href="mailto:flexbrandug@gmail.com"
                 />
                 
                 <div className="flex items-start gap-4 group">
@@ -174,7 +174,7 @@ export function ContactPageForm() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
+                          className="w-full py-3 px-4 bg-white border-2 border-primary focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
                           placeholder="Your full name"
                           required
                         />
@@ -188,7 +188,7 @@ export function ContactPageForm() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
+                            className="w-full py-3 px-4 bg-white border-2 border-primary focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
                             placeholder="john@example.com"
                             required
                            />
@@ -200,7 +200,7 @@ export function ContactPageForm() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
+                            className="w-full py-3 px-4 bg-white border-2 border-primary focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm"
                             placeholder="+256 700 ..."
                             required
                            />
@@ -221,7 +221,7 @@ export function ContactPageForm() {
                                 value={option}
                                 checked={formData.selectedServices.includes(option)}
                                 onChange={() => handleCheckboxChange(option)}
-                                className="w-4 h-4 rounded border-gray-300 text-black focus:ring-black accent-black"
+                                className="w-4 h-4 rounded border-2 border-primary text-primary focus:ring-primary accent-primary"
                               />
                               <span className={`text-sm ${formData.selectedServices.includes(option) ? 'text-black font-medium' : 'text-gray-500'} group-hover:text-black transition-colors`}>
                                 {option}
@@ -237,7 +237,7 @@ export function ContactPageForm() {
                           name="eventDescription"
                           value={formData.eventDescription}
                           onChange={handleChange}
-                          className="w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm min-h-[100px] resize-y"
+                          className="w-full py-3 px-4 bg-white border-2 border-primary focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm min-h-[100px] resize-y"
                           placeholder="Tell us about your event..."
                         ></textarea>
                       </div>

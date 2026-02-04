@@ -288,7 +288,7 @@ const Dropdown = ({ title, items, basePath, isActive, isOpen, onHover, currentPa
                                 className={`block px-4 py-2.5 text-sm transition-colors relative group/item ${
                                     isItemActive 
                                     ? 'text-primary bg-white/5 font-medium' 
-                                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                                    : 'text-white/70 hover:text-primary hover:bg-primary/20'
                                 }`}
                             >
                                 <span className="relative z-10">{item}</span>

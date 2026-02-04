@@ -62,11 +62,11 @@ export const InteractiveBook = () => {
           <div className="flex justify-center">
             <Link
               to="/portfolio"
-              className="inline-flex items-center px-6 py-3 border border-black text-base font-medium rounded-md text-black  hover:bg-[#869433] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9BAB3C] transition-colors duration-200"
+              className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-black  hover:bg-primary/5 hover:text-primary transition-colors duration-200"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* <svg className="w-5 h-5 mr-2 text-black hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
+              </svg> */}
               View Full Portfolio
             </Link>
           </div>
@@ -149,13 +149,13 @@ export const InteractiveBook = () => {
         }`}>
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
-            className="px-6 py-2 border-2 border-black   text-black bg-transparent rounded-full hover:bg-black hover:text-white transition-colors font-medium"
+            className="px-6 py-2 border-2 border-primary   text-black bg-transparent rounded-full hover:bg-primary/5 hover:text-primary transition-colors font-medium"
           >
             ← Back
           </button>
           <button
             onClick={() => setPage((prev) => Math.min(prev + 1, pages.length))}
-            className="px-6 py-2 border-2 border-black text-black bg-transparent rounded-full hover:bg-black hover:text-white transition-colors font-medium"
+            className="px-6 py-2 border-2 border-primary text-black bg-transparent rounded-full hover:bg-primary/5 hover:text-primary transition-colors font-medium"
           >
             Next →
           </button>
