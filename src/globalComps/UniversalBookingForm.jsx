@@ -89,7 +89,7 @@ export function UniversalBookingForm({
            <div className="space-y-6 text-sm">
               <ContactItem icon="map" text={<>Plot 2973, Kisaasi-Kyanja Road<br/>Kyanja, Kampala</>} />
               <ContactItem icon="phone" text="+256 772 406 122" href="tel:+256772406122" />
-              <ContactItem icon="mail" text="info@flexevents.ug" href="mailto:info@flexevents.ug" />
+              <ContactItem icon="mail" text="flexbrandug@gmail.com" href="mailto:flexbrandug@gmail.com" />
            </div>
         </div>
 
@@ -178,8 +178,8 @@ export function UniversalBookingForm({
 
 const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
     // Vantara style: Clean, border-bottom, no background, minimal placeholders
-    // User requested "outlined boxes".
-    const baseInputStyles = "w-full py-3 px-4 bg-white border border-gray-300 focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm";
+    // User requested "outlined boxes" with "border-2" and "theme green".
+    const baseInputStyles = "w-full py-3 px-4 bg-white border-2 border-primary focus:border-black focus:ring-1 focus:ring-black/5 text-gray-900 placeholder:text-gray-400 transition-all outline-none rounded-lg shadow-sm";
     
     // Label display logic: Show label above only for accessibility/clarity if needed, 
     // or rely on placeholder if it's a simple text input. 
@@ -254,7 +254,7 @@ const FieldInput = ({ field, value, onChange, onCheckboxGroupChange }) => {
                                     type="checkbox"
                                     checked={value?.includes(opt) || false}
                                     onChange={() => onCheckboxGroupChange(field.name, opt)}
-                                    className="w-4 h-4 rounded border-gray-300 text-black focus:ring-black accent-black"
+                                              className="w-4 h-4 rounded border-2 border-primary text-primary focus:ring-primary accent-primary"
                                 />
                                 <span className={`text-sm ${value?.includes(opt) ? 'text-black' : 'text-gray-500'} group-hover:text-black transition-colors`}>
                                     {opt.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase())}

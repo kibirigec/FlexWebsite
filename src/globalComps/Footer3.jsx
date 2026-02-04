@@ -29,7 +29,7 @@ export function Footer3() {
                 <h4 className="font-semibold text-white mb-1">Contact</h4>
                 <div className="flex flex-col space-y-1">
                   <a href="tel:+256772406122" className="hover:text-primary transition-colors">+256 772 406 122</a>
-                  <a href="mailto:info@flexeventsug.com" className="hover:text-primary transition-colors">info@flexevents.ug</a>
+                  <a href="mailto:flexbrandug@gmail.com" className="hover:text-primary transition-colors">flexbrandug@gmail.com</a>
                 </div>
               </div>
             </div>
